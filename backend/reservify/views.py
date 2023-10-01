@@ -1,25 +1,49 @@
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from django.shortcuts import render
+from django.template.response import TemplateResponse
+
+
+
 from .models import User
 from .serializers import UserSerializer
+from .forms import SignupForm
 
 import jwt, datetime, os
 
-class SignUpView(APIView):
-    def post(self, request):
-        serializer = UserSerializer(data=request.data)
 
-        response = Response()
-        try:
-            serializer.is_valid(raise_exception=True)
-        except Exception as e:
-            response.data = { 'success': False, 'error': e.detail }
-            return response
-        
-        serializer.save()
-        response.data = serializer.data
-        return response
+class SignUpView(APIView):
+    template_name = 'signup.html'
+
+    def get(self, request):
+        return TemplateResponse(request, self.template_name, context={})
+
+    def post(self, request):
+        form = SignupForm(request.data)
+        if form.is_valid():
+            # Form data is valid, process it and return a response
+            serializer = UserSerializer(data=form.cleaned_data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({
+                    'success': True,
+                    'message': 'Registration successful. Welcome to our platform!'
+                }, status=status.HTTP_201_CREATED)
+            else:
+                return Response({
+                    'success': False,
+                    'message': 'Registration failed. Please correct the following errors:',
+                    'errors': serializer.errors
+                }, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({
+                'success': False,
+                'message': 'Invalid form data. Please correct the following errors:',
+                'errors': form.errors
+            }, status=status.HTTP_400_BAD_REQUEST)
+ 
     
 class LoginView(APIView):
     def post(self, request):
