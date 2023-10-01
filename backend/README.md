@@ -89,6 +89,7 @@ Will return
     email: string
     phone_number: string
     success: bool
+    error: string / null
 }
 ```
 
