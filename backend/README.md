@@ -102,6 +102,7 @@ Will return
 ```
 {
     success: bool,
+    message: string / null
     error: string / null
 }
 ```
