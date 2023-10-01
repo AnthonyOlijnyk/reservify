@@ -69,7 +69,7 @@ Will return
 ## POST api/logout
 Removes the JWT from the cookies.
 
-The body of the request is expected to be empty. This only triggers a clearing of the cookes so the JWT gets removed.
+The body of the request is expected to be empty. This only triggers a clearing of the cookies so the JWT gets removed.
 
 Will return
 ```
@@ -89,6 +89,7 @@ Will return
     email: string
     phone_number: string
     success: bool
+    error: string / null
 }
 ```
 
@@ -101,6 +102,7 @@ Will return
 ```
 {
     success: bool,
+    message: string / null
     error: string / null
 }
 ```
