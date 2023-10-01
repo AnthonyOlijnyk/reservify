@@ -1,5 +1,7 @@
 Using Python version 3.11.5 and pip version 23.2.1.
 
+The `CPS714.postman_collection.json` file can be imported into Postman so that you can have the routes all setup immediately. You don't have to do this though.
+
 Make sure you are in the backend directory before running the commands
 
 # Install Dependencies

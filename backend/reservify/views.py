@@ -88,6 +88,8 @@ class UserView(APIView):
         if not user:
             response.data = { 'success': False, 'error': f"There is no user with an id of \'{id}\'" }
             return response
+        
+        user.delete()
 
         response.data = {
             'success': True,
