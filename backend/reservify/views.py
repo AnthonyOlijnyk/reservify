@@ -23,7 +23,6 @@ class SignUpView(APIView):
     def post(self, request):
         form = SignupForm(request.data)
         if form.is_valid():
-            # Form data is valid, process it and return a response
             serializer = UserSerializer(data=form.cleaned_data)
             if serializer.is_valid():
                 serializer.save()

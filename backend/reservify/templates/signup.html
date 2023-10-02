@@ -72,7 +72,7 @@
 <body>
     <div class="signup-container">
         <h2>Signup</h2>
-        <form id="signup-form">
+        <form id="signup-form" method="post" action="api/signup">
             {% csrf_token %}
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -83,8 +83,8 @@
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="phone_number">Phone Number:</label>
+                <input type="tel" id="phone_number" name="phone_number" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
@@ -97,20 +97,24 @@
     </div>
 
     <script>
-        document.getElementById('signup-form').addEventListener('submit', function (event) {
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
             const formData = new FormData(this);
-
             const jsonData = {};
             formData.forEach((value, key) => {
                 jsonData[key] = value;
             });
 
+            console.log(jsonData)
+            const csrfToken = formData.get('csrfmiddlewaretoken');
+
             fetch('/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken 
                 },
                 body: JSON.stringify(jsonData),
             })
@@ -122,6 +126,7 @@
                 console.error('Error:', error);
             });
         });
+    });
     </script>
 </body>
 
