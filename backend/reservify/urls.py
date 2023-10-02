@@ -20,7 +20,6 @@ from .views import UserView, SignUpView, LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', admin.site.urls),
     path('api/signup', SignUpView.as_view()),
     path('api/login', LoginView.as_view()),
     path('api/logout', LogoutView.as_view()),
