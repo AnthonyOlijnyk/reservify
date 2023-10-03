@@ -127,3 +127,9 @@ class LogoutView(APIView):
         response.delete_cookie('jwt')
         response.data = { 'success': True }
         return response
+    
+class RootView(APIView):    
+    template_name = 'root.html'
+
+    def get(self, request):
+        return TemplateResponse(request, self.template_name, context={})
