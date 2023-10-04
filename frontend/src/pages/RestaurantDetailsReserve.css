@@ -1,0 +1,299 @@
+.image-gallery-icon {
+  position: absolute;
+  top: 106px;
+  left: 6px;
+  width: 1343px;
+  height: 555.01px;
+}
+.host-info-icon,
+.top-titles-icon {
+  position: absolute;
+  top: 544.5px;
+  left: 176.49px;
+  width: 161.34px;
+  height: 13.72px;
+}
+.top-titles-icon {
+  top: 726px;
+  left: 80px;
+  width: 745px;
+  height: 97px;
+  overflow: hidden;
+}
+.side-bar-icon {
+  position: absolute;
+  top: 726px;
+  left: 875px;
+  width: 414px;
+  height: 468px;
+}
+.general-description-about-the {
+  position: absolute;
+  top: 989.87px;
+  left: 80.78px;
+  width: 309.97px;
+  height: 14.04px;
+}
+.about-icon,
+.menu-icon {
+  position: absolute;
+  top: 945.34px;
+  left: 79.8px;
+  width: 83.01px;
+  height: 15.93px;
+}
+.menu-icon {
+  top: 1054.6px;
+  left: 81.83px;
+  width: 67.36px;
+  height: 15.66px;
+}
+.map-icon,
+.reviews-icon {
+  position: absolute;
+  top: 1522.6px;
+  left: 86.83px;
+  width: 51.21px;
+  height: 15.4px;
+}
+.reviews-icon {
+  top: 2054.69px;
+  left: 88.83px;
+  width: 93.03px;
+  height: 17.49px;
+}
+.dish1-icon,
+.dish1-icon1,
+.dish1-icon2 {
+  position: absolute;
+  top: 1194px;
+  left: 63px;
+  width: 343px;
+  height: 98px;
+}
+.dish1-icon1,
+.dish1-icon2 {
+  top: 1087px;
+}
+.dish1-icon2 {
+  top: 1301px;
+}
+.restaurant-detailsreserve-child {
+  position: absolute;
+  top: 2097px;
+  left: 84px;
+  width: 343px;
+  height: 76px;
+}
+.star-2-icon1 {
+  position: relative;
+  width: 9.87px;
+  height: 9.87px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.rating {
+  position: absolute;
+  top: 2106px;
+  left: 343.09px;
+  background-color: var(--color-white);
+  width: 66.08px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.kristinjones-icon {
+  position: absolute;
+  top: 2111.1px;
+  left: 147.56px;
+  width: 80.55px;
+  height: 11.3px;
+}
+.day-ago-icon,
+.i-would-recommend-this-for-all {
+  position: absolute;
+  top: 2150.29px;
+  left: 99.12px;
+  width: 265.7px;
+  height: 12.3px;
+}
+.day-ago-icon {
+  top: 2128.84px;
+  left: 147.03px;
+  width: 49.84px;
+  height: 10.35px;
+}
+.rating1,
+.review4-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 343px;
+  height: 76px;
+}
+.rating1 {
+  top: 9px;
+  left: 259.09px;
+  width: 66.08px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.jacobjones-icon {
+  position: absolute;
+  top: 14.1px;
+  left: 63.56px;
+  width: 77.07px;
+  height: 11.3px;
+}
+.day-ago-icon1,
+.great-dishes-icon {
+  position: absolute;
+  top: 53.35px;
+  left: 14.31px;
+  width: 82.13px;
+  height: 9.72px;
+}
+.day-ago-icon1 {
+  top: 31.84px;
+  left: 63.03px;
+  width: 49.84px;
+  height: 10.35px;
+}
+.host-image-icon,
+.review4 {
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  width: 41px;
+  height: 39px;
+}
+.review4 {
+  top: 2209px;
+  left: 87px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 343px;
+  height: 76px;
+}
+.host-image-icon1,
+.review41 {
+  position: absolute;
+  top: 6px;
+  left: 13px;
+  width: 41px;
+  height: 39px;
+}
+.review41 {
+  top: 2321px;
+  left: 85px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 343px;
+  height: 76px;
+}
+.restaurant-detailsreserve-item {
+  position: absolute;
+  top: 842px;
+  left: 74px;
+  width: 503px;
+  height: 48px;
+}
+.restaurant-detailsreserve-inner,
+.view-more-icon {
+  position: absolute;
+  top: 1421px;
+  left: 77px;
+  width: 122px;
+  height: 35px;
+}
+.view-more-icon {
+  top: 1428.83px;
+  left: 84.84px;
+  width: 101.75px;
+  height: 17.32px;
+}
+.restaurant-detailsreserve-child1,
+.view-more-icon1 {
+  position: absolute;
+  top: 2433px;
+  left: 84px;
+  width: 122px;
+  height: 35px;
+}
+.view-more-icon1 {
+  top: 2440.83px;
+  left: 91.84px;
+  width: 101.75px;
+  height: 17.32px;
+}
+.main-header-icon4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1366px;
+  height: 70px;
+  overflow: hidden;
+}
+.image-5-icon {
+  position: absolute;
+  top: 1574px;
+  left: 76px;
+  width: 660px;
+  height: 407px;
+  object-fit: cover;
+}
+.location-pointer-icon {
+  position: absolute;
+  height: 1.18%;
+  width: 2.42%;
+  top: 52.67%;
+  right: 79.28%;
+  bottom: 46.15%;
+  left: 18.3%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.five-stars-icon,
+.footer-icon4,
+.frame-icon3 {
+  position: absolute;
+  top: 2523px;
+  left: 0;
+  width: 1366px;
+  height: 130px;
+}
+.five-stars-icon,
+.footer-icon4 {
+  top: 2653px;
+  height: 647px;
+  overflow: hidden;
+}
+.five-stars-icon {
+  height: 0.61%;
+  width: 8.49%;
+  top: 17.27%;
+  right: 78.77%;
+  bottom: 82.12%;
+  left: 12.74%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.host-image-icon2 {
+  position: absolute;
+  top: 2103px;
+  left: 98px;
+  width: 41px;
+  height: 39px;
+}
+.restaurant-detailsreserve {
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-linen);
+  width: 100%;
+  height: 3300px;
+  overflow: hidden;
+}
