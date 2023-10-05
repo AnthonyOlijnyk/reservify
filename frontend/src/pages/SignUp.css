@@ -1,0 +1,118 @@
+.sign-up-icon,
+.user-name-icon {
+  position: absolute;
+  top: 228.59px;
+  left: 542.15px;
+  width: 280.71px;
+  height: 47.32px;
+}
+.user-name-icon {
+  top: 469px;
+  left: 387.54px;
+  width: 218.43px;
+  height: 28.24px;
+}
+.usernamegmailcom-icon {
+  position: absolute;
+  top: 660.32px;
+  left: 371.93px;
+  width: 458.16px;
+  height: 37.68px;
+}
+.main-header-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1366px;
+  height: 70px;
+  overflow: hidden;
+}
+.rectangle-1-stroke,
+.sign-up-child {
+  position: absolute;
+  top: 434px;
+  left: 358px;
+  width: 786px;
+  height: 97px;
+}
+.sign-up-child {
+  top: 989px;
+  left: 520px;
+  width: 444px;
+  height: 95px;
+}
+.create-password-icon {
+  position: absolute;
+  top: 769.32px;
+  left: 369.85px;
+  width: 367.43px;
+  height: 29.92px;
+}
+.create-password-stroke,
+.e-mail-icon {
+  position: absolute;
+  top: 760px;
+  left: 358px;
+  width: 393px;
+  height: 67px;
+}
+.e-mail-icon {
+  top: 578.32px;
+  left: 361.68px;
+  width: 134.25px;
+  height: 29.88px;
+}
+.e-mail-stroke-icon {
+  position: absolute;
+  top: 577.32px;
+  left: 360.68px;
+  width: 136.25px;
+  height: 31.88px;
+}
+.rectangle-5-stroke,
+.rectangle-6-stroke {
+  position: absolute;
+  top: 628px;
+  left: 358px;
+  width: 786px;
+  height: 97px;
+}
+.rectangle-6-stroke {
+  top: 819px;
+}
+.confirm-account-icon,
+.password-icon {
+  position: absolute;
+  top: 1019.12px;
+  left: 553.87px;
+  width: 374.13px;
+  height: 30.12px;
+}
+.password-icon {
+  top: 853.32px;
+  left: 389.71px;
+  width: 184.19px;
+  height: 29.88px;
+}
+.create-username-icon {
+  position: absolute;
+  top: 384.76px;
+  left: 351.06px;
+  width: 385.14px;
+  height: 28.48px;
+}
+.create-username-stroke {
+  position: absolute;
+  top: 374px;
+  left: 336px;
+  width: 415px;
+  height: 59px;
+}
+.sign-up {
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-linen);
+  width: 100%;
+  height: 1290px;
+  overflow: hidden;
+}

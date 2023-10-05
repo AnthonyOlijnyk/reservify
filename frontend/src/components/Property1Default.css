@@ -1,0 +1,18 @@
+.label {
+  position: relative;
+  text-transform: capitalize;
+  font-weight: 800;
+}
+.property-1default {
+  border-radius: var(--br-base);
+  background-color: #edefee;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs);
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-darkslategray);
+  font-family: var(--font-karla);
+}

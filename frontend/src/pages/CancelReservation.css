@@ -1,0 +1,160 @@
+.past-icon,
+.upcoming-icon {
+  position: absolute;
+  top: 281.83px;
+  left: 81.39px;
+  width: 95.63px;
+  height: 17.8px;
+}
+.past-icon {
+  top: 283.4px;
+  left: 223.49px;
+  width: 39.64px;
+  height: 12.74px;
+}
+.line-8-stroke,
+.restaurant-1-icon {
+  position: absolute;
+  top: 371.8px;
+  left: 211.33px;
+  width: 100.48px;
+  height: 11.33px;
+}
+.line-8-stroke {
+  top: 319px;
+  left: 78px;
+  width: 1204px;
+  height: 1px;
+}
+.date-10202023-icon,
+.time-100-pm {
+  position: absolute;
+  top: 397.05px;
+  left: 212.22px;
+  width: 106.23px;
+  height: 12.25px;
+}
+.time-100-pm {
+  top: 397.96px;
+  left: 384.05px;
+  width: 88.97px;
+  height: 10.14px;
+}
+.number-of-people-4 {
+  position: absolute;
+  top: 398.26px;
+  left: 601.22px;
+  width: 136.14px;
+  height: 12.26px;
+}
+.cancel-reservation-child,
+.cancel-reservation-item {
+  position: absolute;
+  top: 317px;
+  left: 80px;
+  width: 107px;
+  height: 3px;
+}
+.cancel-reservation-item {
+  top: 358px;
+  height: 94px;
+}
+.cancel-reservation-inner {
+  position: absolute;
+  top: 386px;
+  left: 1063px;
+  width: 193px;
+  height: 38px;
+}
+.cancel-reservation-icon {
+  position: absolute;
+  top: 399.19px;
+  left: 1090.62px;
+  width: 137.07px;
+  height: 10.95px;
+}
+.restaurant-2-icon {
+  position: absolute;
+  top: 490.61px;
+  left: 211.33px;
+  width: 104.52px;
+  height: 11.52px;
+}
+.date-10282023-icon,
+.time-300-pm {
+  position: absolute;
+  top: 516.05px;
+  left: 211.22px;
+  width: 106.19px;
+  height: 12.25px;
+}
+.time-300-pm {
+  top: 516.96px;
+  left: 384.05px;
+  width: 91.6px;
+  height: 10.14px;
+}
+.number-of-people-2,
+.rectangle-icon {
+  position: absolute;
+  top: 517.26px;
+  left: 601.22px;
+  width: 134.62px;
+  height: 12.26px;
+}
+.rectangle-icon {
+  top: 477px;
+  left: 80px;
+  width: 107px;
+  height: 94px;
+}
+.cancel-reservation-child1 {
+  position: absolute;
+  top: 505px;
+  left: 1063px;
+  width: 193px;
+  height: 38px;
+}
+.cancel-reservation-icon1 {
+  position: absolute;
+  top: 518.19px;
+  left: 1090.62px;
+  width: 137.07px;
+  height: 10.95px;
+}
+.reservations-icon {
+  position: absolute;
+  top: 197.45px;
+  left: 80.66px;
+  width: 259.8px;
+  height: 30.89px;
+}
+.main-header-icon2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1366px;
+  height: 70px;
+  overflow: hidden;
+}
+.footer-icon2,
+.frame-icon1 {
+  position: absolute;
+  top: 648px;
+  left: 0;
+  width: 1366px;
+  height: 130px;
+}
+.footer-icon2 {
+  top: 777px;
+  height: 704px;
+  overflow: hidden;
+}
+.cancel-reservation {
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-linen);
+  width: 100%;
+  height: 1400px;
+  overflow: hidden;
+}

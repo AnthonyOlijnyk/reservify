@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@500;800&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-karla: Karla;
+
+  /* font sizes */
+  --font-size-base: 16px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-gray: rgba(0, 0, 0, 0.4);
+  --color-darkslategray: #495e57;
+  --color-linen: #f6efe8;
+
+  /* Paddings */
+  --padding-5xs: 8px;
+  --padding-3xs: 10px;
+
+  /* Border radiuses */
+  --br-xl: 20px;
+  --br-base: 16px;
+}
