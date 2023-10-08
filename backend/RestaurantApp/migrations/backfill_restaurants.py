@@ -32,11 +32,11 @@ def create_restaurant(row):
         longitude = float(row['Longitude']),
         latitude = float(row['Latitude']),
         cuisines = row['Cuisines'],
-        average_cost_for_two = row['Average Cost for two'],
-        average_review_rating = row['Aggregate rating'],
+        average_cost_for_two = int(row['Average Cost for two']),
+        average_review_rating = float(row['Aggregate rating']),
         review_level_color = row['Rating color'],
         review_level_text = row['Rating text'],
-        number_of_reviews = row['Votes']
+        number_of_reviews = int(row['Votes'])
     )
 
 def backfill_restaurant_data():
