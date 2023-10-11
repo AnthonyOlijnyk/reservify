@@ -3,8 +3,6 @@
 from django.db import migrations
 import csv
 
-from ..models import Restaurant
-
 COUNTRY_CODE_MAP = {
     '1' : 'India',
     '14' : 'Australia',
@@ -23,8 +21,8 @@ COUNTRY_CODE_MAP = {
     '216' : 'United State'
 }
 
-def create_restaurant(row):
-    Restaurant.objects.create(
+def form_restaurant(row, Restaurant):
+    return Restaurant(
         name = row['Restaurant Name'],
         country = COUNTRY_CODE_MAP[row['Country Code']],
         city = row['City'],
@@ -39,11 +37,22 @@ def create_restaurant(row):
         number_of_reviews = int(row['Votes'])
     )
 
-def backfill_restaurant_data():
-    with open ('data/restaurant_data.csv') as file_data:
+def form_restaurants(Restaurant):
+    formed_restaurants = []
+    with open ('RestaurantApp/migrations/data/restaurant_data.csv') as file_data:
         reader = csv.DictReader(file_data)
         for row in reader:
-            create_restaurant(row)
+            formed_restaurants.append(form_restaurant(row, Restaurant))
+    return formed_restaurants
+
+def backfill_restaurant_data(apps, schema_editor):
+    Restaurant = apps.get_model('RestaurantApp', 'Restaurant')
+    db_alias = schema_editor.connection.alias
+
+    restaurants_to_add = form_restaurants(Restaurant)
+
+    
+    Restaurant.objects.using(db_alias).bulk_create(restaurants_to_add)
 
     
 
