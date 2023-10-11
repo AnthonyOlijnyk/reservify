@@ -107,9 +107,7 @@
 
             const formData = new FormData(this);
             const jsonData = {};
-            formData.forEach((value, key) => {
-                jsonData[key] = value;
-            });
+            formData.forEach((value, key) => {jsonData[key] = value;});
 
             console.log(jsonData)
             const csrfToken = formData.get('csrfmiddlewaretoken');
@@ -123,12 +121,8 @@
                 body: JSON.stringify(jsonData),
             })
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            .then(data => {console.log(data); })
+            .catch(error => {console.error('Error:', error);});
         });
     });
     </script>
