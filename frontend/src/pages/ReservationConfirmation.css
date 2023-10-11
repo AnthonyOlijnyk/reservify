@@ -1,21 +1,433 @@
-.footer-icon3,
-.frame-icon2,
-.main-header-icon3 {
+.story-details {
+  position: absolute;
+  top: 6px;
+  left: 433px;
+  border-radius: 12px;
+  background-color: var(--color-whitesmoke-100);
+  width: 774px;
+  height: 574px;
+}
+.property-col-icon {
+  position: absolute;
+  top: -1px;
+  left: -10px;
+  border-radius: var(--br-base);
+  width: 782px;
+  height: 592px;
+  object-fit: cover;
+}
+.property-image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-base) var(--br-base) 0px 0px;
+  width: 774px;
+  height: 615px;
+}
+.don-alfonso-1980 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: inline-block;
+  width: 175px;
+  height: 23px;
+}
+.host-info {
+  position: absolute;
+  top: 457px;
+  left: 177px;
+  width: 175px;
+  height: 23px;
+}
+.property-large {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 774px;
+  height: 615px;
+}
+.image-1-icon {
+  position: absolute;
+  top: 422px;
+  left: 54px;
+  border-radius: var(--br-93xl-5);
+  width: 116px;
+  height: 112px;
+  object-fit: cover;
+}
+.image-gallery {
+  position: absolute;
+  top: 1px;
+  left: 433px;
+  width: 774px;
+  height: 615px;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-white);
+}
+.label1 {
+  position: relative;
+  text-transform: capitalize;
+  font-weight: 800;
+}
+.pill {
+  position: absolute;
+  top: 19px;
+  left: -42px;
+  border-radius: var(--br-base);
+  background-color: var(--color-white);
+  width: 392px;
+  height: 471px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-karla);
+}
+.your-reservation-is {
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-size: 40px;
+  text-transform: capitalize;
+  font-weight: 800;
+  display: inline-block;
+  width: 357px;
+  height: 166px;
+}
+.vector-icon1 {
+  position: absolute;
+  height: 32.6%;
+  width: 16.02%;
+  top: 46.32%;
+  right: 77.51%;
+  bottom: 21.08%;
+  left: 6.47%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.you-will-get {
+  position: absolute;
+  top: 195px;
+  left: 4px;
+  text-transform: capitalize;
+  display: inline-block;
+  width: 342px;
+  height: 65px;
+}
+.five-stars-icon {
+  position: absolute;
+  height: 3.38%;
+  width: 9.63%;
+  top: 81.93%;
+  right: 39.75%;
+  bottom: 14.7%;
+  left: 50.62%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.stories-section {
+  position: absolute;
+  top: 165px;
+  left: 94px;
+  width: 1205px;
+  height: 592px;
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-black);
+}
+.news-letter-bg1 {
+  position: absolute;
+  top: 13px;
+  left: 0px;
+  background-color: var(--color-antiquewhite);
+  width: 1366px;
+  height: 117px;
+}
+.explore-reservify1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  line-height: 20px;
+  display: inline-block;
+  width: 206px;
+  height: 27px;
+}
+.stay-upto-date1 {
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 130px;
+  height: 27px;
+}
+.letter-titles1 {
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  width: 206px;
+  height: 52px;
+}
+.letter-input-inner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-7xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-whitesmoke-100);
+  box-sizing: border-box;
+  width: 794px;
+  height: 52px;
+}
+.your-email2 {
+  position: absolute;
+  top: 16px;
+  left: 23px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 130px;
+  height: 27px;
+}
+.letter-input2 {
+  position: absolute;
+  top: 0px;
+  left: 206px;
+  width: 794px;
+  height: 52px;
+  font-size: var(--font-size-sm);
+  color: var(--color-darkgray-100);
+}
+.send-btn-icon2 {
+  position: absolute;
+  top: 0px;
+  left: 947px;
+  width: 52px;
+  height: 52px;
+}
+.newsletter-group2 {
+  position: absolute;
+  top: 46px;
+  left: 186px;
+  width: 1000px;
+  height: 58px;
+}
+.frame2 {
   position: absolute;
   top: 835px;
-  left: 0;
+  left: 0px;
   width: 1366px;
   height: 130px;
+  font-size: var(--font-size-lg);
 }
-.footer-icon3,
-.main-header-icon3 {
-  top: 965px;
-  height: 647px;
+.footer-bg1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-antiquewhite);
+  width: 1366px;
+  height: 648px;
+}
+.about-us1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 87px;
+  height: 28px;
+}
+.company1 {
+  position: absolute;
+  top: 125px;
+  left: 80px;
+  width: 87px;
+  height: 28px;
+}
+.contact-info3 {
+  position: absolute;
+  top: 0px;
+  left: 9px;
+  font-size: var(--font-size-lg);
+  line-height: 20px;
+  display: inline-block;
+  width: 153px;
+  height: 28px;
+}
+.phone-12345678901 {
+  position: absolute;
+  top: 49px;
+  left: 9px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 157px;
+  height: 21px;
+}
+.email-reservifyemailcom1 {
+  position: absolute;
+  top: 81px;
+  left: 9px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 224px;
+  height: 21px;
+}
+.location-100-smart1 {
+  position: absolute;
+  top: 113px;
+  left: 9px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 319px;
+  height: 29px;
+}
+.social-media-links1 {
+  position: absolute;
+  top: 161px;
+  left: 0px;
+  width: 191px;
+  height: 38px;
   overflow: hidden;
 }
-.main-header-icon3 {
-  top: 0;
+.contact-info2 {
+  position: absolute;
+  top: 77px;
+  left: 254px;
+  width: 328px;
+  height: 199px;
+}
+.faqs1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  line-height: 20px;
+  font-weight: 500;
+  display: inline-block;
+  width: 57px;
+  height: 28px;
+}
+.help-center1 {
+  position: absolute;
+  top: 158px;
+  left: 80px;
+  width: 57px;
+  height: 28px;
+}
+.reservify-all1 {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.copyrights-item {
+  position: absolute;
+  top: -0.5px;
+  left: -0.5px;
+  border-top: 1px solid var(--color-gainsboro-100);
+  box-sizing: border-box;
+  width: 1367px;
+  height: 1px;
+}
+.copyrights1 {
+  position: absolute;
+  top: 513px;
+  left: 0px;
+  width: 1366px;
+  height: 60px;
+  font-size: var(--font-size-base);
+}
+.reservify4 {
+  position: absolute;
+  top: 77px;
+  left: 80px;
+  font-size: var(--font-size-lg);
+  line-height: 20px;
+  display: inline-block;
+  width: 153px;
+  height: 28px;
+}
+.footer1 {
+  position: absolute;
+  top: 965px;
+  left: 0px;
+  background-color: var(--color-white);
+  width: 1366px;
+  height: 647px;
+  overflow: hidden;
+  font-size: var(--font-size-mini);
+}
+.reservify5 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-weight: 800;
+}
+.akar-iconsglobe3 {
+  position: absolute;
+  top: 12px;
+  left: 247px;
+  width: 22px;
+  height: 22px;
+}
+.home1 {
+  position: absolute;
+  top: 15px;
+  left: 377px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-dimgray-100);
+  display: inline-block;
+  width: 130px;
+  height: 23px;
+}
+.image-4-icon3 {
+  position: absolute;
+  top: 5px;
+  left: 258px;
+  border-radius: var(--br-xl);
+  width: 43px;
+  height: 42px;
+  object-fit: cover;
+  mix-blend-mode: luminosity;
+}
+.header3 {
+  position: absolute;
+  top: 12px;
+  left: 29px;
+  width: 507px;
+  height: 52px;
+}
+.initial-options-icon1 {
+  position: absolute;
+  top: 9px;
+  left: 1185px;
+  width: 109px;
+  height: 59px;
+  overflow: hidden;
+}
+.main-header4 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-white);
+  width: 1366px;
   height: 70px;
+  overflow: hidden;
+  font-size: var(--font-size-24xl);
+  color: var(--color-firebrick-100);
 }
 .reservation-confirmation {
   position: relative;
@@ -24,4 +436,8 @@
   width: 100%;
   height: 1580px;
   overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-dimgray-100);
+  font-family: var(--font-montserrat);
 }

@@ -1,19 +1,12 @@
-import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation,
-} from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import HomePage1 from "./pages/HomePage1";
-import ReservationConfirmation from "./pages/ReservationConfirmation";
-import Home from "./pages/Home";
-import Search from "./pages/Search";
-import RestaurantDetailsReserve from "./pages/RestaurantDetailsReserve";
-import CancelReservation from "./pages/CancelReservation";
+import { useEffect } from "react";
+import {Routes, Route, useNavigationType, useLocation,} from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import { useEffect } from "react";
+import HomePage from "./pages/HomePage";
+import CancelReservation from "./pages/CancelReservation";
+import ReservationConfirmation from "./pages/ReservationConfirmation";
+import RestaurantDetailsReserve from "./pages/RestaurantDetailsReserve";
+import Search from "./pages/Search";
 
 function App() {
   const action = useNavigationType();
@@ -40,10 +33,6 @@ function App() {
         metaDescription = "";
         break;
       case "/reservation-confirmation":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/home":
         title = "";
         metaDescription = "";
         break;
@@ -86,17 +75,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/homepage" element={<HomePage1 />} />
-      <Route
-        path="/reservation-confirmation"
-        element={<ReservationConfirmation />}
-      />
-      <Route path="/home" element={<Home />} />
+      <Route path="/homepage" element={<HomePage />} />
+      <Route path="/reservation-confirmation" element={<ReservationConfirmation />}/>
       <Route path="/search" element={<Search />} />
-      <Route
-        path="/restaurant-detailsreserve"
-        element={<RestaurantDetailsReserve />}
-      />
+      <Route path="/restaurant-detailsreserve" element={<RestaurantDetailsReserve />}/>
       <Route path="/cancel-reservation" element={<CancelReservation />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />

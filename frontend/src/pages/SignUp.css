@@ -1,118 +1,293 @@
-.sign-up-icon,
-.user-name-icon {
+.signup-child {
   position: absolute;
-  top: 228.59px;
-  left: 542.15px;
-  width: 280.71px;
-  height: 47.32px;
+  top: 66px;
+  left: 0px;
+  width: 556px;
+  height: 805px;
 }
-.user-name-icon {
-  top: 469px;
-  left: 387.54px;
-  width: 218.43px;
-  height: 28.24px;
-}
-.usernamegmailcom-icon {
+.email {
   position: absolute;
-  top: 660.32px;
-  left: 371.93px;
-  width: 458.16px;
-  height: 37.68px;
+  top: 159px;
+  left: 209px;
 }
-.main-header-icon {
+.register-form-child {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 1366px;
+  top: 195px;
+  left: 209px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.full-name {
+  position: absolute;
+  top: 246px;
+  left: 209px;
+}
+.register-form-item {
+  position: absolute;
+  top: 282px;
+  left: 209px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.username {
+  position: absolute;
+  top: 333px;
+  left: 209px;
+}
+.register-form-inner {
+  position: absolute;
+  top: 369px;
+  left: 209px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.password {
+  position: absolute;
+  top: 507px;
+  left: 209px;
+
+}
+.rectangle-div {
+  position: absolute;
+  top: 456px;
+  left: 209px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.phonenumber {
+  position: absolute;
+  top: 420px;
+  left: 209px;
+}
+.register-form-child1 {
+  position: absolute;
+  top: 543px;
+  left: 209px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.sign-in-now {
+  text-decoration: underline;
+}
+.have-an-account-container1 {
+  line-break: anywhere;
+  width: 100%;
+}
+.have-an-account-container {
+  position: absolute;
+  top: 681px;
+  left: 207px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 367px;
+  cursor: pointer;
+}
+.please-fill-out {
+  position: absolute;
+  top: 108px;
+  left: 281px;
+  color: var(--color-gray-100);
+}
+.group-child {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-indianred);
+  width: 365px;
+  height: 34px;
+  cursor: pointer;
+}
+.register {
+  position: absolute;
+  top: 7px;
+  left: 150px;
+  font-weight: 500;
+}
+.rectangle-parent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 365px;
+  height: 34px;
+}
+.register-button {
+  position: absolute;
+  top: 612px;
+  left: 210px;
+  width: 365px;
+  height: 34px;
+  color: var(--color-white);
+}
+.enter-username {
+  border: none;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 377px;
+  left: 227px;
+  color: var(--color-firebrick-300);
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 17px;
+}
+.enter-phonenumber {
+  border: none;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 464px;
+  left: 227px;
+  color: var(--color-firebrick-300);
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 17px;
+}
+.enter-password {
+  border: none;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 551px;
+  left: 227px;
+  color: var(--color-firebrick-300);
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 17px;
+}
+.enter-full-name {
+  border: none;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 290px;
+  left: 227px;
+  color: var(--color-firebrick-300);
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 17px;
+}
+.enter-e-mail {
+  border: none;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 203px;
+  left: 227px;
+  color: var(--color-firebrick-300);
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+  height: 17px;
+}
+.register-form {
+  position: absolute;
+  top: 35px;
+  left: 593px;
+  width: 785px;
+  height: 736px;
+}
+.reservify {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.akar-iconsglobe {
+  position: absolute;
+  top: 12px;
+  left: 247px;
+  width: 22px;
+  height: 22px;
+}
+.header {
+  position: absolute;
+  top: 12px;
+  left: 29px;
+  width: 269px;
+  height: 52px;
+}
+.reservify-icon1 {
+  position: absolute;
+  top: 10.3px;
+  left: 0px;
+  width: 251.38px;
+  height: 31.3px;
+}
+.restaurant-1-icon1 {
+  position: absolute;
+  top: 0px;
+  left: 264.99px;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+}
+.titlelogo {
+  position: absolute;
+  top: -287px;
+  left: -1468px;
+  width: 316.99px;
+  height: 52px;
+}
+.main-header1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--color-white);
+  width: 1440px;
   height: 70px;
   overflow: hidden;
+  font-size: var(--font-size-24xl);
+  color: var(--color-firebrick-100);
+  font-family: var(--font-montserrat);
 }
-.rectangle-1-stroke,
-.sign-up-child {
+.restaurant-2-icon-signup {
   position: absolute;
-  top: 434px;
-  left: 358px;
-  width: 786px;
-  height: 97px;
+  top: 249px;
+  left: 269px;
+  width: 279px;
+  height: 279px;
+  object-fit: cover;
 }
-.sign-up-child {
-  top: 989px;
-  left: 520px;
-  width: 444px;
-  height: 95px;
-}
-.create-password-icon {
-  position: absolute;
-  top: 769.32px;
-  left: 369.85px;
-  width: 367.43px;
-  height: 29.92px;
-}
-.create-password-stroke,
-.e-mail-icon {
-  position: absolute;
-  top: 760px;
-  left: 358px;
-  width: 393px;
-  height: 67px;
-}
-.e-mail-icon {
-  top: 578.32px;
-  left: 361.68px;
-  width: 134.25px;
-  height: 29.88px;
-}
-.e-mail-stroke-icon {
-  position: absolute;
-  top: 577.32px;
-  left: 360.68px;
-  width: 136.25px;
-  height: 31.88px;
-}
-.rectangle-5-stroke,
-.rectangle-6-stroke {
-  position: absolute;
-  top: 628px;
-  left: 358px;
-  width: 786px;
-  height: 97px;
-}
-.rectangle-6-stroke {
-  top: 819px;
-}
-.confirm-account-icon,
-.password-icon {
-  position: absolute;
-  top: 1019.12px;
-  left: 553.87px;
-  width: 374.13px;
-  height: 30.12px;
-}
-.password-icon {
-  top: 853.32px;
-  left: 389.71px;
-  width: 184.19px;
-  height: 29.88px;
-}
-.create-username-icon {
-  position: absolute;
-  top: 384.76px;
-  left: 351.06px;
-  width: 385.14px;
-  height: 28.48px;
-}
-.create-username-stroke {
-  position: absolute;
-  top: 374px;
-  left: 336px;
-  width: 415px;
-  height: 59px;
-}
-.sign-up {
+.signup {
   position: relative;
-  border-radius: var(--br-xl);
-  background-color: var(--color-linen);
+  background-color: var(--color-white);
   width: 100%;
-  height: 1290px;
+  height: 871px;
   overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-family: var(--font-inter);
 }
