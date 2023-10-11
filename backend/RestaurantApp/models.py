@@ -1,9 +1,9 @@
 from django.db import models
 
 class Restaurant(models.Model):
-    name = models.CharField(max_lenth=255)
+    name = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
-    city = models.CharField(max_lenth=255)
+    city = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     longitude = models.DecimalField(max_digits=15, decimal_places=10)
     latitude = models.DecimalField(max_digits=15, decimal_places=10)
