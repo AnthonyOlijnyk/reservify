@@ -21,8 +21,8 @@ from .views import UserView, SignUpView, LoginView, LogoutView, RootView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RootView.as_view()),
-    path('api/signup', SignUpView.as_view()),
-    path('api/login', LoginView.as_view()),
+    path('api/signup', SignUpView.as_view(), name='singup'),
+    path('api/login', LoginView.as_view(), name='login'),
     path('api/logout', LogoutView.as_view()),
     path('api/users', UserView.as_view())
 ]
