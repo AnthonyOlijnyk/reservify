@@ -18,7 +18,7 @@ COUNTRY_CODE_MAP = {
     '208' : 'Turkey',
     '214' : 'UAE',
     '215' : 'United Kingdom',
-    '216' : 'United State'
+    '216' : 'United States'
 }
 
 def form_restaurant(row, Restaurant):
