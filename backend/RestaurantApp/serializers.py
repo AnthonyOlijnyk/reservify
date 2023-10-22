@@ -18,5 +18,6 @@ class RestaurantSerializer(ModelSerializer):
             'average_review_rating',
             'review_level_color',
             'review_level_text',
-            'number_of_reviews'
+            'number_of_reviews',
+            'about'
         )
