@@ -1,0 +1,513 @@
+.edit1 {
+  position: relative;
+  font-weight: 600;
+}
+.edit {
+  position: absolute;
+  top: 987px;
+  left: 796px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkgray);
+  width: 53px;
+  height: 21px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mainframe4 {
+  position: absolute;
+  top: 70px;
+  left: -8px;
+  background: linear-gradient(180deg, #f8e9db, rgba(255, 255, 255, 0));
+  width: 1448px;
+  height: 2121px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+}
+.footer-icon6,
+.map-image-icon1 {
+  position: absolute;
+  top: 1877px;
+  left: 1px;
+  width: 1440px;
+  height: 328px;
+}
+.map-image-icon1 {
+  top: 1252px;
+  left: 80px;
+  width: 802px;
+  height: 420px;
+  object-fit: cover;
+}
+.edit2 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkgray);
+  width: 53px;
+  height: 21px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.about-paragraph1 {
+  position: relative;
+  font-size: var(--font-size-mini);
+  line-height: 20px;
+  color: var(--color-dimgray);
+  text-align: left;
+  display: inline-block;
+  width: 745px;
+  height: 95px;
+  flex-shrink: 0;
+}
+.about2,
+.edit-parent {
+  position: absolute;
+  left: 80px;
+}
+.edit-parent {
+  top: 922px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 11px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+}
+.about2 {
+  top: 921px;
+  display: inline-block;
+  width: 363px;
+  height: 48px;
+}
+.map4 {
+  margin: 0;
+}
+.map3,
+.rating2 {
+  position: absolute;
+  top: 1223px;
+  left: 81px;
+  display: inline-block;
+  width: 363px;
+  height: 29px;
+}
+.rating2 {
+  top: 1049px;
+  left: 509px;
+}
+.don-alfonso-19804 {
+  position: relative;
+  display: inline-block;
+  width: 423px;
+  height: 41px;
+  flex-shrink: 0;
+}
+.edit4 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkgray);
+  width: 53px;
+  height: 21px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+}
+.food-street-toronto4 {
+  position: relative;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-dimgray);
+  display: inline-block;
+  width: 258px;
+  height: 25px;
+  flex-shrink: 0;
+}
+.don-alfonso-1980-parent {
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 745px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 269px;
+}
+.top-titles1 {
+  position: absolute;
+  top: 726px;
+  left: 80px;
+  width: 745px;
+  height: 97px;
+  overflow: hidden;
+  font-size: var(--font-size-9xl);
+}
+.info2 {
+  position: relative;
+  display: inline-block;
+  width: 363px;
+  height: 29px;
+  flex-shrink: 0;
+}
+.edit6 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkgray);
+  width: 53px;
+  height: 21px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: -25px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+}
+.info-box-item,
+.steak-image-icon1 {
+  position: absolute;
+  border-radius: var(--br-3xs);
+}
+.info-box-item {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  width: 343px;
+  height: 98px;
+}
+.steak-image-icon1 {
+  top: 11px;
+  left: 13.6px;
+  width: 139.5px;
+  height: 76px;
+  object-fit: cover;
+}
+.average-cost-502,
+.cuisine-italian1,
+.price-range1 {
+  position: absolute;
+  top: 20px;
+  left: 167px;
+  line-height: 15px;
+  font-weight: 600;
+  display: inline-block;
+  width: 164.7px;
+  height: 16px;
+}
+.average-cost-502,
+.price-range1 {
+  top: 71px;
+}
+.price-range1 {
+  top: 44px;
+}
+.info-box1 {
+  position: relative;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 343px;
+  height: 98px;
+  margin-left: -25px;
+  font-size: var(--font-size-smi);
+}
+.info-parent {
+  position: absolute;
+  top: 1049px;
+  left: 80px;
+  width: 391px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.about3,
+.active-line {
+  position: absolute;
+  left: 0;
+}
+.active-line {
+  top: 25px;
+  background-color: var(--color-firebrick-100);
+  width: 40px;
+  height: 3px;
+}
+.about3 {
+  top: 0;
+  font-weight: 600;
+  display: inline-block;
+  width: 116px;
+}
+.active-category,
+.info3 {
+  position: absolute;
+  top: 14px;
+}
+.active-category {
+  left: 21px;
+  width: 116px;
+  height: 28px;
+}
+.info3 {
+  left: 154px;
+  font-weight: 600;
+  display: inline-block;
+  width: 66px;
+}
+.frame-child2 {
+  position: absolute;
+  top: 23px;
+  left: 100px;
+  border-radius: 50%;
+  background-color: var(--color-dimgray);
+  width: 6px;
+  height: 6px;
+}
+.map5 {
+  position: absolute;
+  top: 14px;
+  left: 267px;
+  font-weight: 600;
+  display: inline-block;
+  width: 51px;
+}
+.frame-child3 {
+  position: absolute;
+  top: 23px;
+  left: 238px;
+  border-radius: 50%;
+  background-color: var(--color-dimgray);
+  width: 6px;
+  height: 6px;
+}
+.rating3 {
+  position: absolute;
+  top: 14px;
+  left: 378px;
+  font-weight: 600;
+  display: inline-block;
+  width: 102px;
+}
+.frame-child4,
+.frame-child5 {
+  position: absolute;
+  top: 23px;
+  left: 480px;
+  border-radius: 50%;
+  background-color: var(--color-dimgray);
+  width: 6px;
+  height: 6px;
+}
+.frame-child5 {
+  left: 335px;
+}
+.frame23 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.admin-edit-inner,
+.frame-container,
+.frame23 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 503px;
+  height: 48px;
+}
+.admin-edit-inner {
+  top: 842px;
+  left: 74px;
+  font-size: var(--font-size-base);
+}
+.bxbxs-user-circle-icon5,
+.search-icon5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.search-icon5 {
+  height: 63.86%;
+  width: 30.22%;
+  top: 18.18%;
+  right: -1.18%;
+  bottom: 17.95%;
+  left: 70.97%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.initial-options3,
+.reservify-icon9 {
+  position: absolute;
+  top: 13px;
+  left: 1315px;
+  width: 93px;
+  height: 44px;
+}
+.reservify-icon9 {
+  top: 10.3px;
+  left: 0;
+  width: 251.4px;
+  height: 31.3px;
+}
+.restaurant-1-icon9 {
+  position: absolute;
+  top: 0;
+  left: 265px;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+}
+.main-header8,
+.titlelogo9 {
+  position: absolute;
+  top: 9px;
+  left: 32px;
+  width: 317px;
+  height: 52px;
+}
+.main-header8 {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  width: 1440px;
+  height: 70px;
+  overflow: hidden;
+}
+.res-big-image {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border-radius: var(--br-base);
+  width: 644.6px;
+  height: 543.1px;
+  object-fit: cover;
+}
+.res-image-1,
+.res-image-2,
+.res-image-3,
+.res-image-4 {
+  position: absolute;
+  top: 0;
+  left: 654.6px;
+  border-radius: var(--br-5xs);
+  width: 303.2px;
+  height: 262.7px;
+  object-fit: cover;
+}
+.res-image-2,
+.res-image-3,
+.res-image-4 {
+  left: 966.8px;
+}
+.res-image-3,
+.res-image-4 {
+  top: 273.3px;
+  left: 654.6px;
+  height: 261.7px;
+}
+.res-image-4 {
+  left: 966.8px;
+}
+.b,
+.more,
+.photos {
+  position: absolute;
+  display: inline-block;
+}
+.b {
+  top: 370.9px;
+  left: 1050.8px;
+  font-size: 48px;
+  width: 61.3px;
+  height: 60.5px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.more,
+.photos {
+  left: 1107.4px;
+  height: 17.6px;
+}
+.more {
+  top: 357.2px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  width: 47.2px;
+}
+.photos {
+  top: 374.8px;
+  width: 65.1px;
+}
+.frame-frame,
+.frame24 {
+  position: absolute;
+  width: 352px;
+  height: 48px;
+}
+.frame24 {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.frame-frame {
+  top: 445px;
+  left: 43px;
+}
+.don-alfonso-19805 {
+  position: absolute;
+  top: 458.3px;
+  left: 124.5px;
+  display: inline-block;
+  color: var(--color-black);
+  width: 165.1px;
+  height: 22.4px;
+}
+.rest-images1 {
+  position: relative;
+  width: 1266px;
+  height: 527px;
+}
+.rest-images-parent {
+  position: absolute;
+  top: 147px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 14px;
+  font-size: var(--font-size-lg);
+  color: var(--color-dimgray);
+}
+.admin-edit {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 2205px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-3xl);
+  color: var(--color-firebrick-100);
+  font-family: var(--font-montserrat);
+}

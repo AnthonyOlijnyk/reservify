@@ -1,0 +1,196 @@
+.email1,
+.register-form-child {
+  position: absolute;
+  top: 159px;
+  left: 209px;
+}
+.register-form-child {
+  top: 195px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.full-name,
+.register-form-item {
+  position: absolute;
+  top: 246px;
+  left: 209px;
+}
+.register-form-item {
+  top: 282px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.register-form-inner,
+.username {
+  position: absolute;
+  top: 333px;
+  left: 209px;
+}
+.register-form-inner {
+  top: 369px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.phonenumber,
+.register-form-child1 {
+  position: absolute;
+  top: 420px;
+  left: 209px;
+}
+.register-form-child1 {
+  top: 456px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.password,
+.register-form-child2 {
+  position: absolute;
+  top: 507px;
+  left: 209px;
+}
+.register-form-child2 {
+  top: 543px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.sign-in-now {
+  text-decoration: underline;
+}
+.have-an-account-container1 {
+  line-break: anywhere;
+  width: 100%;
+}
+.have-an-account-container {
+  position: absolute;
+  top: 681px;
+  left: 207px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 367px;
+  cursor: pointer;
+}
+.please-fill-out {
+  position: absolute;
+  top: 108px;
+  left: 281px;
+  color: var(--color-gray-100);
+}
+.group-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-indianred);
+  width: 365px;
+  height: 34px;
+  cursor: pointer;
+}
+.register {
+  position: absolute;
+  top: 7px;
+  left: 150px;
+  font-weight: 500;
+}
+.enter-username,
+.rectangle-parent,
+.register-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 365px;
+  height: 34px;
+}
+.enter-username,
+.register-button {
+  top: 612px;
+  left: 210px;
+  color: var(--color-white);
+}
+.enter-username {
+  border: 0;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  top: 369px;
+  color: var(--color-gray-300);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 366px;
+}
+.enter-password1 {
+  position: absolute;
+  top: 543px;
+  text-align: left;
+}
+.enter-password1,
+.enter-full-name,
+.enter-phonenumber {
+  border: 0;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  left: 210px;
+  color: var(--color-gray-300);
+  display: flex;
+  align-items: center;
+  width: 366px;
+  height: 34px;
+}
+.enter-phonenumber {
+  position: absolute;
+  top: 456px;
+  text-align: left;
+}
+.enter-full-name {
+  top: 282px;
+}
+.enter-e-mail,
+.enter-full-name,
+.register-form {
+  position: absolute;
+  text-align: left;
+}
+.enter-e-mail {
+  border: 0;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  top: 195px;
+  left: 210px;
+  color: var(--color-gray-300);
+  display: flex;
+  align-items: center;
+  width: 365px;
+  height: 34px;
+}
+.register-form {
+  top: 35px;
+  left: 593px;
+  width: 785px;
+  height: 736px;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}

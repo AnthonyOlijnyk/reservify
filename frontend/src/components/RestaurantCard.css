@@ -1,0 +1,93 @@
+.cancelres2-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-firebrick-100);
+  width: 193px;
+  height: 38px;
+}
+.cancel-reservation {
+  position: absolute;
+  top: 10px;
+  left: 27px;
+  font-weight: 600;
+  display: inline-block;
+  width: 147px;
+  height: 24px;
+}
+.cancelres2 {
+  position: absolute;
+  top: 28px;
+  left: 863px;
+  width: 193px;
+  height: 38px;
+}
+.restaurant-21,
+.span {
+  color: var(--color-firebrick-100);
+}
+.restaurant-21 {
+  position: absolute;
+  top: 9px;
+  left: 130px;
+  font-size: var(--font-size-base);
+  display: inline-block;
+  width: 248px;
+  height: 23px;
+}
+.span {
+  font-weight: 500;
+}
+.date-10282023,
+.time-300-pm-container {
+  position: absolute;
+  top: 37px;
+  left: 130px;
+  display: inline-block;
+  width: 159px;
+  height: 19px;
+}
+.time-300-pm-container {
+  left: 304px;
+  width: 193px;
+}
+.number-of-people {
+  font-weight: 600;
+}
+.number-of-people-container {
+  position: absolute;
+  top: 37px;
+  left: 520px;
+  display: inline-block;
+  width: 149px;
+  height: 19px;
+}
+.restaurant2-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-7xs);
+  background-color: var(--color-gainsboro);
+  width: 107px;
+  height: 94px;
+}
+.restaurant2,
+.restaurant21 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 669px;
+  height: 94px;
+  font-size: var(--font-size-smi);
+  color: var(--color-dimgray);
+}
+.restaurant2 {
+  top: 278px;
+  left: 76px;
+  width: 1056px;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}

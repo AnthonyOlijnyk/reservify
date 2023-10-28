@@ -1,0 +1,367 @@
+.footer-icon3,
+.search-icon2 {
+  position: absolute;
+  top: 1452px;
+  left: 0;
+  width: 1440px;
+  height: 328px;
+}
+.search-icon2 {
+  height: 117.08%;
+  width: 117.08%;
+  top: -12.5%;
+  right: -4.58%;
+  bottom: -4.58%;
+  left: -12.5%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+.homepagebtn {
+  position: absolute;
+  height: 34.29%;
+  width: 1.67%;
+  top: 34.29%;
+  right: 2.22%;
+  bottom: 31.43%;
+  left: 96.11%;
+}
+.reservify-icon6 {
+  position: absolute;
+  top: 10.3px;
+  left: 0;
+  width: 251.4px;
+  height: 31.3px;
+}
+.restaurant-1-icon6 {
+  position: absolute;
+  top: 0;
+  left: 265px;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+}
+.titlelogo6 {
+  position: absolute;
+  top: 9px;
+  left: 32px;
+  width: 317px;
+  height: 52px;
+}
+.main-header5 {
+  position: relative;
+  background-color: var(--color-white);
+  width: 1440px;
+  height: 70px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.bxbxs-user-circle-icon3 {
+  position: absolute;
+  top: 61px;
+  left: 859.5px;
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+}
+.enter-old-username {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.enter-change-username,
+.enter-confirm-username {
+  position: absolute;
+  top: 88px;
+  left: 0;
+}
+.enter-confirm-username {
+  top: 177px;
+}
+.enter-change-password,
+.enter-old-password {
+  position: absolute;
+  top: 0;
+  left: 491px;
+}
+.enter-change-password {
+  top: 88px;
+}
+.enter-confirm-password,
+.setting-tittles {
+  position: absolute;
+  top: 177px;
+  left: 491px;
+}
+.setting-tittles {
+  top: 97px;
+  left: 1.5px;
+  width: 683px;
+  height: 196px;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+.settings1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-19xl);
+  font-weight: 800;
+  color: var(--color-dimgray);
+  display: inline-block;
+  width: 271px;
+  height: 53px;
+}
+.settings-child {
+  position: absolute;
+  top: 51px;
+  left: 417.5px;
+  width: 22.8px;
+  height: 380px;
+}
+.changeuset-btn-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-firebrick-100);
+  width: 193px;
+  height: 38px;
+}
+.change-username {
+  position: absolute;
+  top: 10px;
+  left: 27px;
+  font-weight: 600;
+  display: inline-block;
+  width: 147px;
+  height: 24px;
+}
+.changepass-btn,
+.changeuset-btn {
+  position: absolute;
+  top: 373px;
+  left: 61.5px;
+  width: 193px;
+  height: 38px;
+}
+.changepass-btn {
+  left: 587.5px;
+}
+.white-boxes-child,
+.white-boxes-child1,
+.white-boxes-child2,
+.white-boxes-child3,
+.white-boxes-child4,
+.white-boxes-inner,
+.white-boxes-item {
+  position: absolute;
+  top: 175px;
+  left: 0;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-snow);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 367px;
+  height: 34px;
+}
+.white-boxes-child1,
+.white-boxes-child2,
+.white-boxes-child3,
+.white-boxes-child4,
+.white-boxes-inner,
+.white-boxes-item {
+  top: 0;
+}
+.white-boxes-child1,
+.white-boxes-child2,
+.white-boxes-child3,
+.white-boxes-child4,
+.white-boxes-inner {
+  top: 87px;
+}
+.white-boxes-child1,
+.white-boxes-child2,
+.white-boxes-child3,
+.white-boxes-child4 {
+  top: 1px;
+}
+.white-boxes-child2,
+.white-boxes-child3,
+.white-boxes-child4 {
+  top: 0;
+  left: 491px;
+}
+.white-boxes-child3,
+.white-boxes-child4 {
+  top: 87px;
+}
+.white-boxes-child4 {
+  top: 175px;
+}
+.white-boxes {
+  position: absolute;
+  top: 130px;
+  left: 1.5px;
+  width: 858px;
+  height: 209px;
+}
+.enter-new-password,
+.enter-new-password1,
+.enter-new-username,
+.enter-new-username1,
+.enter-old-password1,
+.enter-old-username1 {
+  border: 0;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 130px;
+  left: 514.5px;
+  color: var(--color-darkslategray-200);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 319px;
+  height: 34px;
+}
+.enter-new-password,
+.enter-new-password1,
+.enter-new-username,
+.enter-new-username1,
+.enter-old-username1 {
+  top: 217px;
+}
+.enter-new-password1,
+.enter-new-username,
+.enter-new-username1,
+.enter-old-username1 {
+  top: 304px;
+}
+.enter-new-username,
+.enter-new-username1,
+.enter-old-username1 {
+  top: 130px;
+  left: 27.5px;
+}
+.enter-new-username,
+.enter-new-username1 {
+  top: 217px;
+}
+.enter-new-username1 {
+  top: 305px;
+}
+.settings {
+  position: relative;
+  width: 1209px;
+  height: 479px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.reservation-child {
+  position: absolute;
+  top: 128.5px;
+  left: -0.5px;
+  border-top: 1px solid var(--color-whitesmoke-100);
+  box-sizing: border-box;
+  width: 1205px;
+  height: 1px;
+}
+.upcomingline {
+  position: absolute;
+  top: 126px;
+  left: 2px;
+  background-color: var(--color-firebrick-100);
+  width: 107px;
+  height: 3px;
+}
+.past,
+.upcoming {
+  position: absolute;
+  top: 88px;
+  left: 144px;
+  display: inline-block;
+  width: 66px;
+  height: 30px;
+}
+.upcoming {
+  left: 2px;
+  width: 126px;
+}
+.reservation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1204px;
+  height: 129px;
+}
+.reservations {
+  position: relative;
+  width: 1209px;
+  height: 428px;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-firebrick-100);
+}
+.main-header-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #f8eadc, rgba(255, 255, 255, 0));
+  height: 1452px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-88xl);
+}
+.logout-btn-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-gray-200);
+  width: 305.7px;
+  height: 62px;
+  cursor: pointer;
+}
+.logout,
+.logout-btn {
+  position: absolute;
+  width: 311px;
+  height: 62px;
+}
+.logout {
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-13xl);
+  display: flex;
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.logout-btn {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  top: 1280px;
+  left: 564px;
+}
+.user-dash {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 1780px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}
