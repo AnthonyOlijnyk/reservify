@@ -19,7 +19,7 @@ const RegisterForm = () => {
     const username = document.querySelector(".enter-username").value;
     const phone_number = document.querySelector(".enter-phonenumber").value;
     const name = document.querySelector(".enter-full-name").value;
-    const password = document.querySelector(".enter-password").value;
+    const password = document.querySelector(".enter-password1").value;
     const email = document.querySelector(".enter-e-mail").value;
 
     const formData = new FormData(this);
