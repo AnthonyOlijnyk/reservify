@@ -68,7 +68,7 @@ function App() {
         metaDescription = "";
         break;
     }
-
+    
     if (title) {
       document.title = title;
     }
