@@ -1,0 +1,66 @@
+.restaurant-31 {
+  position: absolute;
+  top: 9px;
+  left: 130px;
+  display: inline-block;
+  width: 248px;
+  height: 23px;
+}
+.restaurant3-child,
+.restaurant31 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 94px;
+}
+.restaurant3-child {
+  border-radius: var(--br-7xs);
+  background-color: var(--color-gainsboro);
+  width: 107px;
+}
+.restaurant31 {
+  width: 378px;
+  font-size: var(--font-size-base);
+  color: var(--color-firebrick-100);
+}
+.delete-restaurant-btn-3-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-firebrick-100);
+  width: 193px;
+  height: 38px;
+}
+.delete-restaurant-btn3 {
+  position: absolute;
+  top: 10px;
+  left: 27px;
+  font-weight: 600;
+  display: inline-block;
+  width: 147px;
+  height: 24px;
+}
+.delete-restaurant-btn-3,
+.edit-restaurant-btn3,
+.restaurant3 {
+  position: absolute;
+  top: 28px;
+  left: 923px;
+  width: 193px;
+  height: 38px;
+}
+.edit-restaurant-btn3,
+.restaurant3 {
+  left: 704.5px;
+}
+.restaurant3 {
+  top: 397px;
+  left: 77.5px;
+  width: 1116px;
+  height: 94px;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}

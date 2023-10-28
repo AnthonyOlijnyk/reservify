@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-import {Routes, Route, useNavigationType, useLocation,} from "react-router-dom";
+import {Routes,Route,useNavigationType,useLocation,} from "react-router-dom";
+
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Signup from "./pages/Signup";
 import HomePage from "./pages/HomePage";
-import CancelReservation from "./pages/CancelReservation";
-import ReservationConfirmation from "./pages/ReservationConfirmation";
-import RestaurantDetailsReserve from "./pages/RestaurantDetailsReserve";
-import Search from "./pages/Search";
+import SearchPage from "./pages/SearchPage";
+import ReservePage from "./pages/ReservePage";
+import UserDash from "./pages/UserDash";
+import ConfirmationPage from "./pages/ConfirmationPage";
+import AdminDash from "./pages/AdminDash";
+import AdminEdit from "./pages/AdminEdit";
 
 function App() {
   const action = useNavigationType();
@@ -28,7 +31,23 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/signup":
+        title = "";
+        metaDescription = "";
+        break;
       case "/homepage":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/searchpage":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/reservepage":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/user-dash":
         title = "";
         metaDescription = "";
         break;
@@ -36,23 +55,11 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/search":
+      case "/admin-dash":
         title = "";
         metaDescription = "";
         break;
-      case "/restaurant-detailsreserve":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/cancel-reservation":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/login":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/sign-up":
+      case "/admin-edit":
         title = "";
         metaDescription = "";
         break;
@@ -74,14 +81,15 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/homepage" element={<HomePage />} />
-      <Route path="/reservation-confirmation" element={<ReservationConfirmation />}/>
-      <Route path="/search" element={<Search />} />
-      <Route path="/restaurant-detailsreserve" element={<RestaurantDetailsReserve />}/>
-      <Route path="/cancel-reservation" element={<CancelReservation />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/searchpage" element={<SearchPage />} />
+      <Route path="/reservepage" element={<ReservePage />} />
+      <Route path="/user-dash" element={<UserDash />} />
+      <Route path="/reservation-confirmation" element={<ConfirmationPage />} />
+      <Route path="/admin-dash" element={<AdminDash />} />
+      <Route path="/admin-edit" element={<AdminEdit />} />
     </Routes>
   );
 }

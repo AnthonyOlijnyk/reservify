@@ -1,0 +1,459 @@
+.mainframe2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #f8e9db, rgba(255, 255, 255, 0));
+  width: 1440px;
+  height: 2205px;
+}
+.footer-icon2,
+.map-image-icon {
+  position: absolute;
+  top: 1877px;
+  left: 1px;
+  width: 1440px;
+  height: 328px;
+}
+.map-image-icon {
+  top: 331px;
+  left: 0;
+  width: 802px;
+  height: 420px;
+  object-fit: cover;
+}
+.about,
+.about-paragraph,
+.info {
+  position: absolute;
+  left: 0;
+  display: inline-block;
+}
+.about-paragraph {
+  top: 33px;
+  font-size: var(--font-size-mini);
+  line-height: 20px;
+  color: var(--color-dimgray);
+  width: 745px;
+  height: 95px;
+}
+.about,
+.info {
+  top: 0;
+  width: 363px;
+  height: 48px;
+}
+.info {
+  top: 128px;
+  height: 29px;
+}
+.map1 {
+  margin: 0;
+}
+.map,
+.rating {
+  position: absolute;
+  top: 302px;
+  left: 1px;
+  display: inline-block;
+  width: 363px;
+  height: 29px;
+}
+.rating {
+  top: 128px;
+  left: 429px;
+}
+.map-image-parent {
+  position: absolute;
+  top: 921px;
+  left: 80px;
+  width: 802px;
+  height: 751px;
+  font-size: var(--font-size-3xl);
+}
+.div {
+  position: absolute;
+  left: 164px;
+  height: 19px;
+}
+.div,
+.div1,
+.div2 {
+  top: 0;
+  font-weight: 500;
+  display: inline-block;
+  width: 52px;
+}
+.div1 {
+  position: absolute;
+  left: 105px;
+  height: 19px;
+}
+.div2 {
+  left: 52px;
+}
+.div2,
+.div3,
+.selectionofpeople {
+  position: absolute;
+  height: 19px;
+}
+.div3 {
+  top: 0;
+  left: 0;
+  font-weight: 500;
+  display: inline-block;
+  width: 52px;
+}
+.selectionofpeople {
+  top: 1059px;
+  left: 1011px;
+  width: 216px;
+  color: var(--color-black);
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  box-shadow: 0 0 16px rgba(194, 198, 204, 0.6);
+  width: 382px;
+  height: 421px;
+}
+.reserve-now-btn-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-firebrick-100);
+  width: 324px;
+  height: 60px;
+}
+.reserve-now {
+  position: absolute;
+  top: 13px;
+  left: 72px;
+  display: inline-block;
+  width: 180px;
+  height: 24px;
+}
+.reserve-now-btn {
+  position: absolute;
+  top: 317px;
+  left: 29px;
+  width: 324px;
+  height: 60px;
+  cursor: pointer;
+}
+.date,
+.numberpeople,
+.time {
+  position: absolute;
+  top: 181px;
+  left: 46px;
+}
+.date,
+.numberpeople {
+  top: 136px;
+}
+.numberpeople {
+  top: 237px;
+}
+.reserve-bar-child {
+  position: absolute;
+  top: 110px;
+  left: 26px;
+  filter: blur(4px);
+  border-top: 2px solid var(--color-gainsboro);
+  box-sizing: border-box;
+  width: 329px;
+  height: 4px;
+}
+.pick-the-restaurants {
+  position: absolute;
+  top: 46px;
+  left: 49px;
+  font-size: 20px;
+  letter-spacing: 0.07em;
+  color: var(--color-firebrick-100);
+  text-align: center;
+  display: inline-block;
+  width: 273px;
+}
+.reserve-bar {
+  position: absolute;
+  top: 798px;
+  left: 964px;
+  width: 382px;
+  height: 421px;
+  font-size: var(--font-size-6xl);
+  color: var(--color-white);
+}
+.info-box-child,
+.steak-image-icon {
+  position: absolute;
+  border-radius: var(--br-3xs);
+}
+.info-box-child {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  width: 343px;
+  height: 98px;
+}
+.steak-image-icon {
+  top: 11px;
+  left: 13.6px;
+  width: 139.5px;
+  height: 76px;
+  object-fit: cover;
+}
+.average-cost-50,
+.cuisine-italian,
+.price-range {
+  position: absolute;
+  top: 20px;
+  left: 167px;
+  line-height: 15px;
+  font-weight: 600;
+  display: inline-block;
+  width: 164.7px;
+  height: 16px;
+}
+.average-cost-50,
+.price-range {
+  top: 71px;
+}
+.price-range {
+  top: 44px;
+}
+.info-box {
+  position: absolute;
+  top: 1087px;
+  left: 81px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 343px;
+  height: 98px;
+  font-size: var(--font-size-smi);
+}
+.about1,
+.info1 {
+  position: absolute;
+  top: 14px;
+  left: 21px;
+  font-weight: 600;
+  display: inline-block;
+  width: 116px;
+}
+.info1 {
+  top: 16px;
+  left: 154px;
+  width: 66px;
+}
+.frame-item {
+  position: absolute;
+  top: 23px;
+  left: 100px;
+  border-radius: 50%;
+  background-color: var(--color-dimgray);
+  width: 6px;
+  height: 6px;
+}
+.map2 {
+  position: absolute;
+  top: 14px;
+  left: 267px;
+  font-weight: 600;
+  display: inline-block;
+  width: 51px;
+}
+.frame-inner {
+  position: absolute;
+  top: 23px;
+  left: 238px;
+  border-radius: 50%;
+  background-color: var(--color-dimgray);
+  width: 6px;
+  height: 6px;
+}
+.rating1 {
+  position: absolute;
+  top: 14px;
+  left: 378px;
+  font-weight: 600;
+  display: inline-block;
+  width: 102px;
+}
+.ellipse-div,
+.frame-child1 {
+  position: absolute;
+  top: 23px;
+  left: 480px;
+  border-radius: 50%;
+  background-color: var(--color-dimgray);
+  width: 6px;
+  height: 6px;
+}
+.frame-child1 {
+  left: 335px;
+}
+.frame15 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.frame-wrapper,
+.frame15,
+.section-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 503px;
+  height: 48px;
+}
+.section-header {
+  top: 842px;
+  left: 74px;
+}
+.don-alfonso-19801,
+.food-street-toronto3 {
+  position: absolute;
+  top: 19px;
+  left: 0;
+  display: inline-block;
+  width: 423px;
+  height: 41px;
+}
+.food-street-toronto3 {
+  top: 59px;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-dimgray);
+  width: 258px;
+  height: 25px;
+}
+.top-titles {
+  position: absolute;
+  top: 726px;
+  left: 80px;
+  width: 745px;
+  height: 97px;
+  overflow: hidden;
+  font-size: var(--font-size-9xl);
+}
+.frame16,
+.rest-images-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.rest-images-child {
+  border-radius: 34px;
+  width: 1266px;
+  height: 523px;
+  object-fit: cover;
+}
+.frame16 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 696.1px;
+  height: 81px;
+  overflow: hidden;
+}
+.don-alfonso-19802 {
+  position: absolute;
+  top: 20px;
+  left: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 356px;
+  height: 41px;
+}
+.frame-parent,
+.rest-images {
+  position: absolute;
+  top: 400px;
+  left: 53px;
+  width: 696.1px;
+  height: 81px;
+}
+.rest-images {
+  top: 151px;
+  left: 87px;
+  width: 1266px;
+  height: 523px;
+  text-align: center;
+  font-size: var(--font-size-17xl);
+  color: var(--color-black);
+}
+.bxbxs-user-circle-icon2,
+.search-icon1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+}
+.search-icon1 {
+  height: 63.86%;
+  width: 30.22%;
+  top: 18.18%;
+  right: -1.18%;
+  bottom: 17.95%;
+  left: 70.97%;
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+}
+.initial-options2,
+.reservify-icon5 {
+  position: absolute;
+  top: 13px;
+  left: 1315px;
+  width: 93px;
+  height: 44px;
+}
+.reservify-icon5 {
+  top: 10.3px;
+  left: 0;
+  width: 251.4px;
+  height: 31.3px;
+}
+.restaurant-1-icon5 {
+  position: absolute;
+  top: 0;
+  left: 265px;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+}
+.titlelogo5 {
+  position: absolute;
+  top: 9px;
+  left: 32px;
+  width: 317px;
+  height: 52px;
+}
+.main-header4,
+.reservepage {
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.main-header4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 70px;
+}
+.reservepage {
+  position: relative;
+  width: 100%;
+  height: 2205px;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-firebrick-100);
+  font-family: var(--font-montserrat);
+}

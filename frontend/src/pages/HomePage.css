@@ -1,58 +1,37 @@
-.top-child {
-  position: absolute;
-  width: 100%;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  height: 651px;
+@keyframes scale-up {
+  0% {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
 }
+.mainframe {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  background: linear-gradient(180deg, #f8e9db, rgba(255, 255, 255, 0));
+  width: 1440px;
+  height: 2845px;
+}
+.round-search-child,
 .search-bar-child {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: calc(50% - 397px);
   width: 794px;
   height: 70px;
 }
-.search-icon {
-  position: absolute;
-  top: 19.1px;
-  left: calc(50% - 366.58px);
-  width: 40.84px;
-  height: 9.02px;
-}
-.date-icon {
-  position: absolute;
-  top: 19.6px;
-  left: calc(50% - 99.87px);
-  width: 27.96px;
-  height: 8.48px;
-}
-.time-icon {
-  position: absolute;
-  top: 18.74px;
-  left: calc(50% + 41.05px);
-  width: 30.29px;
-  height: 9.35px;
-}
-.number-of-people {
-  position: absolute;
-  top: 19.01px;
-  left: calc(50% + 208.13px);
-  width: 111.38px;
-  height: 11.32px;
-}
 .round-search-child {
-  position: absolute;
-  top: 0px;
   left: calc(50% - 27px);
   width: 54px;
   height: 54px;
 }
 .vector-icon {
   position: absolute;
-  height: 83.34%;
-  width: 83.34%;
-  top: 8.34%;
+  height: 83.33%;
+  width: 83.33%;
+  top: 8.33%;
   right: 8.33%;
   bottom: 8.33%;
   left: 8.33%;
@@ -60,12 +39,15 @@
   overflow: hidden;
   max-height: 100%;
 }
-.fesearch {
+.fesearch,
+.round-search {
+  position: absolute;
   cursor: pointer;
-  border: none;
+}
+.fesearch {
+  border: 0;
   padding: 0;
   background-color: transparent;
-  position: absolute;
   top: 15px;
   left: calc(50% - 12px);
   width: 24px;
@@ -73,46 +55,28 @@
   overflow: hidden;
 }
 .round-search {
-  position: absolute;
   top: 8px;
   left: calc(50% + 335px);
   width: 54px;
   height: 54px;
-  cursor: pointer;
 }
 .round-search:hover {
   animation: 1s ease 0s infinite normal none scale-up;
   opacity: 1;
 }
-
-@keyframes scale-up {
-  0% {
-    transform: scale(0.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.line-1-stroke {
+.search-restaurants-cuisines {
+  border: 0;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-5xl);
+  background-color: transparent;
   position: absolute;
-  top: 19px;
-  left: calc(50% + 25px);
-  width: 1px;
-  height: 30px;
-}
-.line-3-stroke {
-  position: absolute;
-  top: 19px;
-  left: calc(50% + 192px);
-  width: 1px;
-  height: 30px;
-}
-.line-2-stroke {
-  position: absolute;
-  top: 19px;
-  left: calc(50% - 117px);
-  width: 1px;
-  height: 30px;
+  top: 15px;
+  left: 58px;
+  color: var(--color-darkslategray-200);
+  text-align: center;
+  display: inline-block;
+  width: 636px;
+  height: 38px;
 }
 .search-bar {
   position: absolute;
@@ -121,88 +85,17 @@
   width: 794px;
   height: 70px;
 }
-.restaurant-occasion-cuisine {
-  border: none;
-  font-weight: 500;
-  font-family: var(--font-karla);
-  font-size: var(--font-size-base);
-  background-color: transparent;
-  position: absolute;
-  top: 0px;
-  left: 4px;
-  text-transform: capitalize;
-  color: var(--color-gray-200);
-  text-align: center;
-  display: inline-block;
-  width: 248px;
-  height: 21px;
-}
-.add-date {
-  border: none;
-  font-weight: 500;
-  font-family: var(--font-karla);
-  font-size: var(--font-size-base);
-  background-color: transparent;
-  position: absolute;
-  top: 0px;
-  left: 285px;
-  text-transform: capitalize;
-  color: var(--color-gray-200);
-  text-align: center;
-  display: inline-block;
-  width: 111px;
-  height: 21px;
-}
-.add-time {
-  border: none;
-  font-weight: 500;
-  font-family: var(--font-karla);
-  font-size: var(--font-size-base);
-  background-color: transparent;
-  position: absolute;
-  top: 0px;
-  left: 429px;
-  text-transform: capitalize;
-  color: var(--color-gray-200);
-  text-align: center;
-  display: inline-block;
-  width: 111px;
-  height: 21px;
-}
-.add-people {
-  border: none;
-  font-weight: 500;
-  font-family: var(--font-karla);
-  font-size: var(--font-size-base);
-  background-color: transparent;
-  position: absolute;
-  top: 0px;
-  left: 596px;
-  text-transform: capitalize;
-  color: var(--color-gray-200);
-  text-align: center;
-  display: inline-block;
-  width: 111px;
-  height: 21px;
-}
-.search-input {
-  position: absolute;
-  top: 530px;
-  left: calc(50% - 383px);
-  width: 680px;
-  height: 21px;
-}
 .search-headers-icon {
   position: absolute;
   top: 444px;
-  left: calc(50% - 384.68px);
-  width: 234.27px;
+  left: calc(50% - 384.7px);
+  width: 234.3px;
   height: 28px;
 }
 .for-any-event-locate-your-tab {
   position: relative;
-  width: 643.44px;
-  height: 148.21px;
+  width: 643.4px;
+  height: 148.2px;
 }
 .for-any-event-locate-your-tab-wrapper {
   position: absolute;
@@ -214,161 +107,356 @@
   justify-content: flex-start;
   padding: 8px;
 }
-.signup-button-icon {
-  position: absolute;
-  top: 13px;
-  right: 12px;
-  width: 103px;
-  height: 46px;
-  cursor: pointer;
-}
-.signup-button-icon:hover {
-  animation: 1s ease 0s infinite normal none scale-up;
-  opacity: 1;
-}
-.reservify-icon {
-  position: absolute;
-  top: 20px;
-  left: 32.01px;
-  width: 297.99px;
-  height: 42px;
-}
-.login-button-icon {
-  position: absolute;
-  top: 12px;
-  right: 124px;
-  width: 103px;
-  height: 46px;
-  cursor: pointer;
-}
-.login-button-icon:hover {
-  animation: 1s ease 0s infinite normal none scale-up;
-  opacity: 1;
-}
-.restaurant-1-icon {
-  position: absolute;
-  top: 12px;
-  left: 340px;
-  width: 52px;
-  height: 52px;
-  object-fit: cover;
-}
+.reservify-icon3,
 .restaurant-1-1 {
   position: absolute;
   top: 13px;
   left: 408px;
   width: 48px;
   height: 53px;
+}
+.reservify-icon3 {
+  top: 10.3px;
+  left: 0;
+  width: 251.4px;
+  height: 31.3px;
+}
+.restaurant-1-icon3 {
+  position: absolute;
+  top: 0;
+  left: 265px;
+  width: 52px;
+  height: 52px;
   object-fit: cover;
+}
+.titlelogo3 {
+  position: absolute;
+  top: 9px;
+  left: 32px;
+  width: 317px;
+  height: 52px;
+}
+.bxbxs-user-circle-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+}
+.initial-options {
+  position: absolute;
+  top: 13px;
+  left: 1366px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+.main-header2,
+.top {
+  background-color: var(--color-white);
 }
 .main-header2 {
   position: absolute;
   width: 100%;
   top: -4px;
-  right: 0px;
-  left: 0px;
-  background-color: var(--color-white);
+  right: 0;
+  left: 0;
   height: 70px;
   overflow: hidden;
 }
 .top {
   position: relative;
-  background: linear-gradient(180deg, #f8e9db, rgba(248, 233, 219, 0));
   width: 1440px;
   height: 651px;
-}
-.recommended-icon {
-  position: relative;
-  width: 1239px;
-  height: 576px;
 }
 .homepage-child {
   position: relative;
   width: 1220px;
-  height: 22.96px;
+  height: 23px;
 }
-.takeout-icon {
-  position: relative;
-  width: 1239px;
-  height: 587.96px;
-}
-.frame-icon {
+.top-rated-child,
+.top-rated-restaurants {
   position: absolute;
-  width: calc(100% + 10px);
-  right: -10px;
-  bottom: 0px;
-  left: 0px;
+  top: 15.3px;
+  left: 14.1px;
+  width: 225.8px;
+  height: 75px;
+}
+.top-rated-child {
+  top: 132px;
+  left: 16px;
+  width: 140px;
+  height: 6px;
+}
+.latest-property-1-child {
+  position: absolute;
+  top: -10px;
+  left: -9.5px;
+  width: 299px;
+  height: 360px;
+}
+.lenny,
+.pier-street-toronto {
+  position: absolute;
+  left: 22px;
+  display: inline-block;
+}
+.lenny {
+  top: 186px;
+  font-size: var(--font-size-lg);
+  color: var(--color-crimson);
+  width: 164px;
+  height: 17px;
+}
+.pier-street-toronto {
+  top: 262px;
+  width: 197px;
+  height: 14px;
+}
+.latest-property-1-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
+  width: 279px;
+  height: 172px;
+  object-fit: cover;
+}
+.seafood {
+  position: absolute;
+  top: 240px;
+  left: 22px;
+  display: inline-block;
+  width: 64px;
+  height: 14px;
+}
+.rectangle-8-stroke {
+  position: absolute;
+  top: 294px;
+  left: 21.5px;
+  width: 107px;
+  height: 35px;
+}
+.heart-icon,
+.reserve-icon {
+  position: absolute;
+  top: 304.4px;
+  left: 40.2px;
+  width: 69px;
+  height: 11.8px;
+}
+.heart-icon {
+  height: 7.44%;
+  width: 10.23%;
+  top: 5.88%;
+  right: 7.66%;
+  bottom: 86.68%;
+  left: 82.11%;
   max-width: 100%;
   overflow: hidden;
-  height: 117px;
+  max-height: 100%;
 }
-.letter-titles-icon {
+.five-stars-icon,
+.latest-property-1 {
   position: absolute;
-  top: 9.18px;
-  left: 0px;
-  width: 198.19px;
-  height: 39.62px;
+  top: 202px;
+  left: 14.5px;
+  width: 279.5px;
+  height: 340px;
 }
-.letter-input-child {
-  position: absolute;
-  top: 0px;
-  left: 38px;
-  width: 794px;
-  height: 52px;
+.five-stars-icon {
+  height: 4.12%;
+  width: 33.99%;
+  top: 65%;
+  right: 58.14%;
+  bottom: 30.88%;
+  left: 7.87%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
 }
-.your-email {
+.chinese {
   position: absolute;
-  top: 16px;
-  left: 0px;
-  text-transform: capitalize;
-  font-weight: 500;
+  top: 240px;
+  left: 22px;
   display: inline-block;
-  width: 231px;
-  height: 21px;
+  width: 55px;
+  height: 14px;
 }
-.letter-input {
+.latest-property-2,
+.vector-icon1 {
   position: absolute;
-  top: 0px;
-  left: 167.43px;
-  width: 832px;
-  height: 52px;
+  top: 202px;
+  left: 324.5px;
+  width: 279.5px;
+  height: 340px;
 }
-.send-btn-icon {
+.vector-icon1 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.halfstar-child {
   position: absolute;
-  top: 0px;
-  left: 946.43px;
-  width: 52px;
-  height: 52px;
+  top: 0;
+  left: 7px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 7px;
+  height: 14px;
 }
-.newsletter-group {
+.halfstar {
   position: absolute;
-  top: 46px;
-  left: 186.57px;
-  width: 999.43px;
-  height: 52px;
+  height: 2.43%;
+  width: 1.13%;
+  top: 73.44%;
+  right: 14.49%;
+  bottom: 24.13%;
+  left: 84.38%;
 }
-.frame {
+.map-btn-icon {
+  position: absolute;
+  top: 108px;
+  left: 1078px;
+  width: 142.6px;
+  height: 26px;
+}
+.fournhalfstars-icon {
+  position: absolute;
+  height: 2.45%;
+  width: 7.67%;
+  top: 73.44%;
+  right: 89.39%;
+  bottom: 24.11%;
+  left: 2.95%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.top-rated {
   position: relative;
-  width: 1430px;
-  height: 130px;
+  background-color: var(--color-white);
+  width: 1239px;
+  height: 576px;
 }
-.footer-icon {
+.italian-child {
+  position: absolute;
+  top: 84px;
+  left: 16px;
+  width: 140px;
+  height: 6px;
+}
+.latest-property-21 {
+  position: absolute;
+  top: 202px;
+  left: 324px;
+  width: 279px;
+  height: 340px;
+}
+.italian-cuisine,
+.map-btn-icon1 {
+  position: absolute;
+  top: 108px;
+  left: 1078px;
+  width: 142.7px;
+  height: 26px;
+}
+.italian-cuisine {
+  top: 12px;
+  left: 14.1px;
+  line-height: 48px;
+  display: inline-block;
+  width: 339px;
+  height: 103px;
+}
+.italian {
   position: relative;
-  width: 1440px;
-  height: 347px;
+  background-color: rgba(255, 254, 254, 0.24);
+  width: 1239px;
+  height: 576px;
+  font-size: var(--font-size-17xl);
+  color: var(--color-dimgray);
 }
+.shoushin1 {
+  margin: 0;
+}
+.japanese1 {
+  position: absolute;
+  top: 240px;
+  left: 22px;
+  display: inline-block;
+  width: 68px;
+  height: 14px;
+}
+.fournhalfstars-icon1 {
+  position: absolute;
+  height: 4.15%;
+  width: 33.99%;
+  top: 65%;
+  right: 58.14%;
+  bottom: 30.85%;
+  left: 7.87%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.japanese2 {
+  position: absolute;
+  top: 240px;
+  left: 22px;
+  display: inline-block;
+  width: 81px;
+  height: 14px;
+}
+.japanese-item,
+.latest-property-8 {
+  position: absolute;
+  top: 202px;
+  left: 633.5px;
+  width: 279.5px;
+  height: 340px;
+}
+.japanese-item {
+  top: 565px;
+  left: 9.5px;
+  width: 1220px;
+  height: 23px;
+}
+.japanese-cuisine {
+  position: absolute;
+  top: 12px;
+  left: 14.1px;
+  font-size: var(--font-size-17xl);
+  line-height: 48px;
+  display: inline-block;
+  color: var(--color-dimgray);
+  width: 339px;
+  height: 103px;
+}
+.footer-icon,
 .homepage {
   position: relative;
+  width: 1440px;
+  height: 321px;
+}
+.homepage {
   border-radius: var(--br-xl);
   background-color: var(--color-white);
   width: 100%;
+  height: 2837px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 27px;
-  text-align: center;
-  font-size: var(--font-size-base);
-  color: var(--color-gray-200);
-  font-family: var(--font-karla);
+  text-align: left;
+  font-size: var(--font-size-smi);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
 }
