@@ -1,5 +1,5 @@
 import RegisterForm from "../components/RegisterForm";
-import "./Signup.css";
+import "./SignUp.css";
 
 const Signup = () => {
 

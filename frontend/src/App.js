@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {Routes,Route,useNavigationType,useLocation,} from "react-router-dom";
 
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Signup from "./pages/SignUp";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import ReservePage from "./pages/ReservePage";
@@ -60,6 +60,10 @@ function App() {
         metaDescription = "";
         break;
       case "/admin-edit":
+        title = "";
+        metaDescription = "";
+        break;
+      default:
         title = "";
         metaDescription = "";
         break;
