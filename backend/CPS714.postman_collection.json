@@ -154,6 +154,33 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Search Restaurant by Name",
+			"request": {
+			  "method": "GET",
+			  "header": [],
+			  "url": {
+				"raw": "http://localhost:8000/api/search/?name=restaurant_name",
+				"protocol": "http",
+				"host": [
+				  "localhost"
+				],
+				"port": "8000",
+				"path": [
+				  "api",
+				  "search"
+				],
+				"query": [
+				  {
+					"key": "name",
+					"value": "restaurant_name",
+					"equals": true
+				  }
+				]
+			  }
+			}
 		}
+		 
 	]
 }
