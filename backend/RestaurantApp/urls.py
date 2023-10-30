@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.urls import path
-from .views import RestaurantSearchView
+from .views import  search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('search/', RestaurantSearchView.as_view(), name='restaurant-search'),
+    path('search/', search, name='search'),
 
 ]

@@ -1,10 +1,20 @@
-from rest_framework import generics
+from django.http import JsonResponse, HttpResponseBadRequest
 from .models import Restaurant
-from .serializers import RestaurantSerializer
 
-class RestaurantSearchView(generics.ListAPIView):
-    serializer_class = RestaurantSerializer
+def search(request):
+    query = request.GET.get('q', '')
+    field = request.GET.get('field', None)
+    
+    VALID_FIELDS = [
+        'about', 'address', 'average_cost_for_two', 'average_review_rating', 
+        'city', 'country', 'cuisines', 'name'
+    ]
 
-    def get_queryset(self):
-        query = self.request.query_params.get('name', '')
-        return Restaurant.objects.filter(name__icontains=query)
+    if field not in VALID_FIELDS:
+        return HttpResponseBadRequest("Invalid field provided")
+
+    filter_kwargs = {f"{field}__icontains": query}
+    items = Restaurant.objects.filter(**filter_kwargs)
+
+    results = [{'id': item.id, 'name': item.name, 'about': item.about} for item in items]
+    return JsonResponse(results, safe=False)
