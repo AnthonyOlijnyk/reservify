@@ -1,12 +1,27 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RestTemplate from "../components/RestTemplate";
 import "./HomePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [searchInput, setsearchInput] = useState("");
 
   const onRoundSearchContainerClick = useCallback(() => {
+    const searchInput = document.querySelector(".search-restaurants-cuisines").value;
+    const jsonData = {searchInput};
+
+    console.log(jsonData)
+
+      fetch("http://localhost:8000/api/homepage", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(jsonData),
+      })
+      .then(response => response.json())
+      .then(data => {console.log(data); })
+      .catch(error => {console.error('Error:', error);});
+
     navigate("/searchpage");
   }, [navigate]);
 
@@ -17,6 +32,7 @@ const HomePage = () => {
   const onInitialOptionsContainerClick = useCallback(() => {
     navigate("/user-dash");
   }, [navigate]);
+
 
   return (
     <div className="homepage">
@@ -34,6 +50,9 @@ const HomePage = () => {
             className="search-restaurants-cuisines"
             placeholder="Search Restaurants, Cuisines"
             type="text"
+            value={searchInput}
+            onChange={(e) => setsearchInput(e.target.value)}
+            
           />
         </div>
         <img className="search-headers-icon" alt="" src="/searchheaders.svg" />
