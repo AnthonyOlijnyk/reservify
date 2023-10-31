@@ -3,5 +3,5 @@ from django.urls import path
 from .views import MakeReservationView
 
 urlpatterns = [
-    path('api/reservation', MakeReservationView.as_view())
+    path('api/make-reservation', MakeReservationView.as_view())
 ]

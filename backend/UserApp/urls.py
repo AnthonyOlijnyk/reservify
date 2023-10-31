@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/logout', LogoutView.as_view()),
     path('api/users', UserView.as_view()),
     path('RestaurantApp/', include('RestaurantApp.urls')),
+    path('ReservationApp/', include('ReservationApp.urls'))
 ]
