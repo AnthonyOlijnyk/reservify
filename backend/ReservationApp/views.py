@@ -2,6 +2,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 
+from django.core.mail import send_mail
+from django.conf import settings
 from django.utils import timezone
 
 from UserApp.models import User
@@ -96,6 +98,18 @@ def structure_time(time):
 def is_future_time(start_time):
     return structure_time(start_time) >= timezone.make_aware(datetime.now(), UTC, True)
 
+def make_email_message(start_time, restaurant):
+    return f'Your reservation at {restaurant.name} on {start_time} has been confirmed'
+
+def send_confirmation_email(start_time, user, restaurant):
+    send_mail(
+        'Reservation Confirmed',
+        make_email_message(start_time, restaurant),
+        settings.EMAIL_HOST_USER,
+        [user.email],
+        fail_silently=False
+    )
+
 class MakeReservationView(APIView):
 
     def post(self, request):
@@ -120,5 +134,7 @@ class MakeReservationView(APIView):
             return make_error_response([f'The capacity for the restaurant \"{restaurant.name}\" would be above the limit during that time'])
 
         create_reservation(start_time, number_of_people, user, restaurant)
+
+        send_confirmation_email(start_time, user, restaurant)
 
         return make_success_response()
