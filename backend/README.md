@@ -108,3 +108,36 @@ Will return
     error: string / null
 }
 ```
+
+## POST RestaurantApp/api/make-reservation
+Makes a reservation
+
+The body of the request is expected to be:
+```
+{
+    start_time: date string
+    number_of_people: int
+    user_id: int
+    restaurant_id: int
+}
+```
+
+Constraints:
+
+- start_time must be in the future and have the format (YYYY-MM-DD HH:MM)
+- number_of_people must be in the range from 1-30
+- user_id must correlate with an actual user in the database
+- restaurant_id must correlate with an actual restaurant in the database
+- A restaurant has a max capacity of 30 people for a day, so you cannot have reservations where the total number of people for a given day exceeds that number for a specific restaurant.
+
+For example: On April 30th 2024, there are 3 reservations with 10, 5, and 10 people respectively. If you submit a reservation that has a value of 6 or more in the number_of_people field, you will get an error saying the capacity was exceeded for that day.
+
+Will return
+```
+{
+    success: boolean
+    message: string
+    errors: array of strings
+
+}
+```

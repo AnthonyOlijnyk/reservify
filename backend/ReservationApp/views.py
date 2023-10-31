@@ -26,7 +26,7 @@ def make_success_response():
 def make_error_response(errors):
     return Response({
         'success': False,
-        'message': 'Reservation failed. Please correct the following errors:',
+        'message': 'Reservation failed. Please correct the following errors',
         'errors': errors
     }, status=status.HTTP_400_BAD_REQUEST)
 
@@ -44,6 +44,10 @@ def get_reservations(start_of_day, end_of_day, restaurant):
         start_time__range=[
             start_of_day, 
             end_of_day
+        ],
+        reservation_state__in=[
+            'Upcoming',
+            'Ongoing'
         ]
     )
 
@@ -108,12 +112,12 @@ class MakeReservationView(APIView):
         start_time, number_of_people, user_id, restaurant_id = extract_data_from_request(request.data)
 
         if not is_future_time(start_time):
-            return make_error_response('The \"start_time\" field should be a future time.')
+            return make_error_response(['The \"start_time\" field should be a future time.'])
 
         user, restaurant = get_models(user_id, restaurant_id)
 
         if not is_seating_available(start_time, number_of_people, restaurant):
-            return make_error_response(f'The capacity for the restaurant \"{restaurant.name}\" would be above the limit during that time')
+            return make_error_response([f'The capacity for the restaurant \"{restaurant.name}\" would be above the limit during that time'])
 
         create_reservation(start_time, number_of_people, user, restaurant)
 
