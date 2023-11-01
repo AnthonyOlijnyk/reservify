@@ -4,8 +4,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import {CssBaseline,ThemeProvider,createTheme,StyledEngineProvider,} from "@mui/material";
+import { UserProvider } from './pages/UserContext'; 
 
-import "./global.css";
+import "./global.css"; 
 
 const muiTheme = createTheme();
 
@@ -17,7 +18,9 @@ root.render(
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </ThemeProvider>
     </StyledEngineProvider>
   </BrowserRouter>

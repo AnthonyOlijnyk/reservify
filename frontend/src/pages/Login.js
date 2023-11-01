@@ -1,16 +1,17 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { useUser } from './UserContext';
 
-const Login = () => {
+const Login = (props)=> {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {email, setEmail} = useUser('');
+  const [password, setPassword] = useState('');
 
   const onDontHaveAnClick = useCallback(() => {
     navigate("/signup");
   }, [navigate]);
-
+  
   const onLoginButtonClick = useCallback(() => {
     const email = document.querySelector(".enter-email").value;
     const password = document.querySelector(".enter-password").value;
@@ -26,8 +27,10 @@ const Login = () => {
       .then(response => response.json())
       .then(data => {console.log(data); })
       .catch(error => {console.error('Error:', error);});
-    navigate("/homepage");
-  }, [navigate]);
+      
+      setEmail(email);
+      navigate("/homepage");
+  }, [navigate, setEmail]);
 
   return (
     <div className="login">
