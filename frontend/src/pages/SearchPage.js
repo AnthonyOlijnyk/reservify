@@ -5,8 +5,8 @@ import "./SearchPage.css";
 const SearchPage = () => {
   const navigate = useNavigate();
 
-  const onReserveBtnContainerClick = useCallback(() => {
-    navigate("/reservepage");
+  const onReserveBtnContainerClick = useCallback((restaurantName) => {
+    navigate(`/reservepage/${restaurantName}`);
   }, [navigate]);
 
   const onRoundSearchContainerClick = useCallback(() => {
@@ -37,7 +37,7 @@ const SearchPage = () => {
           <div className="food-street-toronto">
             100 Food Street, Toronto, CA
           </div>
-          <div className="reserve-btn" onClick={onReserveBtnContainerClick}>
+          <div className="reserve-btn" onClick={() => onReserveBtnContainerClick("Don-Alfonso")}>
             <div className="reserve-btn-child" />
             <b className="reserve">Reserve</b>
           </div>
@@ -57,7 +57,7 @@ const SearchPage = () => {
             alt=""
             src="/rectangle-40412@2x.png"
           />
-          <div className="reserve-btn1">
+          <div className="reserve-btn" onClick={() => onReserveBtnContainerClick("LENNY")}>
             <div className="reserve-btn-child" />
             <b className="reserve1">Reserve</b>
           </div>
@@ -76,7 +76,7 @@ const SearchPage = () => {
             alt=""
             src="/rectangle-40413@2x.png"
           />
-          <div className="reserve-btn2">
+          <div className="reserve-btn"  onClick={() => onReserveBtnContainerClick("FOMUFUKU")}>
             <div className="reserve-btn-child" />
             <b className="reserve">Reserve</b>
           </div>
@@ -117,7 +117,7 @@ const SearchPage = () => {
           />
           <img className="rating-icon3" alt="" src="/rating3.svg" />
           <img className="group-icon4" alt="" src="/group3.svg" />
-          <div className="reserve-btn4">
+          <div className="reserve-btn4" onClick={() => onReserveBtnContainerClick("REMEZZO")}>
             <div className="reserve-btn-child" />
             <b className="reserve">Reserve</b>
           </div>

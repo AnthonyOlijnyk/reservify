@@ -2,7 +2,7 @@ import {useState, useCallback } from "react";
 import {Select,InputLabel,MenuItem,FormHelperText,FormControl,} from "@mui/material";
 import {LocalizationProvider,TimePicker,DatePicker,} from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import RatingForm from "../components/RatingForm";
 import "./ReservePage.css";
 import { useUser } from './UserContext'; 
@@ -14,6 +14,7 @@ const ReservePage = () => {
   const [numpeople, setNumPeople ] = useState("");
   const navigate = useNavigate();
   const{email}=useUser();
+  const{restaurantName} = useParams();
 
   const handleNumPeopleChange = (event) => {
     setNumPeople(event.target.value); 
@@ -48,8 +49,8 @@ const ReservePage = () => {
     const start_time = `${date} ${time}`;
     
     const numpeopleNum = parseInt(numpeople, 10);
-    const resturant_id = 1;
-    const jsonData = {start_time, numpeopleNum, email, resturant_id};
+    //const resturant_id = 1;
+    const jsonData = {start_time, numpeopleNum, email, restaurantName};
 
     console.log(jsonData)
 
@@ -63,7 +64,7 @@ const ReservePage = () => {
       .catch(error => {console.error('Error:', error);});
 
     navigate("/reservation-confirmation");
-  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople,email]);
+  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurantName]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");
