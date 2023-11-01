@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Anthony\",\r\n    \"username\": \"abolijny\",\r\n    \"email\": \"anthony.olijnykabo@gmail.com\",\r\n    \"phone_number\": \"4162222222\",\r\n    \"password\": \"password\"\r\n}",
+					"raw": "{\r\n    \"name\": \"test\",\r\n    \"username\": \"testusername\",\r\n    \"email\": \"test.test@example.com\",\r\n    \"phone_number\": \"4162222222\",\r\n    \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,7 +72,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"testname@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"raw": "{\r\n    \"email\": \"test.test@example.com\",\r\n    \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
