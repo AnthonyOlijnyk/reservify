@@ -49,7 +49,6 @@ const ReservePage = () => {
     const start_time = `${date} ${time}`;
     
     const numpeopleNum = parseInt(numpeople, 10);
-    //const resturant_id = 1;
     const jsonData = {start_time, numpeopleNum, email, restaurantName};
 
     console.log(jsonData)
