@@ -49,11 +49,7 @@ class LoginView(APIView):
         
         response = Response()
 
-        user = User.objects.filter(email=email).first()
-        if request.method == 'POST':
-            data = request.POST
-            # Process the data and send a response
-            return JsonResponse({'message': 'Data received'})
+        user = User.objects.get(email=email)
         
         if user is None:
             response.data = { 'success': False, 'error': 'There are no users with the specified email.' }
