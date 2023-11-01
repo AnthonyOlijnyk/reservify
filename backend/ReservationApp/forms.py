@@ -6,5 +6,5 @@ class MakeReservationForm(forms.Form):
     number_of_people = forms.IntegerField(
         validators=[MaxValueValidator(30), MinValueValidator(1)]
     )
-    user_id = forms.IntegerField()
+    email = forms.CharField(max_length=255)
     restaurant_id = forms.IntegerField()

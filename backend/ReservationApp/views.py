@@ -70,9 +70,9 @@ def is_seating_available(start_time, number_of_people, restaurant):
     
     return available_seats >= number_of_people
 
-def get_models(user_id, restaurant_id):
+def get_models(email, restaurant_id):
     return [
-        User.objects.get(pk=user_id), 
+        User.objects.get(email=email), 
         Restaurant.objects.get(pk=restaurant_id)
     ]
 
@@ -88,7 +88,7 @@ def extract_data_from_request(data):
     return [
             data['start_time'], 
             data['number_of_people'],
-            data['user_id'],
+            data['email'],
             data['restaurant_id']
     ]
 
@@ -101,12 +101,12 @@ def is_future_time(start_time):
 def make_email_message(start_time, restaurant):
     return f'Your reservation at {restaurant.name} on {start_time} has been confirmed'
 
-def send_confirmation_email(start_time, user, restaurant):
+def send_confirmation_email(start_time, email, restaurant):
     send_mail(
         'Reservation Confirmed',
         make_email_message(start_time, restaurant),
         settings.EMAIL_HOST_USER,
-        [user.email],
+        [email],
         fail_silently=False
     )
 
@@ -123,18 +123,18 @@ class MakeReservationView(APIView):
         if not serializer.is_valid(): 
             return make_error_response(serializer.errors)
 
-        start_time, number_of_people, user_id, restaurant_id = extract_data_from_request(request.data)
+        start_time, number_of_people, email, restaurant_id = extract_data_from_request(request.data)
 
         if not is_future_time(start_time):
             return make_error_response(['The \"start_time\" field should be a future time.'])
 
-        user, restaurant = get_models(user_id, restaurant_id)
+        user, restaurant = get_models(email, restaurant_id)
 
         if not is_seating_available(start_time, number_of_people, restaurant):
             return make_error_response([f'The capacity for the restaurant \"{restaurant.name}\" would be above the limit during that time'])
 
         create_reservation(start_time, number_of_people, user, restaurant)
 
-        send_confirmation_email(start_time, user, restaurant)
+        send_confirmation_email(start_time, email, restaurant)
 
         return make_success_response()
