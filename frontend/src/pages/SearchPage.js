@@ -1,74 +1,25 @@
-import { useCallback } from "react";
+
+import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchPage.css";
 
 const SearchPage = () => {
+  const [results, setResults] = useState([]);
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  const restaurants = [
-    {
-      name: "Don Alfonso 1980",
-      location: "100 Food Street, Toronto, CA",
-      image: "/property-col@2x.png",
-    },
-    {
-      name: "LENNY",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40412@2x.png",
-    },
-    {
-      name: "LENNY2",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40413@2x.png",
-    },
-    {
-      name: "LENNY3",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40413@2x.png",
-    },
-    {
-      name: "Don Alfonso 1980",
-      location: "100 Food Street, Toronto, CA",
-      image: "/property-col@2x.png",
-    },
-    {
-      name: "LENNY",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40412@2x.png",
-    },
-    {
-      name: "LENNY2",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40413@2x.png",
-    },
-    {
-      name: "LENNY3",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40413@2x.png",
-    },
-    {
-      name: "Don Alfonso 1980",
-      location: "100 Food Street, Toronto, CA",
-      image: "/property-col@2x.png",
-    },
-    {
-      name: "LENNY",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40412@2x.png",
-    },
-    {
-      name: "LENNY2",
-      location: "10 Pier Street, Toronto, CA",
-      image: "/rectangle-40413@2x.png",
-    },
-    ];
 
   const onReserveBtnContainerClick = useCallback((restaurantName) => {
     navigate(`/reservepage/${restaurantName}`);
   }, [navigate]);
 
   const onRoundSearchContainerClick = useCallback(() => {
-    navigate("/searchpage");
-  }, [navigate]);
+    fetch(`http://localhost:8000/RestaurantApp/search/?q=${query}&field=name`)
+      .then((response) => response.json())
+      .then((data) => {
+        setResults(data);
+      })
+      .catch((error) => console.error('Error fetching search results:', error));
+  }, [query]);
 
   const onBxbxsUserCircleIconClick = useCallback(() => {
     navigate("/user-dash");
@@ -83,7 +34,7 @@ const SearchPage = () => {
       <div className="mainframe1" />
         <div className="restaurant-container" > 
           <div className="restaurant-1-parent">
-          {restaurants.map((restaurant, index) => (
+          {results.map((restaurant, index) => (
             <div className="restaurant" key={index}>
             <div className="property-col" />
             <img className="property-col-icon" alt="" src={restaurant.image}/>
@@ -111,6 +62,8 @@ const SearchPage = () => {
           className="search-restaurants-cuisines1"
           placeholder="Search Restaurants, Cuisines"
           type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       <div className="main-header3">
@@ -136,7 +89,7 @@ const SearchPage = () => {
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />
       </div>
-      {/*<img className="footer-icon" alt="" src="/footer1.svg" />*/}
+      {<img className="footer-icon" alt="" src="/footer1.svg" />}
     </div>
   );
 };
