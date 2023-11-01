@@ -49,7 +49,7 @@ const SearchPage = () => {
         ))}
         </div>
       </div>
-      <b className="results-found">10 Results Found</b>
+      <b className="results-found">{results.length} Results Found</b>
       <div className="search-bar1">
         <img className="search-bar-item" alt="" src="/rectangle-4.svg" />
         <div className="round-search1" onClick={onRoundSearchContainerClick}>
@@ -89,7 +89,7 @@ const SearchPage = () => {
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />
       </div>
-      {<img className="footer-icon" alt="" src="/footer1.svg" />}
+      {/*<img className="footer-icon" alt="" src="/footer1.svg" />*/}
     </div>
   );
 };
