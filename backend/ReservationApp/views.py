@@ -17,7 +17,25 @@ from datetime import datetime, timedelta
 
 from pytz import UTC
 
+import jwt, os
+
 MAX_CAPACITY = 30
+
+AUTHORIZATION_ERROR = {
+    'authorization': [
+        'Unauthorized action. Please login before trying to make a reservation'
+    ]
+}
+TIME_IN_PAST_ERROR = {
+    'start_time': [
+        'The \"start_time\" field should be a future time.'
+    ]
+}
+OVER_CAPACITY_ERROR = {
+    'capacity': [
+        f'The specified restaurant would be over capacity during that time'
+    ]
+}
 
 def make_success_response():
     return Response({
@@ -70,9 +88,9 @@ def is_seating_available(start_time, number_of_people, restaurant):
     
     return available_seats >= number_of_people
 
-def get_models(email, restaurant_id):
+def get_models(user_id, restaurant_id):
     return [
-        User.objects.get(email=email), 
+        User.objects.get(pk=user_id), 
         Restaurant.objects.get(pk=restaurant_id)
     ]
 
@@ -83,13 +101,20 @@ def create_reservation(start_time, number_of_people, user, restaurant):
         restaurant=restaurant,
         number_of_people=number_of_people
     )
+
+def get_user_id(token):
+    payload = jwt.decode(token, os.environ.get('JWT_SECRET_KEY'), algorithms=['HS256'])
+
+    return payload['id']
     
-def extract_data_from_request(data):
+def extract_data_from_request(request):
+    user_id = get_user_id(request.COOKIES.get('jwt'))
+
     return [
-            data['start_time'], 
-            data['number_of_people'],
-            data['email'],
-            data['restaurant_id']
+            user_id,
+            request.data['restaurant_id'],
+            request.data['start_time'], 
+            request.data['number_of_people']
     ]
 
 def structure_time(time):
@@ -110,9 +135,17 @@ def send_confirmation_email(start_time, email, restaurant):
         fail_silently=False
     )
 
+def is_user_authorized(request):
+    token = request.COOKIES.get('jwt')
+
+    return token
+
 class MakeReservationView(APIView):
 
     def post(self, request):
+        if not is_user_authorized(request):
+            return make_error_response(AUTHORIZATION_ERROR)
+        
         form = MakeReservationForm(request.data)
 
         if not form.is_valid(): 
@@ -123,18 +156,18 @@ class MakeReservationView(APIView):
         if not serializer.is_valid(): 
             return make_error_response(serializer.errors)
 
-        start_time, number_of_people, email, restaurant_id = extract_data_from_request(request.data)
+        user_id,  restaurant_id, start_time, number_of_people = extract_data_from_request(request)
 
         if not is_future_time(start_time):
-            return make_error_response(['The \"start_time\" field should be a future time.'])
+            return make_error_response(TIME_IN_PAST_ERROR)
 
-        user, restaurant = get_models(email, restaurant_id)
+        user, restaurant = get_models(user_id, restaurant_id)
 
         if not is_seating_available(start_time, number_of_people, restaurant):
-            return make_error_response([f'The capacity for the restaurant \"{restaurant.name}\" would be above the limit during that time'])
+            return make_error_response(OVER_CAPACITY_ERROR)
 
         create_reservation(start_time, number_of_people, user, restaurant)
 
-        send_confirmation_email(start_time, email, restaurant)
+        send_confirmation_email(start_time, user.email, restaurant)
 
         return make_success_response()
