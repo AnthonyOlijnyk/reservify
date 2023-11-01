@@ -136,7 +136,10 @@ Will return
 {
     success: boolean
     message: string
-    errors: array of strings
+    errors: object of the form:
+        {
+            key(s) (could be multiple): array of strings
+        }
 
 }
 ```
