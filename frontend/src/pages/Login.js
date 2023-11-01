@@ -7,6 +7,7 @@ const Login = (props)=> {
   const navigate = useNavigate();
   const {email, setEmail} = useUser('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onDontHaveAnClick = useCallback(() => {
     navigate("/signup");
@@ -24,13 +25,21 @@ const Login = (props)=> {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(jsonData),
       })
+
       .then(response => response.json())
-      .then(data => {console.log(data); })
+
+      .then(data => {
+        if (data.success){
+          setEmail(email);
+          navigate("/homepage");
+        } else {
+          setErrorMessage(`Error: ${data.error}`);
+          console.log('Login error:', data);
+        }})
+
       .catch(error => {console.error('Error:', error);});
       
-      setEmail(email);
-      navigate("/homepage");
-  }, [navigate, setEmail]);
+  }, [navigate, setEmail,setErrorMessage]);
 
   return (
     <div className="login">
@@ -45,6 +54,10 @@ const Login = (props)=> {
         </div>
       </div>
       <div className="login-frame">
+        <div className="frameT">
+          <div className="error">{errorMessage}
+          </div>
+        </div>
         <div className="frame">
           <div className="frame1">
             <div className="frame2">
@@ -82,7 +95,7 @@ const Login = (props)=> {
                 </div>
               </div>
             </div>
-            <div className="frame11">
+            <div className="frame11">              
               <div className="frame12">
                 <div
                   className="dont-have-an-container"

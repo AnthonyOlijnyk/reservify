@@ -116,6 +116,22 @@
   height: 183px;
   flex-shrink: 0;
 }
+.error,
+.frameT {
+  position: absolute;
+  top: 500px;
+  left: 300px;
+  width: 299px;
+  height: 19px;
+  overflow: visible;
+}
+.error {
+  top: -4px;
+  left: 8px;
+  font-weight: 600;
+  display: inline-block;
+  width: 291px;
+}
 .register-now {
   text-decoration: underline;
 }
