@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 import "./Login.css";
 import { useUser } from './UserContext';
 
@@ -38,6 +39,8 @@ const Login = (props)=> {
 
       .then(data => {
         if (data.success){
+          const cookies = new Cookies()
+          cookies.set('jwt', data.token)
           setEmail(email);
           navigate("/homepage");
         } else {

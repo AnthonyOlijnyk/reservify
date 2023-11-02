@@ -6,6 +6,7 @@ import { useNavigate, useParams} from "react-router-dom";
 import RatingForm from "../components/RatingForm";
 import "./ReservePage.css";
 import { useUser } from './UserContext'; 
+import Cookies from "universal-cookie";
 
 
 const ReservePage = () => {
@@ -51,11 +52,13 @@ const ReservePage = () => {
     const number_of_people = parseInt(numpeople, 10);
     const jsonData = {start_time, number_of_people, restaurant_name};
 
+    const cookies = new Cookies();
+
     console.log(jsonData)
 
       fetch("http://localhost:8000/ReservationApp/api/make-reservation", {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json', 'Authorization' : `Bearer ${cookies.get('jwt')}`},
         body: JSON.stringify(jsonData),
       })
       .then(response => response.json())

@@ -8,7 +8,8 @@ from ..constants import (
 import jwt, os
 
 def get_token(request):
-    return request.COOKIES.get('jwt')
+    
+    return request.META['HTTP_AUTHORIZATION'].split(' ')[1]
     
 def decode_token(token):
     return jwt.decode(token, os.environ.get('JWT_SECRET_KEY'), algorithms=['HS256'])
