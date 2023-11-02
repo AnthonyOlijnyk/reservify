@@ -135,3 +135,59 @@ class RootView(APIView):
 
     def get(self, request):
         return TemplateResponse(request, self.template_name, context={})
+
+class UserUpdateUsernameView(APIView):
+    def put(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Get the new username from the request data
+        new_username = request.data.get('new_username', None)
+
+        if new_username is None:
+            return Response(
+                {'error': 'New username is required in the request body'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Update the user's username
+        user.username = new_username
+        user.save()
+
+        # Serialize the updated user and return it in the response
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)    
+    
+
+
+class UserUpdatePasswordView(APIView):
+    def put(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Get the new password from the request data
+        new_password = request.data.get('new_password', None)
+
+        if not new_password:
+            return Response(
+                {'error': 'New password is required in the request body'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Update the user's password
+        user.set_password(new_password)
+        user.save()
+
+        # Serialize the updated user and return it in the response
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
