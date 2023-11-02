@@ -1,31 +1,72 @@
-import { useState, useCallback } from "react";
-import {
-  TextField,
-  Icon,
-  Select,
-  InputLabel,
-  MenuItem,
-  FormHelperText,
-  FormControl,
-} from "@mui/material";
-import {
-  LocalizationProvider,
-  TimePicker,
-  DatePicker,
-} from "@mui/x-date-pickers";
+import {useState, useCallback } from "react";
+import {Select,InputLabel,MenuItem,FormHelperText,FormControl,} from "@mui/material";
+import {LocalizationProvider,TimePicker,DatePicker,} from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import RatingForm from "../components/RatingForm";
 import "./ReservePage.css";
+import { useUser } from './UserContext'; 
+import Cookies from "universal-cookie";
+
 
 const ReservePage = () => {
   const [timeDateTimePickerValue, setTimeDateTimePickerValue] = useState(null);
   const [dateDateTimePickerValue, setDateDateTimePickerValue] = useState(null);
+  const [numpeople, setNumPeople ] = useState("");
   const navigate = useNavigate();
+  const{email}=useUser();
+  const{restaurant_name} = useParams();
+
+  const handleNumPeopleChange = (event) => {
+    setNumPeople(event.target.value); 
+  };
 
   const onReserveNowBtnClick = useCallback(() => {
+    const monthNameToNumber = {
+      Jan: 1,
+      Feb: 2,
+      Mar: 3,
+      Apr: 4,
+      May: 5,
+      Jun: 6,
+      Jul: 7,
+      Aug: 8,
+      Sep: 9,
+      Oct: 10,
+      Nov: 11,
+      Dec: 12,
+    };
+
+    const Fulldate = new Date(dateDateTimePickerValue);
+    const month = monthNameToNumber[Fulldate.toLocaleString('en-us',{month: 'short'})];
+    const day = Fulldate.getDate();
+    const year = Fulldate.getFullYear();
+    const date = `${year}-${(month).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    
+    const Fulltime = new Date(timeDateTimePickerValue);
+    const hours = Fulltime.getHours().toString().padStart(2,'0');
+    const min = Fulltime.getMinutes().toString().padStart(2,'0');
+    const time = `${hours}:${min}`;
+    const start_time = `${date} ${time}`;
+    
+    const number_of_people = parseInt(numpeople, 10);
+    const jsonData = {start_time, number_of_people, restaurant_name};
+
+    const cookies = new Cookies();
+
+    console.log(jsonData)
+
+      fetch("http://localhost:8000/ReservationApp/api/make-reservation", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Authorization' : `Bearer ${cookies.get('jwt')}`},
+        body: JSON.stringify(jsonData),
+      })
+      .then(response => response.json())
+      .then(data => {console.log(data); })
+      .catch(error => {console.error('Error:', error);});
+
     navigate("/reservation-confirmation");
-  }, [navigate]);
+  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");
@@ -99,10 +140,14 @@ const ReservePage = () => {
           <FormControl
             className="numberpeople"
             sx={{ width: 191 }}
-            variant="standard"
-          >
+            variant="standard">
             <InputLabel color="primary">{`Number of People: `}</InputLabel>
-            <Select color="primary" label="Number of People: ">
+            <Select 
+            color="primary" 
+            label="Number of People: "
+            value = {numpeople}
+            onChange = {handleNumPeopleChange}
+            >
               <MenuItem value="5">5</MenuItem>
               <MenuItem value="4">4</MenuItem>
               <MenuItem value="3">3</MenuItem>

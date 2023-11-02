@@ -1,33 +1,56 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 import "./Login.css";
+import { useUser } from './UserContext';
 
-const Login = () => {
+const Login = (props)=> {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {email, setEmail} = useUser('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onDontHaveAnClick = useCallback(() => {
     navigate("/signup");
   }, [navigate]);
-
+  
   const onLoginButtonClick = useCallback(() => {
     const email = document.querySelector(".enter-email").value;
     const password = document.querySelector(".enter-password").value;
+    
+    const formData = new FormData(this);
     const jsonData = {email, password};
+    formData.forEach((value, key) => {jsonData[key] = value;});
+
+    const crsfToken = formData.get('csrfmiddlewaretoken');
 
     console.log(jsonData)
 
       fetch("http://localhost:8000/api/login", {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': crsfToken
+        },
         body: JSON.stringify(jsonData),
       })
+
       .then(response => response.json())
-      .then(data => {console.log(data); })
+
+      .then(data => {
+        if (data.success){
+          const cookies = new Cookies()
+          cookies.set('jwt', data.token)
+          setEmail(email);
+          navigate("/homepage");
+        } else {
+          setErrorMessage(`Error: ${data.error}`);
+          console.log('Login error:', data);
+        }})
+
       .catch(error => {console.error('Error:', error);});
-    navigate("/homepage");
-  }, [navigate]);
+      
+  }, [navigate, setEmail,setErrorMessage]);
 
   return (
     <div className="login">
@@ -42,6 +65,10 @@ const Login = () => {
         </div>
       </div>
       <div className="login-frame">
+        <div className="frameT">
+          <div className="error">{errorMessage}
+          </div>
+        </div>
         <div className="frame">
           <div className="frame1">
             <div className="frame2">
@@ -79,7 +106,7 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <div className="frame11">
+            <div className="frame11">              
               <div className="frame12">
                 <div
                   className="dont-have-an-container"

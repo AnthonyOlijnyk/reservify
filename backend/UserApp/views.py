@@ -43,9 +43,10 @@ class LoginView(APIView):
         
         response = Response()
 
-        user = User.objects.get(email=email)
-        
-        if user is None:
+        try:
+            user = User.objects.get(email=email)
+
+        except User.DoesNotExist:
             response.data = { 'success': False, 'error': 'There are no users with the specified email.' }
             return response
         
@@ -61,8 +62,7 @@ class LoginView(APIView):
 
         token = jwt.encode(payload, os.environ.get('JWT_SECRET_KEY'), algorithm='HS256')
 
-        response.data = { 'success': True }
-        response.set_cookie(key='jwt', value=token, httponly=True)
+        response.data = { 'success': True, 'token': token }
 
         return response
     
@@ -97,10 +97,10 @@ class UserView(APIView):
         if not id:
             response.data = { 'success': False, 'error': 'The id of the user to delete was not specified.' }
             return response
-
-        user = User.objects.filter(id=id).first()
-
-        if not user:
+        
+        try:
+            user = User.objects.get(pk=id)
+        except User.DoesNotExist:
             response.data = { 'success': False, 'error': f"There is no user with an id of \'{id}\'" }
             return response
         
