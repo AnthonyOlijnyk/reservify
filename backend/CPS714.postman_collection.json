@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"start_time\": \"2024-10-30 10:00\",\r\n    \"number_of_people\": 1,\r\n    \"restaurant_id\": 1\r\n}",
+					"raw": "{\r\n    \"start_time\": \"2024-04-02 10:00\",\r\n    \"number_of_people\": 1,\r\n    \"restaurant_name\": \"Tako Cheena by Pom Pom\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
