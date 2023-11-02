@@ -64,6 +64,7 @@ Will return
 ```
 {
     success: bool
+    token: string / null
     error: string / null
 }
 ```
