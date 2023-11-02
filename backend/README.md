@@ -41,7 +41,7 @@ Will return
 ```
 
 ## POST api/login
-Creates a JWT and stores it in the cookies.
+Creates a JWT and validates the email and password sent.
 
 The JWT payload has the format:
 ```
