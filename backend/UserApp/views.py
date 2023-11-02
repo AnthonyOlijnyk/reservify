@@ -2,9 +2,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from django.shortcuts import render
 from django.template.response import TemplateResponse
-from django.http import JsonResponse
 
 from .models import User
 from .serializers import UserSerializer
@@ -13,10 +11,6 @@ from .forms import SignupForm
 import jwt, datetime, os
 
 class SignUpView(APIView):
-#    template_name = './frontend/src/pages/SingUp.js'
-
- #   def get(self, request):
-  #      return TemplateResponse(request, self.template_name, context={})
 
     def post(self, request):
         form = SignupForm(request.data)
@@ -49,11 +43,7 @@ class LoginView(APIView):
         
         response = Response()
 
-        user = User.objects.filter(email=email).first()
-        if request.method == 'POST':
-            data = request.POST
-            # Process the data and send a response
-            return JsonResponse({'message': 'Data received'})
+        user = User.objects.get(email=email)
         
         if user is None:
             response.data = { 'success': False, 'error': 'There are no users with the specified email.' }

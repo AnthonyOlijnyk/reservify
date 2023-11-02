@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9ab93573-9fc6-4ca6-a1fd-23b681fc66b7",
+		"_postman_id": "cd72d5b6-4ad1-4307-8ae7-ee15dc41c107",
 		"name": "CPS714",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "30170178"
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"testname\",\r\n    \"email\": \"testname@example.com\",\r\n    \"phone_number\": \"4162222222\",\r\n    \"password\": \"password\"\r\n}",
+					"raw": "{\r\n    \"name\": \"test\",\r\n    \"username\": \"testusername\",\r\n    \"email\": \"test.test@example.com\",\r\n    \"phone_number\": \"4162222222\",\r\n    \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -36,13 +36,43 @@
 			"response": []
 		},
 		{
+			"name": "ReservationApp/api/make-reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"start_time\": \"2024-04-02 10:00\",\r\n    \"number_of_people\": 1,\r\n    \"restaurant_name\": \"Tako Cheena by Pom Pom\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/ReservationApp/api/make-reservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ReservationApp",
+						"api",
+						"make-reservation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "api/login",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"testname@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"raw": "{\r\n    \"email\": \"test.test@example.com\",\r\n    \"password\": \"password\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -158,29 +188,28 @@
 		{
 			"name": "Search Restaurant by Name",
 			"request": {
-			  "method": "GET",
-			  "header": [],
-			  "url": {
-				"raw": "http://localhost:8000/api/search/?name=restaurant_name",
-				"protocol": "http",
-				"host": [
-				  "localhost"
-				],
-				"port": "8000",
-				"path": [
-				  "api",
-				  "search"
-				],
-				"query": [
-				  {
-					"key": "name",
-					"value": "restaurant_name",
-					"equals": true
-				  }
-				]
-			  }
-			}
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/search?name=restaurant_name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "restaurant_name"
+						}
+					]
+				}
+			},
+			"response": []
 		}
-		 
 	]
 }
