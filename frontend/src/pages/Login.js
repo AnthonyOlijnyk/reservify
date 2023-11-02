@@ -16,13 +16,21 @@ const Login = (props)=> {
   const onLoginButtonClick = useCallback(() => {
     const email = document.querySelector(".enter-email").value;
     const password = document.querySelector(".enter-password").value;
+    
+    const formData = new FormData(this);
     const jsonData = {email, password};
+    formData.forEach((value, key) => {jsonData[key] = value;});
+
+    const crsfToken = formData.get('csrfmiddlewaretoken');
 
     console.log(jsonData)
 
       fetch("http://localhost:8000/api/login", {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': crsfToken
+        },
         body: JSON.stringify(jsonData),
       })
 

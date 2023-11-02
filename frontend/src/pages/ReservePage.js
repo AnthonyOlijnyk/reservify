@@ -14,7 +14,7 @@ const ReservePage = () => {
   const [numpeople, setNumPeople ] = useState("");
   const navigate = useNavigate();
   const{email}=useUser();
-  const{restaurantName} = useParams();
+  const{restaurant_name} = useParams();
 
   const handleNumPeopleChange = (event) => {
     setNumPeople(event.target.value); 
@@ -48,12 +48,12 @@ const ReservePage = () => {
     const time = `${hours}:${min}`;
     const start_time = `${date} ${time}`;
     
-    const numpeopleNum = parseInt(numpeople, 10);
-    const jsonData = {start_time, numpeopleNum, email, restaurantName};
+    const number_of_people = parseInt(numpeople, 10);
+    const jsonData = {start_time, number_of_people, restaurant_name};
 
     console.log(jsonData)
 
-      fetch("http://localhost:8000/api/make-reservation", {
+      fetch("http://localhost:8000/ReservationApp/api/make-reservation", {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(jsonData),
@@ -63,7 +63,7 @@ const ReservePage = () => {
       .catch(error => {console.error('Error:', error);});
 
     navigate("/reservation-confirmation");
-  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurantName]);
+  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");

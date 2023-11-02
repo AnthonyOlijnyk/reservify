@@ -89,7 +89,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/homepage" element={<HomePage />} />
       <Route path="/searchpage" element={<SearchPage />} />
-      <Route path="/reservepage/:restaurantName" element={<ReservePage />} />
+      <Route path="/reservepage/:restaurant_name" element={<ReservePage />} />
       <Route path="/user-dash" element={<UserDash />} />
       <Route path="/reservation-confirmation" element={<ConfirmationPage />} />
       <Route path="/admin-dash" element={<AdminDash />} />

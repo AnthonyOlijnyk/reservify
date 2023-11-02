@@ -8,8 +8,8 @@ const SearchPage = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  const onReserveBtnContainerClick = useCallback((restaurantName) => {
-    navigate(`/reservepage/${restaurantName}`);
+  const onReserveBtnContainerClick = useCallback((restaurant_name) => {
+    navigate(`/reservepage/${restaurant_name}`);
   }, [navigate]);
 
   const onRoundSearchContainerClick = useCallback(() => {
