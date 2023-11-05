@@ -146,7 +146,6 @@ class UserUpdateUsernameView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # Get the new username from the request data
         new_username = request.data.get('new_username', None)
 
         if new_username is None:
@@ -155,12 +154,10 @@ class UserUpdateUsernameView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Update the user's username
         user.username = new_username
         user.save()
 
-        # Serialize the updated user and return it in the response
-        serializer = UserSerializer(user)
+        serializer = UserSerializer(user)  # Replace with your actual serializer
         return Response(serializer.data, status=status.HTTP_200_OK)    
     
 
@@ -184,10 +181,18 @@ class UserUpdatePasswordView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Update the user's password
+        # Update password
         user.set_password(new_password)
         user.save()
 
-        # Serialize the updated user and return it in the response
         serializer = UserSerializer(user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+
+        response_data = {
+            "id": user.id,
+            "username": user.username,
+            "name": user.name,
+            "email": user.email,
+            "phone_number": user.phone_number,
+            "new_password": new_password  # Include the new password in payload
+        }
+        return Response(response_data, status=status.HTTP_200_OK)
