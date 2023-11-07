@@ -1,5 +1,6 @@
 {
 	"info": {
+
 	  "_postman_id": "9ab93573-9fc6-4ca6-a1fd-23b681fc66b7",
 	  "name": "CPS714",
 	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -35,35 +36,65 @@
 		},
 		"response": []
 	  },
-	  {
-		"name": "api/login",
-		"request": {
-		  "method": "POST",
-		  "header": [],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\r\n    \"email\": \"testname@example.com\",\r\n    \"password\": \"password\"\r\n}",
-			"options": {
-			  "raw": {
-				"language": "json"
-			  }
-			}
-		  },
-		  "url": {
-			"raw": "http://localhost:8000/api/login",
-			"protocol": "http",
-			"host": [
-			  "localhost"
-			],
-			"port": "8000",
-			"path": [
-			  "api",
-			  "login"
-			]
-		  }
+		{
+			"name": "ReservationApp/api/make-reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"start_time\": \"2024-04-02 10:00\",\r\n    \"number_of_people\": 1,\r\n    \"restaurant_name\": \"Tako Cheena by Pom Pom\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/ReservationApp/api/make-reservation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ReservationApp",
+						"api",
+						"make-reservation"
+					]
+				}
+			},
+			"response": []
 		},
-		"response": []
-	  },
+		{
+			"name": "api/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test.test@example.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		};
 	  {
 		"name": "api/logout",
 		"request": {
@@ -128,6 +159,7 @@
 		"protocolProfileBehavior": {
 		  "disableBodyPruning": true
 		},
+
 		"request": {
 		  "method": "GET",
 		  "header": [],
@@ -215,5 +247,6 @@
 		  }
 		}
 	  }
+
 	]
   }

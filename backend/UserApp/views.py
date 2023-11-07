@@ -2,9 +2,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from django.shortcuts import render
 from django.template.response import TemplateResponse
-from django.http import JsonResponse
 
 from .models import User
 from .serializers import UserSerializer
@@ -13,10 +11,6 @@ from .forms import SignupForm
 import jwt, datetime, os
 
 class SignUpView(APIView):
-#    template_name = './frontend/src/pages/SingUp.js'
-
- #   def get(self, request):
-  #      return TemplateResponse(request, self.template_name, context={})
 
     def post(self, request):
         form = SignupForm(request.data)
@@ -49,13 +43,10 @@ class LoginView(APIView):
         
         response = Response()
 
-        user = User.objects.filter(email=email).first()
-        if request.method == 'POST':
-            data = request.POST
-            # Process the data and send a response
-            return JsonResponse({'message': 'Data received'})
-        
-        if user is None:
+        try:
+            user = User.objects.get(email=email)
+
+        except User.DoesNotExist:
             response.data = { 'success': False, 'error': 'There are no users with the specified email.' }
             return response
         
@@ -71,8 +62,7 @@ class LoginView(APIView):
 
         token = jwt.encode(payload, os.environ.get('JWT_SECRET_KEY'), algorithm='HS256')
 
-        response.data = { 'success': True }
-        response.set_cookie(key='jwt', value=token, httponly=True)
+        response.data = { 'success': True, 'token': token }
 
         return response
     
@@ -107,10 +97,10 @@ class UserView(APIView):
         if not id:
             response.data = { 'success': False, 'error': 'The id of the user to delete was not specified.' }
             return response
-
-        user = User.objects.filter(id=id).first()
-
-        if not user:
+        
+        try:
+            user = User.objects.get(pk=id)
+        except User.DoesNotExist:
             response.data = { 'success': False, 'error': f"There is no user with an id of \'{id}\'" }
             return response
         
