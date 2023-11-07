@@ -125,3 +125,64 @@ class RootView(APIView):
 
     def get(self, request):
         return TemplateResponse(request, self.template_name, context={})
+
+class UserUpdateUsernameView(APIView):
+    def put(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        new_username = request.data.get('new_username', None)
+
+        if new_username is None:
+            return Response(
+                {'error': 'New username is required in the request body'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user.username = new_username
+        user.save()
+
+        serializer = UserSerializer(user)  # Replace with your actual serializer
+        return Response(serializer.data, status=status.HTTP_200_OK)    
+    
+
+
+class UserUpdatePasswordView(APIView):
+    def put(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Get the new password from the request data
+        new_password = request.data.get('new_password', None)
+
+        if not new_password:
+            return Response(
+                {'error': 'New password is required in the request body'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Update password
+        user.set_password(new_password)
+        user.save()
+
+        serializer = UserSerializer(user)
+
+        response_data = {
+            "id": user.id,
+            "username": user.username,
+            "name": user.name,
+            "email": user.email,
+            "phone_number": user.phone_number,
+            "new_password": new_password  # Include the new password in payload
+        }
+        return Response(response_data, status=status.HTTP_200_OK)
