@@ -12,7 +12,7 @@ const ReservePage = (resturaunt) => {
   const [timeDateTimePickerValue, setTimeDateTimePickerValue] = useState(null);
   const [dateDateTimePickerValue, setDateDateTimePickerValue] = useState(null);
   const [numpeople, setNumPeople ] = useState("");
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessages, setErrorMessages] = useState([]);
   const{restaurant_name} = useParams();
   const navigate = useNavigate();
   const{email}=useUser();
@@ -76,11 +76,14 @@ const ReservePage = (resturaunt) => {
         }
         else
         {
-          setErrorMessage(`Error: ${data.errors}`);
-          console.log('Login error:', data);
+          const errors = Object.entries(data.errors).map(([ key, value ]) => (
+            `${(key.charAt(0).toUpperCase() + key.slice(1)).replaceAll('_', ' ')} error: ${value}`
+          ));
+          console.log(errors);
+          setErrorMessages(errors);
         }})
       .catch(error => {console.error('Error:', error);});
-  },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name, setErrorMessage]);
+  },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name, setErrorMessages]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");
@@ -171,7 +174,7 @@ const ReservePage = (resturaunt) => {
           <div className="pick-the-restaurants">
             Pick the restaurant's reservation information
           </div>
-          <div className="error1">{errorMessage}</div>
+          {errorMessages.map((errorMessage, index) => <div key={index} className="error1">{errorMessage}</div>)}
         </div>
         <div className="info-box">
           <div className="info-box-child" />
