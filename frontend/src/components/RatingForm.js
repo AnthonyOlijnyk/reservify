@@ -1,17 +1,26 @@
+import React from "react";
 import "./RatingForm.css";
 
-const RatingForm = () => {
+const RatingForm = ({ aveRating }) => {
+  const rating = Math.round(aveRating);
+  const redStar = "/vector3.svg";
+  const greyStar = "/vector2.svg";
+
+  const starElements = [];
+  for (let i = 8; i >= 4; i--) {
+    const isFilled = i > 8 - rating;
+    const starSrc = isFilled ? redStar : greyStar;
+    starElements.push(
+      <img className={`vector-icon${i}`} key={i} alt="star" src={starSrc} />
+    );
+  }
   return (
     <div className="rating-box">
       <div className="rating-box-child" />
-      <img className="vector-icon4" alt="" src="/vector2.svg" />
-      <img className="vector-icon5" alt="" src="/vector2.svg" />
-      <img className="vector-icon6" alt="" src="/vector3.svg" />
-      <img className="vector-icon7" alt="" src="/vector3.svg" />
-      <img className="vector-icon8" alt="" src="/vector3.svg" />
+      {starElements}
       <div className="div4">
         <p className="blank-line">&nbsp;</p>
-        <p className="blank-line">3.3/5</p>
+        <p className="blank-line">{aveRating}/5</p>
       </div>
     </div>
   );

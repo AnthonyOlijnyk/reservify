@@ -2,14 +2,13 @@ import {useState, useCallback } from "react";
 import {Select,InputLabel,MenuItem,FormHelperText,FormControl,} from "@mui/material";
 import {LocalizationProvider,TimePicker,DatePicker,} from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { useNavigate, useParams} from "react-router-dom";
+import { useLocation, useNavigate, useParams} from "react-router-dom";
 import RatingForm from "../components/RatingForm";
 import "./ReservePage.css";
 import { useUser } from './UserContext'; 
 import Cookies from "universal-cookie";
 
-
-const ReservePage = () => {
+const ReservePage = (resturaunt) => {
   const [timeDateTimePickerValue, setTimeDateTimePickerValue] = useState(null);
   const [dateDateTimePickerValue, setDateDateTimePickerValue] = useState(null);
   const [numpeople, setNumPeople ] = useState("");
@@ -17,10 +16,21 @@ const ReservePage = () => {
   const{email}=useUser();
   const{restaurant_name} = useParams();
 
+  const location = useLocation();
+  const restaurantData = location.state.restaurant;
+
+  const restaurantLocation = restaurantData.location;
+  const restaurantAbout = restaurantData.about;
+  const restaurantCuisine = restaurantData.cuisine;
+  const restaurantAveCost = restaurantData.ave_cost;
+  const restaurantAveRating = restaurantData.ave_rating;
+
+  console.log("Location:", restaurantLocation);
+  console.log("About:", restaurantAbout);
+
   const handleNumPeopleChange = (event) => {
     setNumPeople(event.target.value); 
   };
-
   const onReserveNowBtnClick = useCallback(() => {
     const monthNameToNumber = {
       Jan: 1,
@@ -79,13 +89,7 @@ const ReservePage = () => {
         <img className="footer-icon2" alt="" src="/footer2.svg" />
         <div className="map-image-parent">
           <img className="map-image-icon" alt="" src="/map-image@2x.png" />
-          <div className="about-paragraph">
-            Don Alfonso is the first restaurant in North America from Michelin
-            Star Chefs Alfonso and Ernesto Iaccarino serving a menu of Amalfi
-            coast Flavours in an interior accented by priceless art. tasting
-            menus interpret Italian ingredients through molecular gastronomy,
-            plated in vessels custom designed for each specific dish.
-          </div>
+          <div className="about-paragraph">{restaurantAbout}</div>
           <b className="about">ABOUT</b>
           <b className="info">INFO</b>
           <b className="map">
@@ -163,12 +167,10 @@ const ReservePage = () => {
         <div className="info-box">
           <div className="info-box-child" />
           <img className="steak-image-icon" alt="" src="/steak-image@2x.png" />
-          <div className="cuisine-italian">Cuisine: Italian</div>
-          <div className="average-cost-50">Average Cost: 50$ pp</div>
-          <div className="price-range">Price range: $$</div>
-          <div className="average-cost-50">Average Cost: 50$ pp</div>
+          <div className="cuisine-italian">Cuisine: {restaurantCuisine}</div>
+          <div className="average-cost-50">Average Cost: {restaurantAveCost}$ pp</div>
         </div>
-        <RatingForm />
+        <RatingForm aveRating={restaurantAveRating}/>
         <div className="section-header">
           <div className="frame-wrapper">
             <div className="frame15">
@@ -184,10 +186,8 @@ const ReservePage = () => {
           </div>
         </div>
         <div className="top-titles">
-          <b className="don-alfonso-19801">DON ALFONSO 1980</b>
-          <div className="food-street-toronto3">
-            100 Food Street, Toronto, CA
-          </div>
+          <b className="resturaunt-name1">{restaurant_name}</b>
+          <div className="location">{restaurantLocation}</div>
         </div>
         <div className="rest-images">
           <img
@@ -197,7 +197,7 @@ const ReservePage = () => {
           />
           <div className="frame-parent">
             <div className="frame16" />
-            <b className="don-alfonso-19802">Don Alfonso 1980</b>
+          <b className="resturaunt-name2">{restaurant_name}</b>
           </div>
         </div>
         <div className="main-header4">

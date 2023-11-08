@@ -315,21 +315,21 @@
   top: 842px;
   left: 74px;
 }
-.don-alfonso-19801,
-.food-street-toronto3 {
+.resturaunt-name1,
+.location {
   position: absolute;
   top: 19px;
   left: 0;
   display: inline-block;
-  width: 423px;
+  width: 600px;
   height: 41px;
 }
-.food-street-toronto3 {
+.location {
   top: 59px;
   font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--color-dimgray);
-  width: 258px;
+  width: 600px;
   height: 25px;
 }
 .top-titles {
@@ -360,14 +360,14 @@
   height: 81px;
   overflow: hidden;
 }
-.don-alfonso-19802 {
+.resturaunt-name2{
   position: absolute;
   top: 20px;
-  left: 170px;
+  left: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 356px;
+  width: 700px;
   height: 41px;
 }
 .frame-parent,
