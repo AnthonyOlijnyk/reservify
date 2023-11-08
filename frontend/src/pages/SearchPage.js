@@ -1,4 +1,3 @@
-
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SearchPage.css";
@@ -8,8 +7,9 @@ const SearchPage = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  const onReserveBtnContainerClick = useCallback((restaurant_name) => {
-    navigate(`/reservepage/${restaurant_name}`);
+  const onReserveBtnContainerClick = useCallback((restaurant) => {
+    console.log(restaurant)
+    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
   }, [navigate]);
 
   const onRoundSearchContainerClick = useCallback(() => {
@@ -38,7 +38,7 @@ const SearchPage = () => {
             <div className="restaurant" key={index}>
             <div className="property-col" />
             <img className="property-col-icon" alt="" src={restaurant.image}/>
-            <div className="reserve-btn" onClick={() => onReserveBtnContainerClick(restaurant.name)}>
+            <div className="reserve-btn" onClick={() => onReserveBtnContainerClick(restaurant)}>
               <div className="reserve-btn-child" />
               <b className="reserve">Reserve</b>
             </div>
