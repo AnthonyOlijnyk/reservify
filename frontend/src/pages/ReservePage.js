@@ -12,9 +12,10 @@ const ReservePage = (resturaunt) => {
   const [timeDateTimePickerValue, setTimeDateTimePickerValue] = useState(null);
   const [dateDateTimePickerValue, setDateDateTimePickerValue] = useState(null);
   const [numpeople, setNumPeople ] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
+  const{restaurant_name} = useParams();
   const navigate = useNavigate();
   const{email}=useUser();
-  const{restaurant_name} = useParams();
 
   const location = useLocation();
   const restaurantData = location.state.restaurant;
@@ -24,9 +25,6 @@ const ReservePage = (resturaunt) => {
   const restaurantCuisine = restaurantData.cuisine;
   const restaurantAveCost = restaurantData.ave_cost;
   const restaurantAveRating = restaurantData.ave_rating;
-
-  console.log("Location:", restaurantLocation);
-  console.log("About:", restaurantAbout);
 
   const handleNumPeopleChange = (event) => {
     setNumPeople(event.target.value); 
@@ -61,7 +59,6 @@ const ReservePage = (resturaunt) => {
     
     const number_of_people = parseInt(numpeople, 10);
     const jsonData = {start_time, number_of_people, restaurant_name};
-
     const cookies = new Cookies();
 
     console.log(jsonData)
@@ -72,14 +69,25 @@ const ReservePage = (resturaunt) => {
         body: JSON.stringify(jsonData),
       })
       .then(response => response.json())
-      .then(data => {console.log(data); })
+      .then(data => 
+        {
+          if (data.success){
+            navigate(`/reservation-confirmation`,{state: {restaurant_name}});
+        }
+        else
+        {
+          setErrorMessage(`Error: ${data.errors}`);
+          console.log('Login error:', data);
+        }})
       .catch(error => {console.error('Error:', error);});
-
-    navigate("/reservation-confirmation");
-  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name]);
+  },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name, setErrorMessage]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");
+  }, [navigate]);
+
+  const onUserDash = useCallback(() => {
+    navigate("/user-dash");
   }, [navigate]);
 
   return (
@@ -163,6 +171,7 @@ const ReservePage = (resturaunt) => {
           <div className="pick-the-restaurants">
             Pick the restaurant's reservation information
           </div>
+          <div className="error1">{errorMessage}</div>
         </div>
         <div className="info-box">
           <div className="info-box-child" />
@@ -206,6 +215,7 @@ const ReservePage = (resturaunt) => {
               className="bxbxs-user-circle-icon2"
               alt=""
               src="/bxbxsusercircle.svg"
+              onClick={onUserDash}
             />
             <img
               className="search-icon1"

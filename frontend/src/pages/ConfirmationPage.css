@@ -22,6 +22,9 @@
   height: 44px;
   overflow: hidden;
 }
+.bxbxs-user-circle-icon4{
+  cursor: pointer;
+}
 .search-icon3 {
   height: 63.86%;
   width: 30.22%;
@@ -38,7 +41,7 @@
   position: absolute;
   top: 13px;
   left: 1315px;
-  width: 93px;
+  width: 88px;
   height: 44px;
 }
 .reservify-icon7 {
@@ -78,7 +81,7 @@
 }
 .pill {
   position: absolute;
-  right: -0.2px;
+  right: -0.1px;
   bottom: 31.9px;
   border-radius: var(--br-base);
   background-color: var(--color-white);
@@ -180,21 +183,19 @@
   left: 0;
   width: 429px;
 }
-.don-alfonso-19803 {
+.restaurant-name3 {
   position: absolute;
-  top: 0;
-  left: 177px;
+  top: -3px;
+  left: 110px;
   display: inline-block;
-  width: 175px;
-  height: 21.9px;
+  overflow: visible
 }
 .frame19,
 .frame22 {
   position: absolute;
-  top: 12.7px;
   left: 0;
-  width: 352px;
-  height: 21.9px;
+  width: 400px;
+  height: 48px;
   overflow: hidden;
 }
 .frame19 {
@@ -220,11 +221,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-}
-.line-icon {
-  position: relative;
-  width: 1220px;
-  height: 23px;
 }
 .back-to-homepage {
   position: relative;

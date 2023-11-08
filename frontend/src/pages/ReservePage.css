@@ -180,6 +180,15 @@
   display: inline-block;
   width: 273px;
 }
+.error1 {
+  position: absolute;
+  top: 110px;
+  left: 49px;
+  color: var(--color-black);
+  font-weight: 600;
+  font-size: 10px;
+  overflow: visible
+}
 .reserve-bar {
   position: absolute;
   top: 798px;
@@ -405,6 +414,9 @@
   left: 70.97%;
   max-width: 100%;
   max-height: 100%;
+  cursor: pointer;
+}
+.bxbxs-user-circle-icon2{
   cursor: pointer;
 }
 .initial-options2,
