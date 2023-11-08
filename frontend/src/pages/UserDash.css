@@ -1,3 +1,7 @@
+html{
+  scroll-behavior:smooth;
+}
+
 .search-icon {
   position: absolute;
   height: 117.08%;
@@ -191,10 +195,45 @@
   width: 367px;
   height: 67px;
 }
-.changeuserbtn,
-.confirm-new-username {
+.error{
   position: absolute;
+  top: 60px;
+  left: 200px;
+  width: 367px;
+  height: 67px;
+}
+.changeusernamebtn {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-firebrick-100);
+}
+.change-user,
+.changeuserbtn,
+.changeusernamebtn {
+  position: absolute;
+  width: 193px;
+  height: 38px;
+}
+.change-user {
+  top: 0;
+  left: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.changeuserbtn {
   top: 312px;
+  left: 80px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+}
+.confirm-new-username {
+  position: relative;
+  top: 250px;
   left: 60px;
   width: 193px;
   height: 38px;
@@ -296,6 +335,7 @@
   height: 53px;
 }
 .settings {
+  padding-top: 200px;
   position: relative;
   width: 1209px;
   height: 479px;
@@ -480,6 +520,8 @@
   position: absolute;
   height: 94px;
 }
+
+
 .restaurant11 {
   top: 0;
   left: 0;
@@ -539,6 +581,7 @@
   position: relative;
 }
 .settingsreservations {
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;

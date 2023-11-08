@@ -2,7 +2,9 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from django.shortcuts import render
 from django.template.response import TemplateResponse
+from django.http import JsonResponse
 
 from .models import User
 from .serializers import UserSerializer
@@ -11,6 +13,10 @@ from .forms import SignupForm
 import jwt, datetime, os
 
 class SignUpView(APIView):
+#    template_name = './frontend/src/pages/SingUp.js'
+
+ #   def get(self, request):
+  #      return TemplateResponse(request, self.template_name, context={})
 
     def post(self, request):
         form = SignupForm(request.data)
@@ -43,10 +49,13 @@ class LoginView(APIView):
         
         response = Response()
 
-        try:
-            user = User.objects.get(email=email)
-
-        except User.DoesNotExist:
+        user = User.objects.filter(email=email).first()
+        if request.method == 'POST':
+            data = request.POST
+            # Process the data and send a response
+            return JsonResponse({'message': 'Data received'})
+        
+        if user is None:
             response.data = { 'success': False, 'error': 'There are no users with the specified email.' }
             return response
         
@@ -62,7 +71,8 @@ class LoginView(APIView):
 
         token = jwt.encode(payload, os.environ.get('JWT_SECRET_KEY'), algorithm='HS256')
 
-        response.data = { 'success': True, 'token': token }
+        response.data = { 'success': True }
+        response.set_cookie(key='jwt', value=token, httponly=True)
 
         return response
     
@@ -97,10 +107,10 @@ class UserView(APIView):
         if not id:
             response.data = { 'success': False, 'error': 'The id of the user to delete was not specified.' }
             return response
-        
-        try:
-            user = User.objects.get(pk=id)
-        except User.DoesNotExist:
+
+        user = User.objects.filter(id=id).first()
+
+        if not user:
             response.data = { 'success': False, 'error': f"There is no user with an id of \'{id}\'" }
             return response
         
@@ -125,3 +135,64 @@ class RootView(APIView):
 
     def get(self, request):
         return TemplateResponse(request, self.template_name, context={})
+
+class UserUpdateUsernameView(APIView):
+    def put(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        new_username = request.data.get('new_username', None)
+
+        if new_username is None:
+            return Response(
+                {'error': 'New username is required in the request body'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        user.username = new_username
+        user.save()
+
+        serializer = UserSerializer(user)  # Replace with your actual serializer
+        return Response(serializer.data, status=status.HTTP_200_OK)    
+    
+
+
+class UserUpdatePasswordView(APIView):
+    def put(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Get the new password from the request data
+        new_password = request.data.get('new_password', None)
+
+        if not new_password:
+            return Response(
+                {'error': 'New password is required in the request body'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Update password
+        user.set_password(new_password)
+        user.save()
+
+        serializer = UserSerializer(user)
+
+        response_data = {
+            "id": user.id,
+            "username": user.username,
+            "name": user.name,
+            "email": user.email,
+            "phone_number": user.phone_number,
+            "new_password": new_password  # Include the new password in payload
+        }
+        return Response(response_data, status=status.HTTP_200_OK)

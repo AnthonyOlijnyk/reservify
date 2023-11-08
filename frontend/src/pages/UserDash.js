@@ -1,20 +1,19 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UserDash.css";
-import { useUser } from "./UserContext";
 
-const UserDash = (props)=> {
+const UserDash = (props) => {
   const navigate = useNavigate();
-  const {oldUsername, setOldUsername} = useUser('');
+  const [oldUsername, setOldUsername] = useState('');
   const [newUsername, setNewUsername] = useState('');
   const [confirmUsername, setConfirmUsername] = useState('');
 
   const [errorUsernameMessage, setErrorUsernameMessage] = useState('');
 
-  const {oldPassword, setOldPassword} = useUser('');
+  const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  
+
   const [errorPasswordMessage, setErrorPasswordMessage] = useState('');
 
   const onSearchIconClick = useCallback(() => {
@@ -31,9 +30,14 @@ const UserDash = (props)=> {
 
   const onChangeUserButtonClick = useCallback(async () => {
     try {
-      const oldUsername = document.querySelector(".enter-o-username").value;
-      const newUsername = document.querySelector(".enter-n-username").value;
-      const confirmUsername = document.querySelector(".enter-c-username").value;
+      if (oldUsername === newUsername) {
+        setErrorUsernameMessage("Old and new usernames must be different.");
+        return;
+      }
+      if (newUsername !== confirmUsername) {
+        setErrorUsernameMessage("New and confirm usernames must match.");
+        return;
+      }
 
       const jsonData = {
         oldUsername,
@@ -43,8 +47,8 @@ const UserDash = (props)=> {
 
       console.log(jsonData);
 
-      const response = await fetch("http://localhost:8000/api/users", {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/api/users/"+ oldUsername +"/update/", {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -68,14 +72,25 @@ const UserDash = (props)=> {
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [setOldUsername, setNewUsername, setConfirmUsername, setErrorUsernameMessage]);
+  }, [oldUsername, newUsername, confirmUsername, setOldUsername, setNewUsername, setConfirmUsername, setErrorUsernameMessage]);
 
   const onChangePassButtonClick = useCallback(async () => {
     try {
-      const oldPassword = document.querySelector(".enter-o-password").value;
-      const newPassword = document.querySelector(".enter-n-password").value;
-      const confirmPassword = document.querySelector(".enter-c-password").value;
-  
+      if (!oldUsername) {
+        setErrorPasswordMessage("Please enter your old username.");
+        return;
+      }
+      
+      if (oldPassword === newPassword) {
+        setErrorPasswordMessage("Old and new passwords must be different.");
+        return;
+      }
+      
+      if (newPassword !== confirmPassword) {
+        setErrorPasswordMessage("New and confirm passwords must match.");
+        return;
+      }
+      
       const jsonData = {
         oldPassword,
         newPassword,
@@ -84,8 +99,8 @@ const UserDash = (props)=> {
   
       console.log(jsonData);
   
-      const response = await fetch("http://localhost:8000/api/users", {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/api/users/"+ oldUsername +"/update/password/", {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -93,7 +108,7 @@ const UserDash = (props)=> {
       });
   
       if (response.ok) {
-        if (setNewPassword === setConfirmPassword) {
+        if (newPassword === confirmPassword) {
           setOldPassword(oldPassword);
           setNewPassword(newPassword);
           setConfirmPassword(confirmPassword);
@@ -108,11 +123,11 @@ const UserDash = (props)=> {
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [setOldPassword, setNewPassword, setConfirmPassword, setErrorPasswordMessage]);
-
+  }, [oldUsername, oldPassword, newPassword, confirmPassword, setOldPassword, setNewPassword, setConfirmPassword, setErrorPasswordMessage]);
+  
   return (
     <div className="user-dash">
-      <div className="mainframe" id ="user-dash">
+      <div className="mainframe" id="user-dash">
         <div className="mainheader">
           <div className="homepagebtn">
             <img
@@ -123,7 +138,7 @@ const UserDash = (props)=> {
             />
           </div>
           <div className="titlelogo">
-            <img className="reservify-icon" alt="" src="/reservify.svg" onClick={onSearchIconClick}/>
+            <img className="reservify-icon" alt="" src="/reservify.svg" onClick={onSearchIconClick} />
             <img
               className="restaurant-1-icon"
               alt=""
@@ -139,68 +154,17 @@ const UserDash = (props)=> {
                 alt=""
                 src="bxbxsusercircle1.svg"
               />
-              <div className="changepassbtn">
-                <button className="changepasswordbtn" onClick={onChangePassButtonClick}>
-                  <div className="change-password">Change Password</div>
-                  <div className="error">{errorUsernameMessage}</div>
-                </button>
-              </div>
-                <div className="confirmpasswordfield">
-                  <div className="confirmpasswordfield1" />
-                  <input
-                    className="confirm-new-password"
-                    placeholder="Confirm New Password"
-                    type="text"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                <div className="enter-confirm-password">
-                  Enter Confirm Password:
-                </div>
-              </div>
-              <div className="newpasswordfield">
-                <div className="enternewpasswordfield" />
-                <input
-                  className="enter-new-password"
-                  placeholder="Enter New Password"
-                  type="text"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
-                <div className="enter-confirm-password">
-                  Enter New Password:
-                </div>
-              </div>
-              <div className="oldpasswordfield">
+              <div className="oldusernamefield">
                 <div className="enteroldpasswordfield" />
                 <input
-                  className="enter-old-password"
-                  placeholder="Enter Old Password"
+                  className="enter-old-username"
+                  placeholder="Enter Old Username"
                   type="text"
-                  value={oldPassword}
-                  onChange={(e) => setOldPassword(e.target.value)}
+                  value={oldUsername}
+                  onChange={(e) => setOldUsername(e.target.value)}
                 />
                 <div className="enter-confirm-password">
-                  Enter Old Password:
-                </div>
-              </div>
-              <div className="changeuserbtn">
-                <button className="changeuserbtn" onClick={onChangeUserButtonClick}>
-                  <div className="change-user">Change Username</div>
-                </button>
-                <div className="error">{errorPasswordMessage}</div>
-              </div>
-              <div className="confirmusernamefield">
-                <div className="confirmpasswordfield1" />
-                <input
-                  className="confirm-new-username"
-                  placeholder="Confirm New Username"
-                  type="text"
-                  value={confirmUsername}
-                  onChange={(e) => setConfirmUsername(e.target.value)}
-                />
-                <div className="enter-confirm-password">
-                  Enter Confirm Username:
+                  Enter Old Username:
                 </div>
               </div>
               <div className="newusernamefield">
@@ -216,18 +180,69 @@ const UserDash = (props)=> {
                   Enter New Username:
                 </div>
               </div>
-              <div className="oldusernamefield">
-                <div className="enteroldpasswordfield" />
+              <div className="confirmusernamefield">
+                <div className="confirmpasswordfield1" />
                 <input
-                  className="enter-old-username"
-                  placeholder="Enter Old Username"
+                  className="confirm-new-username"
+                  placeholder="Confirm New Username"
                   type="text"
-                  value={oldUsername}
-                  onChange={(e) => setOldUsername(e.target.value)}
+                  value={confirmUsername}
+                  onChange={(e) => setConfirmUsername(e.target.value)}
                 />
                 <div className="enter-confirm-password">
-                  Enter Old Username:
+                  Enter Confirm Username:
                 </div>
+              </div>
+              <div className="changeuserbtn">
+                <button className="changeusernamebtn" onClick={onChangeUserButtonClick}>
+                  <div className="change-user">Change Username</div>
+                  <div className="error">{errorPasswordMessage}</div>
+                </button>
+              </div>
+              <div className="oldpasswordfield">
+                <div className="enteroldpasswordfield" />
+                <input
+                  className="enter-old-password"
+                  placeholder="Enter Old Password"
+                  type="text"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+                <div className="enter-confirm-password">
+                  Enter Old Password:
+                </div>
+              </div>
+              <div className="newpasswordfield">
+                <div className="enternewpasswordfield" />
+                <input
+                  className="enter-new-password"
+                  placeholder="Enter New Password"
+                  type="text"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <div className="enter-confirm-password">
+                  Enter New Password:
+                </div>
+              </div>
+              <div className="confirmpasswordfield">
+                <div className="confirmpasswordfield1" />
+                <input
+                  className="confirm-new-password"
+                  placeholder="Confirm New Password"
+                  type="text"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <div className="enter-confirm-password">
+                  Enter Confirm Password:
+                </div>
+              </div>
+              <div className="changepassbtn">
+                <button className="changepasswordbtn" onClick={onChangePassButtonClick}>
+                  <div className="change-password">Change Password</div>
+                  <div className="error">{errorUsernameMessage}</div>
+                </button>
               </div>
               <img className="divider1-icon" alt="" src="/divider1.svg" />
             </div>
@@ -292,11 +307,11 @@ const UserDash = (props)=> {
           </button>
         </div>
         <div className="footer">
-        <img className="copyrights-icon" alt="" src="/copyrights.svg" />
+          <img className="copyrights-icon" alt="" src="/copyrights.svg" />
           <div className="footer-info">
             <img className="contact-info-icon" alt="" src="/contactinfo.svg" />
             <div className="faqs">FAQs</div>
-            <div className="about-us">About Us</div>
+            <a href="https://www.google.com"> <div className="about-us" >About Us</div> </a>
             <b className="reservify">RESERVIFY</b>
           </div>
         </div>

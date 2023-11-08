@@ -1,19 +1,152 @@
-.sign-in-now {
-  text-decoration: underline;
-}
-.have-an-account-container1 {
-  line-break: anywhere;
-  width: 100%;
-}
-.have-an-account-container {
+.backgroundgradiant-icon,
+.reservify-icon {
   position: absolute;
-  top: 695px;
-  left: 207px;
-  text-align: center;
+  top: 67px;
+  left: 0;
+  width: 645px;
+  height: 804px;
+}
+.reservify-icon {
+  top: 10.3px;
+  width: 251.4px;
+  height: 31.3px;
+}
+.restaurant-1-icon {
+  position: absolute;
+  top: 0;
+  left: 265px;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+}
+.main-header,
+.titlelogo {
+  position: absolute;
+  top: 9px;
+  left: 32px;
+  width: 317px;
+  height: 52px;
+}
+.main-header {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  width: 1440px;
+  height: 70px;
+  overflow: hidden;
+}
+.restaurant-2-icon {
+  position: relative;
+  top: -50px;
+  left: 0px;
+  width: 279px;
+  height: 279px;
+  object-fit: cover;
+}
+.please-fill-out {
+  position: relative;
+  color: var(--color-gray-100);
+}
+.completenewconfirmpasswordfield{
+  position: absolute;
+  top: 413px;
+  left: 0;
+}
+.confirmpasswordtxt {
+  border: 0;
+  font-family: var(--font-montserrat);
+  font-size: var(--font-size-sm);
+  background-color: transparent;
+  position: absolute;
+  top: 36px;
+  left: 16px;
+  color: var(--color-gray-500);
+  text-align: left;
   display: flex;
   align-items: center;
+  width: 335px;
+  height: 34px;
+}
+.confirm-password {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 367px;
-  cursor: pointer;
+  height: 70px;
+}
+.confirmpasswordfield,
+.enterpasswordfield {
+  position: absolute;
+  top: 422px;
+  left: 0;
+  width: 367px;
+  height: 70px;
+}
+.enterpasswordfield {
+  top: 36px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  height: 34px;
+}
+.confirmpasswordfield,
+.enterconfpasswordfield {
+  position: absolute;
+  top: 600px;
+  left: 0;
+  width: 367px;
+  height: 70px;
+}
+.confirmpasswordfield, 
+.enternewpasswordfield {
+  position: absolute;
+  top: 413px;
+  left: 0px;
+  width: 367px;
+  height: 65px;
+}
+.enterconfpasswordfield {
+  top: 36px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-cornflowerblue);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  height: 34px;
+}
+.enterpassworldfield {
+  position: absolute;
+  top: 328px;
+  left: 0;
+  width: 367px;
+  height: 70px;
+}
+.emailfield,
+.enterphonefield,
+.enterusernamefield,
+.fullnamefield {
+  position: absolute;
+  top: 246px;
+  left: 0;
+  width: 367px;
+  height: 70px;
+}
+.emailfield,
+.enterusernamefield,
+.fullnamefield {
+  top: 164px;
+}
+.emailfield,
+.fullnamefield {
+  top: 82px;
+}
+.emailfield {
+  top: 0;
+}
+.registerformfields {
+  position: relative;
+  width: 367px;
+  height: 492px;
 }
 .registerbtncircle {
   position: absolute;
@@ -32,140 +165,50 @@
   font-weight: 500;
 }
 .registerbtn {
-  position: absolute;
-  top: 629px;
-  left: 212px;
+  position: relative;
   width: 365px;
   height: 34px;
   color: var(--color-white);
 }
-.enteremailcircle,
-.enteremailtxt {
-  position: absolute;
-  top: 36px;
-  height: 34px;
+.registerformfields-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
 }
-.enteremailtxt {
-  border: 0;
-  font-family: var(--font-montserrat);
-  font-size: var(--font-size-sm);
-  background-color: transparent;
-  left: 16px;
-  color: var(--color-gray-500);
-  text-align: left;
+.sign-in-now {
+  text-decoration: underline;
+}
+.have-an-account-container1 {
+  line-break: anywhere;
+  width: 100%;
+}
+.have-an-account-container {
+  position: relative;
+  padding: 30px;
+  text-align: center;
   display: flex;
   align-items: center;
-  width: 335px;
-}
-.enteremailcircle {
-  left: 0;
-  border-radius: var(--br-31xl);
-  background-color: var(--color-cornflowerblue);
-  border: 1px solid var(--color-black);
-  box-sizing: border-box;
   width: 367px;
+  cursor: pointer;
 }
-.email {
+.please-fill-out-form-to-regist-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-2xl);
+}
+.restaurant-2-parent {
   position: absolute;
-  top: 0;
-  left: 0;
-}
-.enteremailfield,
-.enterfullnamefield,
-.enterusernamefield {
-  position: absolute;
-  top: 97px;
-  left: 207px;
-  width: 367px;
-  height: 70px;
-}
-.enterfullnamefield,
-.enterusernamefield {
-  top: 179px;
-}
-.enterusernamefield {
-  top: 261px;
-}
-.confirmpasswordfield,
-.enterpassworldfield,
-.enterphonefield {
-  position: absolute;
-  top: 343px;
-  left: 207px;
-  width: 367px;
-  height: 70px;
-}
-.confirmpasswordfield,
-.enterpassworldfield {
-  top: 425px;
-}
-.confirmpasswordfield {
-  top: 507px;
-}
-.please-fill-out {
-  position: absolute;
-  top: 68px;
-  left: 291px;
-  color: var(--color-gray-100);
-}
-.registerpage {
-  position: absolute;
-  top: 61px;
-  left: 595px;
-  width: 785px;
-  height: 736px;
-}
-.reservify-icon,
-.signup-child {
-  position: absolute;
-  top: 66px;
-  left: 0;
-  width: 556px;
-  height: 805px;
-}
-.reservify-icon {
-  top: 10.3px;
-  width: 251.4px;
-  height: 31.3px;
-}
-.restaurant-1-icon {
-  position: absolute;
-  top: 0;
-  left: 265px;
-  width: 52px;
-  height: 52px;
-  object-fit: cover;
-}
-.main-header,
-.titlelogo {
-  position: absolute;
-  top: -287px;
-  left: -1468px;
-  width: 317px;
-  height: 52px;
-}
-.main-header {
-  top: 0;
-  left: 0;
-  background-color: var(--color-white);
-  width: 1440px;
-  height: 70px;
-  overflow: hidden;
-}
-.restaurant-2-icon {
-  position: absolute;
-  top: 249px;
-  left: 269px;
-  width: 279px;
-  height: 279px;
-  object-fit: cover;
-}
-.titlelogo1 {
-  position: absolute;
-  top: 9px;
-  left: 32px;
-  width: 317px;
-  height: 52px;
+  top: 112px;
+  left: 248px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 298px;
 }
 .signup {
   position: relative;
