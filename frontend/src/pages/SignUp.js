@@ -17,62 +17,69 @@ const Signup = (props) => {
   }, [navigate]);
 
   const isEmailValid = (email) => {
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   };
 
-  const isUsernameUnique = async (username) => {
-    // Implement the logic to check if the username is unique by making an API request to your backend.
-    try {
-      const response = await fetch(`http://localhost:8000/api/check-username?username=${username}`);
-      if (response.ok) {
-        const data = await response.json();
-        return data.isUnique;
-      }
-      throw new Error('Failed to check username uniqueness');
-    } catch (error) {
-      console.error('Username uniqueness check error:', error);
+  const isFullNameValid = (fullname) => {
+    if (!fullname || fullname.trim() === '') {
       return false;
     }
+    return true;
   };
+
+  //const isUsernameUnique = async (username) => {
+  //  try {
+  //    const response = await fetch(`http://localhost:8000/api/check-username?username=${username}`);
+  //    if (response.ok) {
+  //      const data = await response.json();
+  //      return data.isUnique;
+  //    }
+  //    throw new Error('Failed to check username uniqueness');
+  //  } catch (error) {
+  //    console.error('Username uniqueness check error:', error);
+  //    return false;
+  //  }
+  //};
+//
 
   const isPhoneNumberValid = (phoneNumber) => {
     const phoneRegex = /^\d{10}$/;
     return phoneRegex.test(phoneNumber);
   };
 
-  const doPasswordsMatch = () => {
-    return enterNewPassword === enterConfirmPassword;
-  };
-
-  const onSignUpButtonClick = async () => {
+  const onSignUpButtonClick = useCallback(async ()  => {
     if (!isEmailValid(enterEmail)) {
       setErrorPasswordMessage('Invalid email address.');
       return;
     }
 
-    const isUnique = await isUsernameUnique(enterUsername);
-    if (!isUnique) {
-      setErrorPasswordMessage('Username is already taken.');
-      return;
-    }
-
+    // const isUnique = await isUsernameUnique(enterUsername);
+    // if (!isUnique) {
+    //   setErrorPasswordMessage('Username is already taken.');
+    //   return;
+    // }
+ 
     if (!isPhoneNumberValid(enterPhoneNumber)) {
       setErrorPasswordMessage('Invalid phone number.');
       return;
     }
 
-    if (!doPasswordsMatch()) {
+    if (!isFullNameValid(enterFullName)) {
+      setErrorPasswordMessage('Name is required.');
+      return;
+    }
+
+    if (enterNewPassword !== enterConfirmPassword) {
       setErrorPasswordMessage('Passwords do not match.');
       return;
     }
 
-    // Continue with the registration logic here
     const jsonData = {
       email: enterEmail,
-      fullName: enterFullName,
+      name: enterFullName,
       username: enterUsername,
-      phoneNumber: enterPhoneNumber,
+      phone_number: enterPhoneNumber,
       password: enterNewPassword,
       confirmPassword: enterConfirmPassword,
     };
@@ -106,8 +113,9 @@ const Signup = (props) => {
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+  }, [enterEmail, enterFullName, enterUsername, enterPhoneNumber, enterNewPassword, enterConfirmPassword, navigate, setEnterEmail, setEnterFullName, setEnterUsername, setEnterPhoneNumber, setEnterNewPassword, setEnterConfirmPassword]);
 
+  
   return (
     <div className="signup">
       <img
@@ -136,7 +144,7 @@ const Signup = (props) => {
                 <div className="confirm-password">Email:</div>
                 <input
                   className="confirmpasswordtxt"
-                  placeholder="Enter Username"
+                  placeholder="Enter Email"
                   type="text"
                   value={enterEmail}
                   onChange={(e) => setEnterEmail(e.target.value)}
@@ -147,7 +155,7 @@ const Signup = (props) => {
                 <div className="confirm-password">Full Name:</div>
                 <input
                   className="confirmpasswordtxt"
-                  placeholder="Enter Username"
+                  placeholder="Enter Full Name"
                   type="text"
                   value={enterFullName}
                  onChange={(e) => setEnterFullName(e.target.value)}
@@ -163,7 +171,6 @@ const Signup = (props) => {
                   value={enterUsername}
                   onChange={(e) => setEnterUsername(e.target.value)}
                 />
-
               </div>
               <div className="enterphonefield">
                 <div className="enterpasswordfield" />
@@ -182,7 +189,7 @@ const Signup = (props) => {
                 <div className="confirm-password">Password:</div>
                 <input
                   className="confirmpasswordtxt"
-                  placeholder="Enter Username"
+                  placeholder="Enter Password"
                   type="text"
                   value={enterNewPassword}
                   onChange={(e) => setEnterNewPassword(e.target.value)}
@@ -194,7 +201,7 @@ const Signup = (props) => {
                 <div className="confirm-password">Confirm Password:</div>
                 <input
                   className="confirmpasswordtxt"
-                  placeholder="Enter Username"
+                  placeholder="Enter Confirm Password"
                   type="text"
                   value={enterConfirmPassword}
                   onChange={(e) => setEnterConfirmPassword(e.target.value)}
@@ -202,11 +209,9 @@ const Signup = (props) => {
               </div>
             </div>
             <div className="registerbtn">
-              <div
-                className="registerbtncircle"
-                onClick={onSignUpButtonClick}
-              />
+              <button className="registerbtncircle" onClick={onSignUpButtonClick}>
               <div className="registerbtntxt">Register</div>
+              </button>
             </div>
           </div>
           <div
@@ -217,8 +222,10 @@ const Signup = (props) => {
               <span>{`Have an account? `}</span>
               <b className="sign-in-now">Sign-In Now!</b>
             </span>
+            
           </div>
         </div>
+        <div className="error">Error: {errorPasswordMessage}</div>
       </div>
     </div>
   );

@@ -1,3 +1,7 @@
+html{
+  scroll-behavior:smooth;
+}
+
 .backgroundgradiant-icon,
 .reservify-icon {
   position: absolute;
@@ -53,7 +57,8 @@
   left: 0;
 }
 .confirmpasswordtxt {
-  border: 0;
+  border: none;
+  outline: none;
   font-family: var(--font-montserrat);
   font-size: var(--font-size-sm);
   background-color: transparent;
@@ -209,6 +214,13 @@
   align-items: center;
   justify-content: flex-start;
   gap: 298px;
+}
+.error{
+  position: absolute;
+  top: -69px;
+  left: -23px;
+  width: 367px;
+  height: 67px;
 }
 .signup {
   position: relative;

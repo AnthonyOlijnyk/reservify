@@ -21,6 +21,15 @@ const UserDash = (props) => {
   }, [navigate]);
 
   const onLogoutBtnClick = useCallback(() => {
+    fetch("http://localhost:8000/api/logout", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(response => response.json())
+      .then(data => {console.log("logged out")})
+      .catch(error => {console.error('Error:', error);});
     navigate("/");
   }, [navigate]);
 
@@ -40,8 +49,8 @@ const UserDash = (props) => {
       }
 
       const jsonData = {
-        oldUsername,
-        newUsername,
+        username: oldUsername,
+        new_username: newUsername,
         confirmUsername,
       };
 
@@ -57,14 +66,13 @@ const UserDash = (props) => {
 
       if (response.ok) {
         const data = await response.json();
-        if (data.success) {
+        if (data.username) {
           setOldUsername(oldUsername);
           setNewUsername(newUsername);
           setConfirmUsername(confirmUsername);
         } else {
-          const errorData = await response.json();
-          setErrorUsernameMessage(`Error: ${errorData.error}`);
-          console.log('User change error:', errorData);
+          setErrorUsernameMessage(`Error: ${data.error}`);
+          console.log('User change error:', data);
         }
       } else {
         console.error('Response status:', response.status);
@@ -93,7 +101,7 @@ const UserDash = (props) => {
       
       const jsonData = {
         oldPassword,
-        newPassword,
+        new_password: newPassword,
         confirmPassword,
       };
   
