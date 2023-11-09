@@ -2,25 +2,33 @@ import {useState, useCallback } from "react";
 import {Select,InputLabel,MenuItem,FormHelperText,FormControl,} from "@mui/material";
 import {LocalizationProvider,TimePicker,DatePicker,} from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { useNavigate, useParams} from "react-router-dom";
+import { useLocation, useNavigate, useParams} from "react-router-dom";
 import RatingForm from "../components/RatingForm";
 import "./ReservePage.css";
 import { useUser } from './UserContext'; 
 import Cookies from "universal-cookie";
 
-
-const ReservePage = () => {
+const ReservePage = (resturaunt) => {
   const [timeDateTimePickerValue, setTimeDateTimePickerValue] = useState(null);
   const [dateDateTimePickerValue, setDateDateTimePickerValue] = useState(null);
   const [numpeople, setNumPeople ] = useState("");
+  const [errorMessages, setErrorMessages] = useState([]);
+  const{restaurant_name} = useParams();
   const navigate = useNavigate();
   const{email}=useUser();
-  const{restaurant_name} = useParams();
+
+  const location = useLocation();
+  const restaurantData = location.state.restaurant;
+
+  const restaurantLocation = restaurantData.location;
+  const restaurantAbout = restaurantData.about;
+  const restaurantCuisine = restaurantData.cuisine;
+  const restaurantAveCost = restaurantData.ave_cost;
+  const restaurantAveRating = restaurantData.ave_rating;
 
   const handleNumPeopleChange = (event) => {
     setNumPeople(event.target.value); 
   };
-
   const onReserveNowBtnClick = useCallback(() => {
     const monthNameToNumber = {
       Jan: 1,
@@ -51,7 +59,6 @@ const ReservePage = () => {
     
     const number_of_people = parseInt(numpeople, 10);
     const jsonData = {start_time, number_of_people, restaurant_name};
-
     const cookies = new Cookies();
 
     console.log(jsonData)
@@ -62,14 +69,28 @@ const ReservePage = () => {
         body: JSON.stringify(jsonData),
       })
       .then(response => response.json())
-      .then(data => {console.log(data); })
+      .then(data => 
+        {
+          if (data.success){
+            navigate(`/reservation-confirmation`,{state: {restaurant_name}});
+        }
+        else
+        {
+          const errors = Object.entries(data.errors).map(([ key, value ]) => (
+            `${(key.charAt(0).toUpperCase() + key.slice(1)).replaceAll('_', ' ')} error: ${value}`
+          ));
+          console.log(errors);
+          setErrorMessages(errors);
+        }})
       .catch(error => {console.error('Error:', error);});
-
-    navigate("/reservation-confirmation");
-  }, [navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name]);
+  },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name, setErrorMessages]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");
+  }, [navigate]);
+
+  const onUserDash = useCallback(() => {
+    navigate("/user-dash");
   }, [navigate]);
 
   return (
@@ -79,13 +100,7 @@ const ReservePage = () => {
         <img className="footer-icon2" alt="" src="/footer2.svg" />
         <div className="map-image-parent">
           <img className="map-image-icon" alt="" src="/map-image@2x.png" />
-          <div className="about-paragraph">
-            Don Alfonso is the first restaurant in North America from Michelin
-            Star Chefs Alfonso and Ernesto Iaccarino serving a menu of Amalfi
-            coast Flavours in an interior accented by priceless art. tasting
-            menus interpret Italian ingredients through molecular gastronomy,
-            plated in vessels custom designed for each specific dish.
-          </div>
+          <div className="about-paragraph">{restaurantAbout}</div>
           <b className="about">ABOUT</b>
           <b className="info">INFO</b>
           <b className="map">
@@ -159,16 +174,15 @@ const ReservePage = () => {
           <div className="pick-the-restaurants">
             Pick the restaurant's reservation information
           </div>
+          {errorMessages.map((errorMessage, index) => <div key={index} className="error1">{errorMessage}</div>)}
         </div>
         <div className="info-box">
           <div className="info-box-child" />
           <img className="steak-image-icon" alt="" src="/steak-image@2x.png" />
-          <div className="cuisine-italian">Cuisine: Italian</div>
-          <div className="average-cost-50">Average Cost: 50$ pp</div>
-          <div className="price-range">Price range: $$</div>
-          <div className="average-cost-50">Average Cost: 50$ pp</div>
+          <div className="cuisine-italian">Cuisine: {restaurantCuisine}</div>
+          <div className="average-cost-50">Average Cost: {restaurantAveCost}$ pp</div>
         </div>
-        <RatingForm />
+        <RatingForm aveRating={restaurantAveRating}/>
         <div className="section-header">
           <div className="frame-wrapper">
             <div className="frame15">
@@ -184,10 +198,8 @@ const ReservePage = () => {
           </div>
         </div>
         <div className="top-titles">
-          <b className="don-alfonso-19801">DON ALFONSO 1980</b>
-          <div className="food-street-toronto3">
-            100 Food Street, Toronto, CA
-          </div>
+          <b className="resturaunt-name1">{restaurant_name}</b>
+          <div className="location">{restaurantLocation}</div>
         </div>
         <div className="rest-images">
           <img
@@ -197,7 +209,7 @@ const ReservePage = () => {
           />
           <div className="frame-parent">
             <div className="frame16" />
-            <b className="don-alfonso-19802">Don Alfonso 1980</b>
+          <b className="resturaunt-name2">{restaurant_name}</b>
           </div>
         </div>
         <div className="main-header4">
@@ -206,6 +218,7 @@ const ReservePage = () => {
               className="bxbxs-user-circle-icon2"
               alt=""
               src="/bxbxsusercircle.svg"
+              onClick={onUserDash}
             />
             <img
               className="search-icon1"
