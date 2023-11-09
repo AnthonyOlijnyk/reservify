@@ -28,4 +28,5 @@ urlpatterns = [
     path('api/users/<str:username>/update/', UserUpdateUsernameView.as_view(), name='update-username'),
     path('api/users/<str:username>/update/password/', UserUpdatePasswordView.as_view(), name='update-password'),
     path('RestaurantApp/', include('RestaurantApp.urls')),
+    path('ReservationApp/', include('ReservationApp.urls'))
 ]
