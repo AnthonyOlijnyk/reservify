@@ -37,7 +37,7 @@ const SearchPage = () => {
           {results.map((restaurant, index) => (
             <div className="restaurant" key={index}>
             <div className="property-col" />
-            <img className="property-col-icon" alt="" src={restaurant.image}/>
+            <img className="property-col-icon" alt="" src={restaurant.imageNum}/>
             <div className="reserve-btn" onClick={() => onReserveBtnContainerClick(restaurant)}>
               <div className="reserve-btn-child" />
               <b className="reserve">Reserve</b>

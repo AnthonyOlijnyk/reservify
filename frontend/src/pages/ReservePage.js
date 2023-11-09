@@ -25,6 +25,7 @@ const ReservePage = (resturaunt) => {
   const restaurantCuisine = restaurantData.cuisine;
   const restaurantAveCost = restaurantData.ave_cost;
   const restaurantAveRating = restaurantData.ave_rating;
+  const restaurantImageNum = restaurantData.imageNum;
 
   const handleNumPeopleChange = (event) => {
     setNumPeople(event.target.value); 
@@ -205,7 +206,7 @@ const ReservePage = (resturaunt) => {
           <img
             className="rest-images-child"
             alt=""
-            src="/rectangle-40417@2x.png"
+            src={restaurantImageNum}
           />
           <div className="frame-parent">
             <div className="frame16" />
