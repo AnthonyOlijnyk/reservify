@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./SignUp.css";
 
@@ -10,7 +10,10 @@ const Signup = (props) => {
   const [enterPhoneNumber, setEnterPhoneNumber] = useState('');
   const [enterNewPassword, setEnterNewPassword] = useState('');
   const [enterConfirmPassword, setEnterConfirmPassword] = useState('');
-  const [errorPasswordMessage, setErrorPasswordMessage] = useState('');
+  const [Success, setSuccess] = useState('');
+  const [Errors, setErrors] = useState('');
+
+  console.log('Errors1:', Errors);
 
   const onHaveAnAccountClick = useCallback(() => {
     navigate("/");
@@ -50,28 +53,28 @@ const Signup = (props) => {
 
   const onSignUpButtonClick = useCallback(async ()  => {
     if (!isEmailValid(enterEmail)) {
-      setErrorPasswordMessage('Invalid email address.');
+      setErrors('Invalid email address.');
       return;
     }
 
     // const isUnique = await isUsernameUnique(enterUsername);
     // if (!isUnique) {
-    //   setErrorPasswordMessage('Username is already taken.');
+    //   setErrors('Username is already taken.');
     //   return;
     // }
  
     if (!isPhoneNumberValid(enterPhoneNumber)) {
-      setErrorPasswordMessage('Invalid phone number.');
+      setErrors('Invalid phone number.');
       return;
     }
 
     if (!isFullNameValid(enterFullName)) {
-      setErrorPasswordMessage('Name is required.');
+      setErrors('Name is required.');
       return;
     }
 
     if (enterNewPassword !== enterConfirmPassword) {
-      setErrorPasswordMessage('Passwords do not match.');
+      setErrors('Passwords do not match.');
       return;
     }
 
@@ -94,21 +97,29 @@ const Signup = (props) => {
       });
 
       if (response.ok) {
-        const data = await response.json(); // Extract response data as JSON
-        if (data.success) {
           setEnterEmail(enterEmail);
           setEnterFullName(enterFullName);
           setEnterUsername(enterUsername);
           setEnterPhoneNumber(enterPhoneNumber);
           setEnterNewPassword(enterNewPassword);
           setEnterConfirmPassword(enterConfirmPassword);
-          navigate("/"); 
-        }else {
-          setErrorPasswordMessage(`Error: ${data.error}`);
-          console.error('Signup error:', data);
-        }
+          setSuccess(`Registration Success, Rerouting to HomePage`); 
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 5000);
       } else {
-        console.error('Response status:', response.status);
+        const data = await response.json()
+        let errorMessage = '';
+        console.error('Message:', data.message);
+        console.error('Errors:', data.errors);
+        if (data.errors.email) {
+          errorMessage += `Email: ${data.errors.email.join(', ')} `;
+        } if (data.errors.username) {
+          errorMessage += `Username: ${data.errors.username.join(', ')} `;
+        } if (data.errors.password){
+          errorMessage += `Password: ${data.errors.password.join(', ')} `;
+        }
+        setErrors(errorMessage);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -225,7 +236,8 @@ const Signup = (props) => {
             
           </div>
         </div>
-        <div className="error">Error: {errorPasswordMessage}</div>
+        <div className="success">{Success}</div>
+        <div className="error">{Errors}</div>
       </div>
     </div>
   );
