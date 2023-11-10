@@ -8,6 +8,9 @@ from .models import User
 from .serializers import UserSerializer
 from .forms import SignupForm
 
+from .utils.signup import send_email_confirmation
+from core.utils.authorization import check_user_authorized, get_user_id
+
 import jwt, datetime, os
 
 class SignUpView(APIView):
@@ -18,6 +21,7 @@ class SignUpView(APIView):
             serializer = UserSerializer(data=form.cleaned_data)
             if serializer.is_valid():
                 serializer.save()
+                send_email_confirmation(request.data['email'])
                 return Response({
                     'success': True,
                     'message': 'Registration successful. Welcome to our platform!'
@@ -68,21 +72,14 @@ class LoginView(APIView):
     
 class UserView(APIView):
     def get(self, request):
-        token = request.COOKIES.get('jwt')
+        authorization_errors = check_user_authorized(request)
 
-        response = Response()
-
-        if not token:
-            response.data = { 'success': False, 'error': 'Unauthorized action.' }
-            return response
-
-        try:
-            payload = jwt.decode(token, os.environ.get('JWT_SECRET_KEY'), algorithms=['HS256'])
-        except jwt.ExpiredSignatureError:
-            response.data = { 'success': False, 'error': 'The current session has expired.' }
-            return response
+        if authorization_errors:
+            return authorization_errors
         
-        user = User.objects.filter(id=payload['id']).first()
+        response = Response()
+        
+        user = User.objects.get(pk=get_user_id(request))
         
         serializer = UserSerializer(user)
         response.data = serializer.data | { 'success': True }
