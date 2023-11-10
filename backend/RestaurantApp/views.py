@@ -7,7 +7,7 @@ def search(request):
     
     VALID_FIELDS = [
         'about', 'address', 'average_cost_for_two', 'average_review_rating', 
-        'city', 'country', 'cuisines', 'name'
+        'city', 'country', 'cuisines', 'name', 'imageNum'
     ]
 
     if field not in VALID_FIELDS:
@@ -16,5 +16,5 @@ def search(request):
     filter_kwargs = {f"{field}__icontains": query}
     items = Restaurant.objects.filter(**filter_kwargs)
 
-    results = [{'id': item.id, 'name': item.name, 'about': item.about} for item in items]
+    results = [{'id': item.id, 'name': item.name, 'about': item.about,'location': item.address,'cuisine': item.cuisines, 'imageNum': item.imageNum, 'ave_cost' : item.average_cost_for_two,'ave_rating' : item.average_review_rating } for item in items]
     return JsonResponse(results, safe=False)

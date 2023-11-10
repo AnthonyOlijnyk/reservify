@@ -43,29 +43,29 @@
   height: 406.5px;
   object-fit: cover;
 }
-.don-alfonso-1980,
-.food-street-toronto {
+.restaurant-name,
+.restaurant-location {
   position: absolute;
   left: 26px;
   display: inline-block;
 }
-.don-alfonso-1980 {
+.restaurant-name {
   top: 410px;
   font-size: var(--font-size-5xl);
   width: 289px;
   height: 23px;
 }
-.food-street-toronto {
-  top: 445px;
+.restaurant-location {
+  top: 500px;
   font-weight: 500;
   color: var(--color-dimgray);
-  width: 450.6px;
+  width: 300px;
   height: 25.4px;
 }
 .reserve-btn-child {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 350px;
   border-radius: var(--br-11xl);
   background-color: var(--color-firebrick-300);
   border: 1px solid var(--color-firebrick-200);
@@ -75,8 +75,8 @@
 }
 .reserve {
   position: absolute;
-  top: 12px;
-  left: 31px;
+  top: 10px;
+  left: 390px;
   letter-spacing: 0.07em;
   display: inline-block;
   width: 92px;
@@ -114,44 +114,13 @@
   bottom: 22.68%;
   left: 74.22%;
 }
-.restaurant-1 {
+.restaurant {
   position: relative;
   width: 574px;
   height: 560px;
   color: var(--color-crimson);
 }
-.lenny1,
-.pier-street-toronto1 {
-  position: absolute;
-  left: 26px;
-  display: inline-block;
-}
-.lenny1 {
-  top: 407px;
-  font-size: var(--font-size-5xl);
-  color: var(--color-crimson);
-  width: 289px;
-  height: 23px;
-}
-.pier-street-toronto1 {
-  top: 445px;
-  width: 450.6px;
-  height: 25.4px;
-}
-.property-image2,
-.restaurant-2-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  width: 574px;
-  height: 406.6px;
-}
-.restaurant-2-child {
-  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
-  height: 383px;
-  object-fit: cover;
-}
+
 .reserve1 {
   position: absolute;
   top: 13px;
@@ -160,15 +129,6 @@
   display: inline-block;
   width: 92px;
   height: 29px;
-}
-.reserve-btn1 {
-  position: absolute;
-  top: 496px;
-  left: 26px;
-  width: 166px;
-  height: 42px;
-  text-align: center;
-  font-family: var(--font-inter);
 }
 .group-icon1,
 .rating2-icon {
@@ -191,65 +151,6 @@
   bottom: 23.75%;
   left: 70.91%;
 }
-.restaurant-2 {
-  position: relative;
-  width: 574px;
-  height: 560px;
-}
-.property-col2,
-.property-image3 {
-  position: absolute;
-  top: 2.1px;
-  left: 0;
-  width: 574px;
-}
-.property-col2 {
-  border-radius: var(--br-base);
-  background-color: var(--color-white);
-  box-shadow: 0 0 10px #e5e5e5;
-  height: 558px;
-}
-.property-image3 {
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  background-color: var(--color-gainsboro);
-  height: 384px;
-}
-.food-street-toronto1 {
-  position: absolute;
-  top: 447px;
-  left: 26px;
-  font-weight: 500;
-  display: inline-block;
-  width: 230px;
-  height: 26px;
-}
-.property-image4,
-.restaurant-3-child {
-  position: absolute;
-  top: 0.1px;
-  left: 0;
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  width: 574px;
-  height: 406.6px;
-}
-.restaurant-3-child {
-  top: 0;
-  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
-  width: 572px;
-  height: 386px;
-  object-fit: cover;
-}
-.reserve-btn2 {
-  position: absolute;
-  top: 497px;
-  left: 25px;
-  width: 166px;
-  height: 42px;
-  text-align: center;
-  color: var(--color-black);
-  font-family: var(--font-inter);
-}
-.group-icon2,
 .rating-icon1 {
   position: absolute;
   height: 4.75%;
@@ -270,231 +171,6 @@
   bottom: 21.26%;
   left: 74.22%;
 }
-.fomufuku {
-  position: absolute;
-  top: 415px;
-  left: 26px;
-  font-size: var(--font-size-5xl);
-  display: inline-block;
-  color: var(--color-crimson);
-  width: 289px;
-  height: 23px;
-}
-.restaurant-3 {
-  position: relative;
-  width: 574px;
-  height: 560.1px;
-  color: var(--color-dimgray);
-}
-.green-avenue-toronto {
-  position: absolute;
-  top: 447px;
-  left: 26px;
-  display: inline-block;
-  width: 243px;
-  height: 26px;
-}
-.restaurant-4-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
-  width: 574px;
-  height: 386px;
-  object-fit: cover;
-}
-.reserve-btn3 {
-  position: absolute;
-  top: 497px;
-  left: 26px;
-  width: 166px;
-  height: 42px;
-  text-align: center;
-  font-family: var(--font-inter);
-}
-.restaurant-4 {
-  position: relative;
-  width: 574px;
-  height: 560.1px;
-}
-.property-col4 {
-  position: absolute;
-  top: 2.4px;
-  left: 0;
-  border-radius: var(--br-base);
-  background-color: var(--color-white);
-  box-shadow: 0 0 10px #e5e5e5;
-  width: 574px;
-  height: 558px;
-}
-.remezzos {
-  position: absolute;
-  top: 414.8px;
-  left: 26px;
-  font-size: var(--font-size-5xl);
-  display: inline-block;
-  color: var(--color-crimson);
-  width: 289px;
-  height: 23px;
-}
-.property-image7 {
-  position: absolute;
-  top: 2.4px;
-  left: 0;
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  background-color: var(--color-gainsboro);
-  width: 574px;
-  height: 384px;
-}
-.bean-street-toronto {
-  position: absolute;
-  top: 448.8px;
-  left: 26px;
-  display: inline-block;
-  width: 230px;
-  height: 25px;
-}
-.property-image8,
-.restaurant-5-child {
-  position: absolute;
-  top: 0.4px;
-  left: 0;
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  width: 574px;
-  height: 406.6px;
-}
-.restaurant-5-child {
-  top: 0;
-  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
-  width: 577px;
-  height: 386px;
-  object-fit: cover;
-}
-.group-icon4,
-.rating-icon3 {
-  position: absolute;
-  height: 3.57%;
-  width: 18.37%;
-  top: 75.09%;
-  right: 7.8%;
-  bottom: 21.34%;
-  left: 73.83%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.group-icon4 {
-  height: 4.75%;
-  width: 4.96%;
-  top: 5.55%;
-  right: 7.57%;
-  bottom: 89.7%;
-  left: 87.47%;
-}
-.reserve-btn4 {
-  position: absolute;
-  top: 496.8px;
-  left: 25px;
-  width: 166px;
-  height: 42px;
-  text-align: center;
-  font-family: var(--font-inter);
-}
-.restaurant-5 {
-  position: relative;
-  width: 577px;
-  height: 560.4px;
-}
-.property-col5 {
-  position: absolute;
-  top: 2.4px;
-  left: 0;
-  border-radius: var(--br-base);
-  background-color: var(--color-white);
-  box-shadow: 0 0 10px #e5e5e5;
-  width: 574px;
-  height: 558.4px;
-}
-.amara {
-  position: absolute;
-  top: 414.8px;
-  left: 26px;
-  font-size: var(--font-size-5xl);
-  display: inline-block;
-  width: 289px;
-  height: 23px;
-}
-.property-image9 {
-  position: absolute;
-  top: 2.4px;
-  left: 0;
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  background-color: var(--color-gainsboro);
-  width: 574px;
-  height: 384.3px;
-}
-.food-street-toronto2 {
-  position: absolute;
-  top: 448.8px;
-  left: 26px;
-  font-weight: 500;
-  color: var(--color-dimgray);
-  display: inline-block;
-  width: 235px;
-  height: 25px;
-}
-.property-image10,
-.restaurant-6-child {
-  position: absolute;
-  top: 0.4px;
-  left: 0;
-  border-radius: var(--br-base) var(--br-base) 0 0;
-  width: 574px;
-  height: 407px;
-}
-.restaurant-6-child {
-  top: 0;
-  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
-  height: 386.3px;
-  object-fit: cover;
-}
-.group-icon5,
-.rating-icon4 {
-  position: absolute;
-  height: 3.57%;
-  width: 18.47%;
-  top: 75.04%;
-  right: 7.32%;
-  bottom: 21.4%;
-  left: 74.22%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.group-icon5 {
-  height: 4.76%;
-  width: 4.98%;
-  top: 5.55%;
-  right: 7.09%;
-  bottom: 89.69%;
-  left: 87.93%;
-}
-.reserve-btn5 {
-  position: absolute;
-  top: 496.8px;
-  left: 26px;
-  width: 166px;
-  height: 42px;
-  text-align: center;
-  color: var(--color-black);
-  font-family: var(--font-inter);
-}
-.restaurant-6 {
-  position: relative;
-  width: 574px;
-  height: 560.8px;
-  color: var(--color-crimson);
-}
 .restaurant-1-parent {
   position: absolute;
   top: 434px;
@@ -507,6 +183,12 @@
   justify-content: flex-start;
   gap: 96px;
 }
+.restaurant-container {
+  min-height: 300px; /* Set a minimum height */
+  max-height: 600px; /* Adjust this value as needed */
+  overflow-y: auto; /* Add vertical scroll if needed */
+}
+
 .results-found {
   position: absolute;
   top: 302px;
@@ -563,10 +245,7 @@
   width: 54px;
   height: 54px;
 }
-.round-search1:hover {
-  animation: 1s ease 0s infinite normal none scale-up;
-  opacity: 1;
-}
+
 .search-restaurants-cuisines1 {
   border: 0;
   font-family: var(--font-montserrat);
@@ -652,7 +331,6 @@
   height: 52px;
   object-fit: cover;
 }
-.footer-icon1,
 .titlelogo4 {
   position: absolute;
   top: 9px;
@@ -660,12 +338,14 @@
   width: 317px;
   height: 52px;
 }
-.footer-icon1 {
-  top: 2464px;
-  left: 0;
-  width: 1440px;
-  height: 328px;
-}
+/*
+.footer-icon {
+  position: absolute;
+  top: 1000px;
+  left: 32px;
+  width: 317px;
+  height: 52px;
+}*/
 .searchpage {
   position: relative;
   border-radius: var(--br-xl);

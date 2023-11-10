@@ -7,8 +7,9 @@ const SearchPage = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  const onReserveBtnContainerClick = useCallback(() => {
-    navigate("/reservepage");
+  const onReserveBtnContainerClick = useCallback((restaurant) => {
+    console.log(restaurant)
+    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
   }, [navigate]);
 
   const onRoundSearchContainerClick = useCallback(() => {
@@ -31,30 +32,23 @@ const SearchPage = () => {
   return (
     <div className="searchpage">
       <div className="mainframe1" />
-      <div className="restaurant-1-parent">
-        {results.map((restaurant, index) => (
-          <div key={restaurant.id} className={`restaurant-${index + 1}`}>
+        <div className="restaurant-container" > 
+          <div className="restaurant-1-parent">
+          {results.map((restaurant, index) => (
+            <div className="restaurant" key={index}>
             <div className="property-col" />
-            <div className="property-image" />
-            <img
-              className="property-col-icon"
-              alt=""
-              src="/property-col@2x.png"
-            />
-            <b className={restaurant.name}>{restaurant.name}</b>
-            <div className="restaurant-address">
-              {restaurant.address}, {restaurant.city}, {restaurant.country}
-            </div>
-            <div className="reserve-btn" onClick={onReserveBtnContainerClick}>
+            <img className="property-col-icon" alt="" src={restaurant.imageNum}/>
+            <div className="reserve-btn" onClick={() => onReserveBtnContainerClick(restaurant)}>
               <div className="reserve-btn-child" />
               <b className="reserve">Reserve</b>
             </div>
-            <img className="group-icon" alt="" src="/group.svg" />
+            <b className="restaurant-name">{restaurant.name}</b>
+            <div className="restaurant-location">{restaurant.location}</div>
             <img className="rating-icon" alt="" src="/rating.svg" />
           </div>
         ))}
+        </div>
       </div>
-
       <b className="results-found">{results.length} Results Found</b>
       <div className="search-bar1">
         <img className="search-bar-item" alt="" src="/rectangle-4.svg" />
@@ -97,7 +91,7 @@ const SearchPage = () => {
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />
       </div>
-      <img className="footer-icon1" alt="" src="/footer1.svg" />
+      {/*<img className="footer-icon" alt="" src="/footer1.svg" />*/}
     </div>
   );
 };

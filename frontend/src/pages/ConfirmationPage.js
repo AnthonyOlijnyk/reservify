@@ -1,20 +1,27 @@
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./ConfirmationPage.css";
 
 const ConfirmationPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const restaurantName = location.state.restaurant_name;
+  console.log("rest name:", {restaurantName});
+  
+  const onCheckReservations = useCallback(() => {
+    navigate("/user-dash");
+  }, [navigate]);
 
-  const onFrameContainer6Click = useCallback(() => {
+  const onUserDash = useCallback(() => {
     navigate("/user-dash");
   }, [navigate]);
 
   const onSearchIconClick = useCallback(() => {
-    navigate("/homepage");
+    navigate("/searchpage");
   }, [navigate]);
 
   const onBackToHomePageClick = useCallback(() => {
-    navigate("/homepage");
+    navigate("/homepagepage");
   }, [navigate]);
 
   return (
@@ -22,18 +29,19 @@ const ConfirmationPage = () => {
       <div className="mainframe3" />
       <img className="footer-icon4" alt="" src="/footer2.svg" />
       <div className="frame17">
-        <div className="main-header-group" onClick={onFrameContainer6Click}>
+        <div className="main-header-group">
           <div className="main-header6">
             <div className="homepagebtn1">
               <img
                 className="bxbxs-user-circle-icon4"
                 alt=""
                 src="/bxbxsusercircle.svg"
+                onClick={onUserDash}
               />
               <img
                 className="search-icon3"
                 alt=""
-                src="/search-icon1.svg"
+                src="/search-icon1.svg" 
                 onClick={onSearchIconClick}
               />
             </div>
@@ -75,17 +83,16 @@ const ConfirmationPage = () => {
                   <div className="frame21" />
                 </div>
                 <div className="frame22">
-                  <b className="don-alfonso-19803">Don Alfonso 1980</b>
+                  <b className="restaurant-name3">{restaurantName}</b>
                 </div>
               </div>
             </div>
           </div>
-          <img className="line-icon" alt="" src="/line-18.svg" />
           <div className="back-to-homepage-parent">
             <div className="back-to-homepage" onClick={onBackToHomePageClick}>
               <b className="check-reservations">Home</b>
             </div>
-            <div className="checkresbtn">
+            <div className="checkresbtn" onClick={onCheckReservations}>
               <b className="check-reservations">Check Reservations</b>
             </div>
           </div>

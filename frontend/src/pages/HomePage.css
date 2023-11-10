@@ -60,10 +60,6 @@
   width: 54px;
   height: 54px;
 }
-.round-search:hover {
-  animation: 1s ease 0s infinite normal none scale-up;
-  opacity: 1;
-}
 .search-restaurants-cuisines {
   border: 0;
   font-family: var(--font-montserrat);
