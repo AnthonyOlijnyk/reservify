@@ -162,6 +162,10 @@ html{
   width: 365px;
   height: 34px;
   cursor: pointer;
+  color: var(--color-white);
+  text-align: left;
+  font-size: var(--font-size-base);
+  font-family: var(--font-inter);
 }
 .registerbtntxt {
   position: absolute;
@@ -191,7 +195,7 @@ html{
 }
 .have-an-account-container {
   position: relative;
-  padding: 30px;
+  top:40px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -215,21 +219,48 @@ html{
   justify-content: flex-start;
   gap: 298px;
 }
-.error{
-  position: absolute;
-  top: -69px;
-  left: -23px;
-  width: 367px;
-  height: 67px;
-}
+
 .signup {
   position: relative;
   background-color: var(--color-white);
   width: 100%;
-  height: 871px;
+  height: 1000px;
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-base);
   color: var(--color-black);
   font-family: var(--font-inter);
+}
+
+.successmsg {
+  position: absolute;
+  top: 650px;
+  left: 590px;
+  width: 367px;
+  height: 67px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  font-family: var(--font-inter);
+  color: var(--color-black);
+}
+
+.errormsg {
+  position: absolute;
+  top: 650px;
+  left: 590px;
+  width: 367px;
+  height: 67px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  font-family: var(--font-inter);
+  color: var(--color-black);
+  opacity: 100;
 }
