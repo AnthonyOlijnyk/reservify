@@ -10,7 +10,10 @@ const Signup = (props) => {
   const [enterPhoneNumber, setEnterPhoneNumber] = useState('');
   const [enterNewPassword, setEnterNewPassword] = useState('');
   const [enterConfirmPassword, setEnterConfirmPassword] = useState('');
-  const [errorPasswordMessage, setErrorPasswordMessage] = useState('');
+  const [Success, setSuccess] = useState('');
+  const [Errors, setErrors] = useState('');
+
+  console.log('Errors1:', Errors);
 
   const onHaveAnAccountClick = useCallback(() => {
     navigate("/");
@@ -50,28 +53,28 @@ const Signup = (props) => {
 
   const onSignUpButtonClick = useCallback(async ()  => {
     if (!isEmailValid(enterEmail)) {
-      setErrorPasswordMessage('Invalid email address.');
+      setErrors('Error: Please enter a valid email address.');
       return;
     }
 
     // const isUnique = await isUsernameUnique(enterUsername);
     // if (!isUnique) {
-    //   setErrorPasswordMessage('Username is already taken.');
+    //   setErrors('Username is already taken.');
     //   return;
     // }
  
     if (!isPhoneNumberValid(enterPhoneNumber)) {
-      setErrorPasswordMessage('Invalid phone number.');
+      setErrors('Error: Please enter a valid phone number.');
       return;
     }
 
     if (!isFullNameValid(enterFullName)) {
-      setErrorPasswordMessage('Name is required.');
+      setErrors('Error: Name is required.');
       return;
     }
 
     if (enterNewPassword !== enterConfirmPassword) {
-      setErrorPasswordMessage('Passwords do not match.');
+      setErrors('Error: Passwords do not match.');
       return;
     }
 
@@ -94,28 +97,40 @@ const Signup = (props) => {
       });
 
       if (response.ok) {
-        const data = await response.json(); // Extract response data as JSON
-        if (data.success) {
           setEnterEmail(enterEmail);
           setEnterFullName(enterFullName);
           setEnterUsername(enterUsername);
           setEnterPhoneNumber(enterPhoneNumber);
           setEnterNewPassword(enterNewPassword);
           setEnterConfirmPassword(enterConfirmPassword);
-          navigate("/"); 
-        }else {
-          setErrorPasswordMessage(`Error: ${data.error}`);
-          console.error('Signup error:', data);
-        }
+          setSuccess(`Registration Success, Rerouting to Login Page`); 
+          setErrors('');
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 5000);
       } else {
-        console.error('Response status:', response.status);
+        const data = await response.json()
+        let errorMessage = '';
+        console.error('Message:', data.message);
+        console.error('Errors:', data.errors);
+        if (data.errors.email) {
+          errorMessage += `Email: ${data.errors.email.join(', ')} `;
+        } if (data.errors.username) {
+          errorMessage += `Username: ${data.errors.username.join(', ')} `;
+        } if (data.errors.password){
+          errorMessage += `Password: ${data.errors.password.join(', ')} `;
+        }
+        setErrors(errorMessage);
+        setTimeout(() => {
+          setErrors('');
+        }, 3000);
       }
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [enterEmail, enterFullName, enterUsername, enterPhoneNumber, enterNewPassword, enterConfirmPassword, navigate, setEnterEmail, setEnterFullName, setEnterUsername, setEnterPhoneNumber, setEnterNewPassword, setEnterConfirmPassword]);
 
-  
+  }, [enterEmail, enterFullName, enterUsername, enterPhoneNumber, enterNewPassword, enterConfirmPassword, setEnterEmail, setEnterFullName, setEnterUsername, setEnterPhoneNumber, setEnterNewPassword, setEnterConfirmPassword]);
+
   return (
     <div className="signup">
       <img
@@ -194,7 +209,6 @@ const Signup = (props) => {
                   value={enterNewPassword}
                   onChange={(e) => setEnterNewPassword(e.target.value)}
                 />
-
               </div>
               <div className="completenewconfirmpasswordfield">
                 <div className="enterconfpasswordfield" />
@@ -213,19 +227,19 @@ const Signup = (props) => {
               <div className="registerbtntxt">Register</div>
               </button>
             </div>
+            <div className="successmsg">{Success}</div>
+            <div className="errormsg">{Errors}</div>
           </div>
           <div
             className="have-an-account-container"
             onClick={onHaveAnAccountClick}
           >
-            <span className="have-an-account-container1">
+            <span className="have-an-account-container1" onClick={onHaveAnAccountClick}>
               <span>{`Have an account? `}</span>
               <b className="sign-in-now">Sign-In Now!</b>
             </span>
-            
           </div>
         </div>
-        <div className="error">Error: {errorPasswordMessage}</div>
       </div>
     </div>
   );

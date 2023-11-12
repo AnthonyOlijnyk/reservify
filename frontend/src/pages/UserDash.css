@@ -63,10 +63,18 @@ html{
   overflow: hidden;
 }
 .changepasswordbtn {
+  position: absolute;
   top: 0;
   left: 0;
-  border-radius: var(--br-xl);
+  border-radius: var(--br-31xl);
   background-color: var(--color-firebrick-100);
+  width: 365px;
+  height: 34px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-white);
+  font-size: var(--font-size-base-4);
+  font-family: var(--font-montserrat);
 }
 .change-password,
 .changepassbtn,
@@ -78,7 +86,6 @@ html{
 .change-password {
   top: 0;
   left: 0;
-  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,10 +210,18 @@ html{
   height: 67px;
 }
 .changeusernamebtn {
+  position: absolute;
   top: 0;
   left: 0;
-  border-radius: var(--br-xl);
+  border-radius: var(--br-31xl);
   background-color: var(--color-firebrick-100);
+  width: 365px;
+  height: 34px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-white);
+  font-size: var(--font-size-base-4);
+  font-family: var(--font-montserrat);
 }
 .change-user,
 .changeuserbtn,
@@ -218,7 +233,6 @@ html{
 .change-user {
   top: 0;
   left: 0;
-  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;

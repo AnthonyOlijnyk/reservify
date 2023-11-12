@@ -71,6 +71,7 @@ const SearchPage = () => {
           <div className="akar-iconsglobe" />
         </div>
       </div>
+
       <div className="initial-options1">
         <img
           className="bxbxs-user-circle-icon1"
@@ -85,6 +86,7 @@ const SearchPage = () => {
           onClick={onSearchIconClick}
         />
       </div>
+
       <div className="titlelogo4">
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />

@@ -127,7 +127,7 @@ const Login = (props)=> {
         <div className="frame14">
           <img className="frame-child" alt="" src="/rectangle-7.svg" />
           <img
-            className="restaurant-2-icon"
+            className="restaurant-3-icon"
             alt=""
             src="/restaurant-2@2x.png"
           />
