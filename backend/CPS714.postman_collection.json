@@ -67,6 +67,34 @@
 			"response": []
 		},
 		{
+			"name": "ReservationApp/api/reservations/update_state/",
+			"request": {
+			  "method": "PUT",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				},
+				{
+				  "key": "Authorization",
+				  "value": "Bearer your_token_here"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n    \"restaurant_id\": \"your_restaurant_id_here\",\n    \"user_id\": \"your_user_id_here\",\n    \"new_state\": \"CANCELLED\"\n}"
+			  },
+			  "url": {
+				"raw": "http://localhost:8000/ReservationApp/api/reservations/update_state/",
+				"protocol": "http",
+				"host": ["localhost"],
+				"port": "8000",
+				"path": ["ReservationApp", "api", "reservations", "update_state"]
+			  }
+			},
+			"response": []
+		},
+		{
 			"name": "api/login",
 			"request": {
 				"method": "POST",
@@ -94,7 +122,7 @@
 				}
 			},
 			"response": []
-		};
+		},
 	  {
 		"name": "api/logout",
 		"request": {
