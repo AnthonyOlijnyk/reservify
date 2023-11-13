@@ -1,14 +1,15 @@
-import { useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useCallback, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./SearchPage.css";
 
 const SearchPage = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onReserveBtnContainerClick = useCallback((restaurant) => {
-    console.log(restaurant)
+    console.log(restaurant);
     navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
   }, [navigate]);
 
@@ -29,6 +30,19 @@ const SearchPage = () => {
     navigate("/homepage");
   }, [navigate]);
 
+  useEffect(() => {
+    if (location.state && location.state.query) {
+      setQuery(location.state.query);
+  
+      fetch(`http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(location.state.query)}&field=name`)
+        .then((response) => response.json())
+        .then((data) => {
+          setResults(data);
+        })
+        .catch((error) => console.error('Error fetching search results:', error));
+    }
+  }, [location.state]);
+  
   return (
     <div className="searchpage">
       <div className="mainframe1" />
@@ -71,7 +85,6 @@ const SearchPage = () => {
           <div className="akar-iconsglobe" />
         </div>
       </div>
-
       <div className="initial-options1">
         <img
           className="bxbxs-user-circle-icon1"
@@ -86,7 +99,6 @@ const SearchPage = () => {
           onClick={onSearchIconClick}
         />
       </div>
-
       <div className="titlelogo4">
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />
