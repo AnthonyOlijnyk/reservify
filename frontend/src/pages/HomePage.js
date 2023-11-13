@@ -5,26 +5,15 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [searchInput, setsearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
-  const onRoundSearchContainerClick = useCallback(() => {
-    const searchInput = document.querySelector(".search-restaurants-cuisines").value;
-    const jsonData = {searchInput};
-
-    console.log(jsonData)
-
-      fetch("http://localhost:8000/api/homepage", {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(jsonData),
-      })
-      .then(response => response.json())
-      .then(data => {console.log(data); })
-      .catch(error => {console.error('Error:', error);});
-
-    navigate("/searchpage");
-  }, [navigate]);
-
+  const onRoundSearchContainerClick = useCallback(async () => {
+    const response = await fetch(`http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(searchInput)}&field=name`);
+    const data = await response.json();
+  
+    navigate("/searchpage", { state: { query: searchInput, results: data } });
+  }, [navigate, searchInput]);
+  
   const onFesearchClick = useCallback(() => {
     navigate("/searchpage");
   }, [navigate]);
@@ -33,6 +22,10 @@ const HomePage = () => {
     navigate("/user-dash");
   }, [navigate]);
 
+  /*const onReserveBtnContainerClick = useCallback((restaurant) => {
+    console.log(restaurant);
+    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
+  }, [navigate]);*/
 
   return (
     <div className="homepage">
@@ -51,7 +44,7 @@ const HomePage = () => {
             placeholder="Search Restaurants, Cuisines"
             type="text"
             value={searchInput}
-            onChange={(e) => setsearchInput(e.target.value)}
+            onChange={(e) => setSearchInput(e.target.value)}
             
           />
         </div>
@@ -99,14 +92,14 @@ const HomePage = () => {
             alt=""
             src="/rectangle-72.svg"
           />
-          <b className="lenny">LENNY</b>
-          <div className="pier-street-toronto">10 Pier Street, Toronto, CA</div>
+          <b className="lenny">Taqueria Del Sol</b>
+          <div className="pier-street-toronto">334 Prince Ave, Athens, GA 30601</div>
           <img
             className="latest-property-1-item"
             alt=""
             src="/rectangle-404@2x.png"
           />
-          <div className="seafood">Seafood</div>
+          <div className="seafood">Mexican, Spanish</div>
           <img
             className="rectangle-8-stroke"
             alt=""
