@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RestTemplate from "../components/RestTemplate";
 import "./HomePage.css";
@@ -6,6 +6,14 @@ import "./HomePage.css";
 const HomePage = () => {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
+  const [topRatedRestaurants, setTopRatedRestaurants] = useState([]);
+  const [italianRestaurants, setItalianRestaurants] = useState([]);
+  const [japaneseRestaurants, setJapaneseRestaurants] = useState([]);
+
+  /*const onReserveBtnContainerClick = useCallback((restaurant) => {
+    console.log(restaurant);
+    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
+  }, [navigate]);*/
 
   const onRoundSearchContainerClick = useCallback(async () => {
     const response = await fetch(`http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(searchInput)}&field=name`);
@@ -22,10 +30,44 @@ const HomePage = () => {
     navigate("/user-dash");
   }, [navigate]);
 
-  /*const onReserveBtnContainerClick = useCallback((restaurant) => {
-    console.log(restaurant);
-    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
-  }, [navigate]);*/
+  const fetchTopRatedRestaurants = useCallback(async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8000/RestaurantApp/search/?q=4.9&field=average_review_rating"
+      );
+      const data = await response.json();
+      setTopRatedRestaurants(data.slice(0, 4));
+    } catch (error) {
+      console.error("Error fetching top-rated restaurants:", error);
+    }
+  }, []);
+
+  const fetchItalianRestaurants = useCallback(async () => {
+    try {
+      const response = await fetch("http://localhost:8000/RestaurantApp/search/?q=italian&field=name");
+      const data = await response.json();
+      setItalianRestaurants(data);
+    } catch (error) {
+      console.error("Error fetching Italian restaurants:", error);
+    }
+  }, []);
+
+  const fetchJapaneseRestaurants = useCallback(async () => {
+    try {
+      const response = await fetch("http://localhost:8000/RestaurantApp/search/?q=japanese&field=name");
+      const data = await response.json();
+      setJapaneseRestaurants(data);
+    } catch (error) {
+      console.error("Error fetching Japanese restaurants:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTopRatedRestaurants();
+    fetchItalianRestaurants();
+    fetchJapaneseRestaurants();
+  }, [fetchTopRatedRestaurants, fetchItalianRestaurants, fetchJapaneseRestaurants]);
+
 
   return (
     <div className="homepage">
@@ -86,233 +128,61 @@ const HomePage = () => {
           src="/top-rated-restaurants.svg"
         />
         <img className="top-rated-child" alt="" src="/rectangle-68.svg" />
-        <div className="latest-property-1">
-          <img
-            className="latest-property-1-child"
-            alt=""
-            src="/rectangle-72.svg"
+        
+        
+        {topRatedRestaurants.map((restaurant, index) => (
+          <RestTemplate
+            key={index}
+            restaurantName={restaurant.name}
+            dimensionCode="/five-stars.svg" 
+            imageDimensionCode={restaurant.imageNum} 
+            culturalOrigin={restaurant.cuisine}
+            address={restaurant.location}
+            propLeft={`${15.5 + index * 309}px`} 
+            propHeight="4.12%"
+            propBottom="30.88%"
+            propWidth="44px"
           />
-          <b className="lenny">Taqueria Del Sol</b>
-          <div className="pier-street-toronto">334 Prince Ave, Athens, GA 30601</div>
-          <img
-            className="latest-property-1-item"
-            alt=""
-            src="/rectangle-404@2x.png"
-          />
-          <div className="seafood">Mexican, Spanish</div>
-          <img
-            className="rectangle-8-stroke"
-            alt=""
-            src="/rectangle-8-stroke.svg"
-          />
-          <img className="rectangle-8-stroke" alt="" src="/rectangle-8.svg" />
-          <img className="reserve-icon" alt="" src="/reserve.svg" />
-          <img className="heart-icon" alt="" src="/heart.svg" />
-        </div>
-        <div className="latest-property-2">
-          <img
-            className="latest-property-1-child"
-            alt=""
-            src="/rectangle-72.svg"
-          />
-          <b className="lenny">Imperial Garden</b>
-          <div className="pier-street-toronto">313 Bear Road, Toronto, CA</div>
-          <img className="five-stars-icon" alt="" src="/five-stars.svg" />
-          <img
-            className="latest-property-1-item"
-            alt=""
-            src="/rectangle-4041@2x.png"
-          />
-          <div className="chinese">Chinese</div>
-          <img
-            className="rectangle-8-stroke"
-            alt=""
-            src="/rectangle-8-stroke.svg"
-          />
-          <img className="rectangle-8-stroke" alt="" src="/rectangle-8.svg" />
-          <img className="reserve-icon" alt="" src="/reserve.svg" />
-          <img className="heart-icon" alt="" src="/heart.svg" />
-        </div>
-        <RestTemplate
-          restaurantName="Fomofuku"
-          dimensionCode="/five-stars.svg"
-          imageDimensionCode="/rectangle-4042@2x.png"
-          culturalOrigin="Japanese"
-          address="1000 Main Street, Toronto, CA"
-        />
-        <RestTemplate
-          restaurantName="La Paella"
-          dimensionCode="/fournhalfstars.svg"
-          imageDimensionCode="/rectangle-4043@2x.png"
-          culturalOrigin="Spanish"
-          address="77 Green Avenue, Toronto, CA"
-          propLeft="942.5px"
-          propHeight="4.15%"
-          propBottom="30.85%"
-          propWidth="61px"
-        />
-        <div className="halfstar">
-          <img className="vector-icon1" alt="" src="/vector1.svg" />
-          <div className="halfstar-child" />
-        </div>
-        <img className="map-btn-icon" alt="" src="/map-btn.svg" />
-        <img
-          className="fournhalfstars-icon"
-          alt=""
-          src="/fournhalfstars1.svg"
-        />
+        ))}
+          
       </div>
       <div className="italian">
         <img className="italian-child" alt="" src="/rectangle-68.svg" />
-        <RestTemplate
-          restaurantName="Don Alfonso 1980"
-          dimensionCode="/five-stars.svg"
-          imageDimensionCode="/rectangle-4044@2x.png"
-          culturalOrigin="Italian"
-          address="100 Food Street, Toronto, CA"
-          propLeft="15.5px"
-          propHeight="4.12%"
-          propBottom="30.88%"
-          propWidth="44px"
-        />
-        <img
-          className="latest-property-21"
-          alt=""
-          src="/latest-property-2.svg"
-        />
-        <img
-          className="latest-property-21"
-          alt=""
-          src="/latest-property-2.svg"
-        />
-        <RestTemplate
-          restaurantName="Remezzo’s"
-          dimensionCode="/fournhalfstars.svg"
-          imageDimensionCode="/rectangle-4045@2x.png"
-          culturalOrigin="Italian"
-          address="90 Bean Street, Toronto, CA"
-          propLeft="324.5px"
-          propHeight="4.15%"
-          propBottom="30.85%"
-          propWidth="44px"
-        />
-        <RestTemplate
-          restaurantName="Amara"
-          dimensionCode="/fournhalfstars.svg"
-          imageDimensionCode="/rectangle-4046@2x.png"
-          culturalOrigin="Italian"
-          address="345 Toen Avenue, Toronto, CA"
-          propLeft="633.5px"
-          propHeight="4.15%"
-          propBottom="30.85%"
-          propWidth="44px"
-        />
-        <RestTemplate
-          restaurantName="Mario Ristorante"
-          dimensionCode="/five-stars.svg"
-          imageDimensionCode="/rectangle-4047@2x.png"
-          culturalOrigin="Italian"
-          address="987 Pode Street, Toronto, CA"
-          propLeft="942.5px"
-          propHeight="4.12%"
-          propBottom="30.88%"
-          propWidth="44px"
-        />
+        {italianRestaurants.map((restaurant, index) => (
+          <RestTemplate
+            key={index}
+            restaurantName={restaurant.name}
+            dimensionCode="/five-stars.svg"
+            imageDimensionCode={restaurant.imageNum} 
+            culturalOrigin="Italian"
+            address={restaurant.location}
+            propLeft={`${15.5 + index * 309}px`}
+            propHeight="4.12%"
+            propBottom="30.88%"
+            propWidth="44px"
+          />
+        ))}
+        
         <img className="map-btn-icon1" alt="" src="/map-btn1.svg" />
         <b className="italian-cuisine">Italian Cuisine</b>
       </div>
       <div className="top-rated">
         <img className="italian-child" alt="" src="/rectangle-681.svg" />
-        <RestTemplate
-          restaurantName="Yukashi"
-          dimensionCode="/five-stars.svg"
-          imageDimensionCode="/rectangle-4048@2x.png"
-          culturalOrigin="Japanese"
-          address="432 Jane Street, Toronto, CA"
-          propLeft="15.5px"
-          propHeight="4.12%"
-          propBottom="30.88%"
-          propWidth="75px"
-        />
-        <img
-          className="latest-property-21"
-          alt=""
-          src="/latest-property-2.svg"
-        />
-        <img
-          className="latest-property-21"
-          alt=""
-          src="/latest-property-2.svg"
-        />
-        <div className="latest-property-2">
-          <img
-            className="latest-property-1-child"
-            alt=""
-            src="/rectangle-72.svg"
+        {japaneseRestaurants.map((restaurant, index) => (
+          <RestTemplate
+            key={index}
+            restaurantName={restaurant.name}
+            dimensionCode="/five-stars.svg"
+            imageDimensionCode={restaurant.imageNum} 
+            culturalOrigin="Japanese"
+            address={restaurant.location}
+            propLeft={`${15.5 + index * 309}px`}
+            propHeight="4.12%"
+            propBottom="30.88%"
+            propWidth="75px"
           />
-          <b className="lenny">
-            <p className="shoushin1">Shoushin</p>
-          </b>
-          <img className="five-stars-icon" alt="" src="/five-stars.svg" />
-          <img
-            className="latest-property-1-item"
-            alt=""
-            src="/rectangle-4049@2x.png"
-          />
-          <div className="japanese1">Japanese</div>
-          <img
-            className="rectangle-8-stroke"
-            alt=""
-            src="/rectangle-8-stroke.svg"
-          />
-          <img className="rectangle-8-stroke" alt="" src="/rectangle-8.svg" />
-          <img className="reserve-icon" alt="" src="/reserve.svg" />
-          <img className="heart-icon" alt="" src="/heart.svg" />
-          <div className="pier-street-toronto">900 Lovey Lane, Toronto, CA</div>
-        </div>
-        <div className="latest-property-8">
-          <img
-            className="latest-property-1-child"
-            alt=""
-            src="/rectangle-72.svg"
-          />
-          <b className="lenny">
-            <p className="shoushin1">Ki</p>
-          </b>
-          <img
-            className="fournhalfstars-icon1"
-            alt=""
-            src="/fournhalfstars.svg"
-          />
-          <img
-            className="latest-property-1-item"
-            alt=""
-            src="/rectangle-40410@2x.png"
-          />
-          <div className="japanese2">Japanese</div>
-          <img
-            className="rectangle-8-stroke"
-            alt=""
-            src="/rectangle-8-stroke.svg"
-          />
-          <img className="rectangle-8-stroke" alt="" src="/rectangle-8.svg" />
-          <img className="reserve-icon" alt="" src="/reserve.svg" />
-          <img className="heart-icon" alt="" src="/heart.svg" />
-          <div className="pier-street-toronto">
-            654 Deer Street, Toronto, CA
-          </div>
-        </div>
-        <RestTemplate
-          restaurantName="Prince Ramen"
-          dimensionCode="/fournhalfstars.svg"
-          imageDimensionCode="/rectangle-40411@2x.png"
-          culturalOrigin="Japanese"
-          address="74 Joe Avenue, Toronto, CA"
-          propLeft="942.5px"
-          propHeight="4.15%"
-          propBottom="30.85%"
-          propWidth="75px"
-        />
+        ))}
+        
         <img className="map-btn-icon" alt="" src="/map-btn2.svg" />
         <img className="japanese-item" alt="" src="/line-18.svg" />
         <b className="japanese-cuisine">Japanese Cuisine</b>
@@ -323,3 +193,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
