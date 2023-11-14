@@ -1,7 +1,10 @@
 import { useMemo } from "react";
+import { useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./RestTemplate.css";
 
 const RestTemplate = ({
+  restaurant,
   restaurantName,
   dimensionCode,
   imageDimensionCode,
@@ -12,6 +15,9 @@ const RestTemplate = ({
   propBottom,
   propWidth,
 }) => {
+
+  const navigate = useNavigate();
+
   const latestProperty3Style = useMemo(() => {
     return {
       left: propLeft,
@@ -30,6 +36,11 @@ const RestTemplate = ({
       width: propWidth,
     };
   }, [propWidth]);
+
+  const onReserveBtnClick = useCallback((restaurant) => {
+    console.log(restaurant);
+    navigate(`/reservepage/${restaurantName}`, { state: { restaurant } });
+  }, [navigate]);
 
   return (
     <div className="latest-property-3" style={latestProperty3Style}>
@@ -51,7 +62,7 @@ const RestTemplate = ({
         src="/rectangle-8-stroke.svg"
       />
       <img className="latest-property-3-inner" alt="" src="/rectangle-8.svg" />
-      <img className="reserve-icon4" alt="" src="/reserve.svg" />
+      <img className="reserve-icon4" alt="" src="/reserve.svg" onClick={() => onReserveBtnClick(restaurant)}></img>
       <img className="heart-icon4" alt="" src="/heart.svg" />
       <div className="main-street-toronto">{address}</div>
     </div>

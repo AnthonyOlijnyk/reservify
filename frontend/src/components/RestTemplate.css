@@ -53,6 +53,7 @@
 }
 .heart-icon4,
 .reserve-icon4 {
+  cursor: pointer;
   position: absolute;
   top: 304.4px;
   left: 40.2px;

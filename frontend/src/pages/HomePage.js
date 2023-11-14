@@ -133,6 +133,7 @@ const HomePage = () => {
         {topRatedRestaurants.map((restaurant, index) => (
           <RestTemplate
             key={index}
+            restaurant={restaurant}
             restaurantName={restaurant.name}
             dimensionCode="/five-stars.svg" 
             imageDimensionCode={restaurant.imageNum} 
