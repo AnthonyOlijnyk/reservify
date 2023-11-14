@@ -6,6 +6,8 @@
   width: 299px;
   height: 360px;
 }
+
+
 .fomofuku {
   top: 186px;
   left: 22px;
@@ -14,15 +16,17 @@
   color: var(--color-crimson);
   width: 164px;
   height: 17px;
+  
+  
 }
 .five-stars-icon2 {
   position: absolute;
   height: 4.12%;
   width: 33.99%;
-  top: 65%;
+  top: 61.3%;
   right: 58.14%;
   bottom: 30.88%;
-  left: 7.87%;
+  left: 7%;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
@@ -38,7 +42,7 @@
 }
 .japanese3 {
   position: absolute;
-  top: 240px;
+  top: 227.5px;
   left: 22px;
   display: inline-block;
   width: 81px;
@@ -73,7 +77,7 @@
 }
 .main-street-toronto {
   position: absolute;
-  top: 262px;
+  top: 250px;
   left: 22px;
   display: inline-block;
   width: 197px;
