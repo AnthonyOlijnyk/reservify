@@ -10,16 +10,37 @@ const HomePage = () => {
   const [italianRestaurants, setItalianRestaurants] = useState([]);
   const [japaneseRestaurants, setJapaneseRestaurants] = useState([]);
 
-  const onRoundSearchContainerClick = useCallback(async () => {
-    const response = await fetch(`http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(searchInput)}&field=name`);
+  
+const searchAction = useCallback(async () => {
+  if (searchInput.trim() !== '') {
+    const response = await fetch(
+      `http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(
+        searchInput
+      )}&field=name`
+    );
     const data = await response.json();
-  
+
     navigate("/searchpage", { state: { query: searchInput, results: data } });
-  }, [navigate, searchInput]);
-  
-  const onFesearchClick = useCallback(() => {
-    navigate("/searchpage");
-  }, [navigate]);
+  }
+}, [navigate, searchInput]);
+
+
+const onRoundSearchContainerClick = useCallback(() => {
+  searchAction();
+}, [searchAction]);
+
+const onFesearchClick = useCallback(() => {
+  searchAction();
+}, [searchAction]);
+
+const handleEnter = useCallback(
+  (e) => {
+    if (e.key === "Enter") {
+      searchAction();
+    }
+  },
+  [searchAction]
+);
 
   const onInitialOptionsContainerClick = useCallback(() => {
     navigate("/user-dash");
@@ -82,7 +103,7 @@ const HomePage = () => {
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            
+            onKeyDown={(e) => handleEnter(e)}
           />
         </div>
         <img className="search-headers-icon" alt="" src="/searchheaders.svg" />
