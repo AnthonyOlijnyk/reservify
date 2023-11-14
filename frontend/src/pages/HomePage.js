@@ -10,11 +10,6 @@ const HomePage = () => {
   const [italianRestaurants, setItalianRestaurants] = useState([]);
   const [japaneseRestaurants, setJapaneseRestaurants] = useState([]);
 
-  /*const onReserveBtnContainerClick = useCallback((restaurant) => {
-    console.log(restaurant);
-    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
-  }, [navigate]);*/
-
   const onRoundSearchContainerClick = useCallback(async () => {
     const response = await fetch(`http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(searchInput)}&field=name`);
     const data = await response.json();
@@ -46,7 +41,7 @@ const HomePage = () => {
     try {
       const response = await fetch("http://localhost:8000/RestaurantApp/search/?q=italian&field=name");
       const data = await response.json();
-      setItalianRestaurants(data);
+      setItalianRestaurants(data.slice(0, 4));
     } catch (error) {
       console.error("Error fetching Italian restaurants:", error);
     }
@@ -56,7 +51,7 @@ const HomePage = () => {
     try {
       const response = await fetch("http://localhost:8000/RestaurantApp/search/?q=japanese&field=name");
       const data = await response.json();
-      setJapaneseRestaurants(data);
+      setJapaneseRestaurants(data.slice(0, 4));
     } catch (error) {
       console.error("Error fetching Japanese restaurants:", error);
     }
@@ -152,6 +147,7 @@ const HomePage = () => {
         {italianRestaurants.map((restaurant, index) => (
           <RestTemplate
             key={index}
+            restaurant={restaurant}
             restaurantName={restaurant.name}
             dimensionCode="/five-stars.svg"
             imageDimensionCode={restaurant.imageNum} 
@@ -172,6 +168,7 @@ const HomePage = () => {
         {japaneseRestaurants.map((restaurant, index) => (
           <RestTemplate
             key={index}
+            restaurant={restaurant}
             restaurantName={restaurant.name}
             dimensionCode="/five-stars.svg"
             imageDimensionCode={restaurant.imageNum} 
@@ -194,4 +191,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
