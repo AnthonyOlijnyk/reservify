@@ -26,34 +26,45 @@ const ConfirmationPage = () => {
 
   return (
     <div className="confirmationpage">
-      <div className="mainframe3" />
-      <img className="footer-icon4" alt="" src="/footer2.svg" />
-      <div className="frame17">
-        <div className="main-header-group">
-          <div className="main-header6">
-            <div className="homepagebtn1">
-              <img
-                className="bxbxs-user-circle-icon4"
-                alt=""
-                src="/bxbxsusercircle.svg"
-                onClick={onUserDash}
-              />
-              <img
-                className="search-icon3"
-                alt=""
-                src="/search-icon1.svg" 
-                onClick={onSearchIconClick}
-              />
-            </div>
-            <div className="titlelogo7">
-              <img className="reservify-icon7" alt="" src="/reservify1.svg" />
-              <img
-                className="restaurant-1-icon7"
-                alt=""
-                src="/restaurant-1@2x.png"
-              />
-            </div>
+      <div className="mainframe3">
+        <div className="main-header6">
+          <div className="homepagebtn2">
+            <img
+              className="search-icon3"
+              alt=""
+              src="/search-icon1.svg" 
+              onClick={onSearchIconClick}
+            />
           </div>
+          <div className="userdashbtn2">
+            <img
+              className="bxbxs-user-circle-icon4"
+              alt=""
+              src="/bxbxsusercircle.svg"
+              onClick={onUserDash}
+            />
+          </div>
+          <div className="titlelogo7">
+            <img className="reservify-icon7" alt="" src="/reservify1.svg" />
+            <img
+              className="restaurant-1-icon7"
+              alt=""
+              src="/restaurant-1@2x.png"
+            />
+          </div>
+        </div>
+
+        <div className="footer2">
+          <img className="copyrights-icon" alt="" src="/copyrights.svg" />
+          <div className="footer-info">
+            <img className="contact-info-icon" alt="" src="/contactinfo.svg" />
+            <div className="faqs">FAQs</div>
+            <a href="https://www.google.com"> <div className="about-us" >About Us</div> </a>
+            <b className="reservify">RESERVIFY</b>
+          </div>
+        </div>
+
+        <div className="confirmation-info">
           <div className="content">
             <div className="confirmation-message">
               <div className="pill">
