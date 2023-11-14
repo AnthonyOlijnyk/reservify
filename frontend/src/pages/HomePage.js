@@ -31,7 +31,7 @@ const HomePage = () => {
         "http://localhost:8000/RestaurantApp/search/?q=4.9&field=average_review_rating"
       );
       const data = await response.json();
-      setTopRatedRestaurants(data.slice(0, 4));
+      setTopRatedRestaurants(data.slice(9, 13));
     } catch (error) {
       console.error("Error fetching top-rated restaurants:", error);
     }
@@ -41,7 +41,7 @@ const HomePage = () => {
     try {
       const response = await fetch("http://localhost:8000/RestaurantApp/search/?q=italian&field=name");
       const data = await response.json();
-      setItalianRestaurants(data.slice(0, 4));
+      setItalianRestaurants(data.slice(5, 9));
     } catch (error) {
       console.error("Error fetching Italian restaurants:", error);
     }
