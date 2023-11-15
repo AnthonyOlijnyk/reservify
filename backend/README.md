@@ -145,7 +145,7 @@ Will return
 ```
 
 ## GET ReservationApp/api/fetch-reservations/{user_id}
-Gets the current user based on the payload of the JWT.
+Fetches reservation details for specified user id.
 
 Will return
 ```
