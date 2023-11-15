@@ -143,3 +143,39 @@ Will return
 
 }
 ```
+
+## GET ReservationApp/api/fetch-reservations/{user_id}
+Gets the current user based on the payload of the JWT.
+
+Will return
+```
+{
+    id: int
+    start_time: date string
+    reservation_state: string
+    number_of_people: int
+    user: {
+        id: int
+        username: string
+        name: string
+        email: string
+        phone_number: string
+    },
+    restaurant: {
+        id: int
+        name: string
+        country: string
+        city: string
+        address: string
+        longitude: string
+        latitude: string
+        cuisines: string
+        average_cost_for_two: int
+        average_review_rating: string
+        review_level_color: string
+        review_level_text: string
+        number_of_reviews: int
+        about: string
+    }
+}
+```
