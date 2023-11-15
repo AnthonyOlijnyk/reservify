@@ -150,9 +150,8 @@ Updates reservation state ('Upcoming', 'Ongoing', 'Finished' or 'Canceled')
 Body of request:
 ```
 {
-    start_time: date string
-    number_of_people: int
-    restaurant_name: string
+    reservation_id: int
+    new_state: string
 }
 ```
 
