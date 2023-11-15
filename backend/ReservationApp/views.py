@@ -1,8 +1,9 @@
 from rest_framework.views import APIView
-from rest_framework import status
 from rest_framework.response import Response
+from rest_framework import status
+from django.http import JsonResponse
 
-from core.utils.authorization import check_user_authorized
+from core.utils.authorization import check_user_authorized, get_user_id
 from core.utils.network import make_error_response, make_success_response
 
 from .utils.make_reservation import (
@@ -16,7 +17,10 @@ from .utils.make_reservation import (
 
 from .constants import TIME_IN_PAST_ERROR, OVER_CAPACITY_ERROR
 from .models import Reservation
-from .forms import MakeReservationForm, UpdateReservationStateForm
+from .forms import MakeReservationForm
+from .serializers import ReservationSerializer
+
+from .forms import MakeReservationForm
 from .serializers import ReservationSerializer
 
 class MakeReservationView(APIView):
@@ -56,20 +60,18 @@ class MakeReservationView(APIView):
 class ReservationUpdateStateView(APIView):
     def put(self, request):
         try:
-            restaurant_id = request.data['restaurant_id']
-            user_id = request.data['user_id']
+            reservation_id = request.data['reservation_id']
             new_state = request.data['new_state']
         except KeyError as e:
-            return Response({'error': f'Missing required field: {e}'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        # Find the reservation based on restaurant_id and user_id
         try:
-            reservation = Reservation.objects.get(restaurant_id=restaurant_id, user_id=user_id)
+            reservation = Reservation.objects.get(id=reservation_id)
         except Reservation.DoesNotExist:
-            return Response({'error': 'Reservation not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
         # Update the reservation state
         reservation.reservation_state = new_state
         reservation.save()
 
-        return Response({'success': 'Reservation state updated successfully'}, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)    
