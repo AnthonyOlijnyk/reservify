@@ -144,6 +144,20 @@ Will return
 }
 ```
 
+## PUT ReservationApp/api/reservations/update_state/
+Updates reservation state ('Upcoming', 'Ongoing', 'Finished' or 'Canceled')
+
+Body of request:
+```
+{
+    start_time: date string
+    number_of_people: int
+    restaurant_name: string
+}
+```
+
+Does not return a response body. Sets the HTTP request only (200 OK, 400 BAD_REQUEST, 404 NOT_FOUND)
+
 ## GET ReservationApp/api/fetch-reservations
 Fetches reservation details of current user
 
