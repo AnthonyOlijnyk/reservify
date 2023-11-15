@@ -248,7 +248,7 @@
 		}
 	  },
 		{
-			"name": "api/fetch-reservations/<int:user_id>/",
+			"name": "api/fetch-reservations/",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -265,7 +265,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/ReservationApp/api/fetch-reservations/user-id",
+					"raw": "http://localhost:8000/ReservationApp/api/fetch-reservations/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -275,7 +275,6 @@
 						"ReservationApp",
 						"api",
 						"fetch-reservation",
-						"user-id"
 					]
 				}
 			},

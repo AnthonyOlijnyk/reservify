@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from django.http import JsonResponse
 
-from core.utils.authorization import check_user_authorized
+from core.utils.authorization import check_user_authorized, get_user_id
 from core.utils.network import make_error_response, make_success_response
 
 from .utils.make_reservation import (
@@ -56,11 +56,13 @@ class MakeReservationView(APIView):
         return make_success_response()
 
 class FetchReservationsView(APIView):
-    def get(self, request, user_id):
+    def get(self, request):
         authorization_error = check_user_authorized(request)
 
         if authorization_error:
             return authorization_error
+
+        user_id = get_user_id(request)
 
         reservations = Reservation.objects.filter(user_id=user_id)
         serializer = ReservationSerializer(reservations, many=True)

@@ -144,8 +144,8 @@ Will return
 }
 ```
 
-## GET ReservationApp/api/fetch-reservations/{user_id}
-Fetches reservation details for specified user id.
+## GET ReservationApp/api/fetch-reservations
+Fetches reservation details of current user
 
 Will return
 ```
