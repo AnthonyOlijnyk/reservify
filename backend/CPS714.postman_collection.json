@@ -246,7 +246,40 @@
 			]
 		  }
 		}
-	  }
-
+	  },
+		{
+			"name": "api/fetch-reservations/<int:user_id>/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/ReservationApp/api/fetch-reservations/user-id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"ReservationApp",
+						"api",
+						"fetch-reservation",
+						"user-id"
+					]
+				}
+			},
+			"response": []
+		}
 	]
   }
