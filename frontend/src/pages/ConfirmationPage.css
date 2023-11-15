@@ -1,44 +1,78 @@
-.footer-icon4,
 .mainframe3 {
+  position: relative;
+  top: 0px;
+  left: 0%;
+  min-width: 1440px;
+  background: linear-gradient(180deg, #f8eadc, rgba(255, 255, 255, 0));
+  width: 100%;
+  height: 1452px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer2 {
   position: absolute;
-  left: 0;
-  width: 1440px;
-}
-.mainframe3 {
-  top: 70px;
-  background: linear-gradient(180deg, #f8e9db, rgba(255, 255, 255, 0));
-  height: 1384px;
-}
-.footer-icon4 {
-  top: 1126px;
+  background-color: #ffefe0;
+  width: 100%;
   height: 328px;
+  bottom: 0px;
+  text-align: match-parent;
+  font-size: var(--font-size-mini);
+  color: var(--color-dimgray);
+  font-family: var(--font-montserrat);
+  object-fit: cover;
 }
-.bxbxs-user-circle-icon4,
-.search-icon3 {
+.bxbxs-user-circle-icon4{
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 44px;
-  height: 44px;
+  height: 117.08%;
+  width: 117.08%;
+  top: -12.5%;
+  right: -4.58%;
+  bottom: -4.58%;
+  left: -12.5%;
+  max-width: 150%;
   overflow: hidden;
-}
-.search-icon3 {
-  height: 63.86%;
-  width: 30.22%;
-  top: 18.18%;
-  right: -1.18%;
-  bottom: 17.95%;
-  left: 70.97%;
-  max-width: 100%;
   max-height: 100%;
   cursor: pointer;
 }
-.homepagebtn1,
+
+.search-icon3 {
+  position: absolute;
+  height: 117.08%;
+  width: 117.08%;
+  top: -12.5%;
+  right: -4.58%;
+  bottom: -4.58%;
+  left: -12.5%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+.homepagebtn2 {
+  position: absolute;
+  height: 34.29%;
+  width: 1.67%;
+  top: 34.29%;
+  right: 2.22%;
+  bottom: 31.43%;
+  left: 96.11%;
+}
+.userdashbtn2 {
+  position: absolute;
+  height: 50%;
+  width: 2.5%;
+  top: 30.29%;
+  right: 2.22%;
+  bottom: 31.43%;
+  left: 92.11%;
+}
 .reservify-icon7 {
   position: absolute;
   top: 13px;
   left: 1315px;
-  width: 93px;
+  width: 88px;
   height: 44px;
 }
 .reservify-icon7 {
@@ -63,12 +97,13 @@
   height: 52px;
 }
 .main-header6 {
-  position: relative;
+  position: absolute;
   background-color: var(--color-white);
-  width: 1440px;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 70px;
   overflow: hidden;
-  flex-shrink: 0;
 }
 .label1 {
   position: relative;
@@ -78,7 +113,7 @@
 }
 .pill {
   position: absolute;
-  right: -0.2px;
+  right: -0.1px;
   bottom: 31.9px;
   border-radius: var(--br-base);
   background-color: var(--color-white);
@@ -180,21 +215,19 @@
   left: 0;
   width: 429px;
 }
-.don-alfonso-19803 {
+.restaurant-name3 {
   position: absolute;
-  top: 0;
-  left: 177px;
+  top: 0px;
+  left: 110px;
   display: inline-block;
-  width: 175px;
-  height: 21.9px;
+  overflow: visible
 }
 .frame19,
 .frame22 {
   position: absolute;
-  top: 12.7px;
   left: 0;
-  width: 352px;
-  height: 21.9px;
+  width: 400px;
+  height: 48px;
   overflow: hidden;
 }
 .frame19 {
@@ -210,21 +243,6 @@
   font-size: var(--font-size-lg);
   color: var(--color-black);
   font-family: var(--font-montserrat);
-}
-.content {
-  width: 1226px;
-  height: 559px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.line-icon {
-  position: relative;
-  width: 1220px;
-  height: 23px;
 }
 .back-to-homepage {
   position: relative;
@@ -251,6 +269,24 @@
   width: 324px;
   height: 60px;
 }
+.confirmation-info{
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-88xl); 
+}
+.content {
+  width: 1226px;
+  height: 559px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 .back-to-homepage-parent {
   display: flex;
   flex-direction: row;
@@ -261,7 +297,6 @@
   color: var(--color-white);
   font-family: var(--font-montserrat);
 }
-.frame17,
 .main-header-group {
   position: absolute;
   top: 0;
@@ -275,11 +310,7 @@
   gap: var(--gap-88xl);
   cursor: pointer;
 }
-.frame17 {
-  width: 1440px;
-  height: 1454px;
-  overflow: hidden;
-}
+
 .confirmationpage {
   position: relative;
   background-color: var(--color-white);

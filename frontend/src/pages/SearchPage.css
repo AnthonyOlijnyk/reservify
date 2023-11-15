@@ -56,16 +56,16 @@
   height: 23px;
 }
 .restaurant-location {
-  top: 445px;
+  top: 500px;
   font-weight: 500;
   color: var(--color-dimgray);
-  width: 450.6px;
+  width: 300px;
   height: 25.4px;
 }
 .reserve-btn-child {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 350px;
   border-radius: var(--br-11xl);
   background-color: var(--color-firebrick-300);
   border: 1px solid var(--color-firebrick-200);
@@ -75,8 +75,8 @@
 }
 .reserve {
   position: absolute;
-  top: 12px;
-  left: 31px;
+  top: 10px;
+  left: 390px;
   letter-spacing: 0.07em;
   display: inline-block;
   width: 92px;
@@ -245,10 +245,7 @@
   width: 54px;
   height: 54px;
 }
-.round-search1:hover {
-  animation: 1s ease 0s infinite normal none scale-up;
-  opacity: 1;
-}
+
 .search-restaurants-cuisines1 {
   border: 0;
   font-family: var(--font-montserrat);

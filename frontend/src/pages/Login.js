@@ -66,7 +66,7 @@ const Login = (props)=> {
       </div>
       <div className="login-frame">
         <div className="frameT">
-          <div className="error">{errorMessage}
+          <div className="errorLogin">{errorMessage}
           </div>
         </div>
         <div className="frame">
@@ -127,7 +127,7 @@ const Login = (props)=> {
         <div className="frame14">
           <img className="frame-child" alt="" src="/rectangle-7.svg" />
           <img
-            className="restaurant-2-icon"
+            className="restaurant-3-icon"
             alt=""
             src="/restaurant-2@2x.png"
           />

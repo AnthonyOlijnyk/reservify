@@ -14,3 +14,4 @@ class Restaurant(models.Model):
     review_level_text = models.CharField(max_length=20)
     number_of_reviews = models.IntegerField()
     about = models.CharField(max_length=255, default='This restaurant is good :^)')
+    imageNum = models.CharField(max_length=20, default='default')

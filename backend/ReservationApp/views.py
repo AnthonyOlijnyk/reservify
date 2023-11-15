@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
+
 from rest_framework.response import Response
 from rest_framework import status
+
 from django.http import JsonResponse
 
 from core.utils.authorization import check_user_authorized, get_user_id
@@ -57,6 +59,7 @@ class MakeReservationView(APIView):
 
         return make_success_response()
 
+
 class ReservationUpdateStateView(APIView):
     def put(self, request):
         try:
@@ -75,3 +78,18 @@ class ReservationUpdateStateView(APIView):
         reservation.save()
 
         return Response(status=status.HTTP_200_OK)    
+
+class FetchReservationsView(APIView):
+    def get(self, request):
+        authorization_error = check_user_authorized(request)
+
+        if authorization_error:
+            return authorization_error
+
+        user_id = get_user_id(request)
+
+        reservations = Reservation.objects.filter(user_id=user_id)
+        serializer = ReservationSerializer(reservations, many=True)
+        
+        return JsonResponse(serializer.data, safe=False)
+

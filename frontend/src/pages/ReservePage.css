@@ -1,17 +1,40 @@
 .mainframe2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(180deg, #f8e9db, rgba(255, 255, 255, 0));
-  width: 1440px;
-  height: 2205px;
+  position: relative;
+  top: 0px;
+  left: 0%;
+  min-width: 1440px;
+  background: linear-gradient(180deg, #f8eadc, rgba(255, 255, 255, 0));
+  width: 100%;
+  height: 1452px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.footer-icon2,
+.restaurant-info {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-88xl);
+}
+.footer1 {
+  position: absolute;
+  background-color: #ffefe0;
+  width: 100%;
+  height: 328px;
+  bottom: 0px;
+  text-align: match-parent;
+  font-size: var(--font-size-mini);
+  color: var(--color-dimgray);
+  font-family: var(--font-montserrat);
+  object-fit: cover;
+}
 .map-image-icon {
   position: absolute;
   top: 1877px;
   left: 1px;
-  width: 1440px;
+  width: 100%;
   height: 328px;
 }
 .map-image-icon {
@@ -129,6 +152,7 @@
   width: 324px;
   height: 60px;
 }
+
 .reserve-now {
   position: absolute;
   top: 13px;
@@ -179,6 +203,15 @@
   text-align: center;
   display: inline-block;
   width: 273px;
+}
+.error1 {
+  position: absolute;
+  top: 110px;
+  left: 49px;
+  color: var(--color-black);
+  font-weight: 600;
+  font-size: 10px;
+  overflow: visible
 }
 .reserve-bar {
   position: absolute;
@@ -315,21 +348,21 @@
   top: 842px;
   left: 74px;
 }
-.don-alfonso-19801,
-.food-street-toronto3 {
+.resturaunt-name1,
+.location {
   position: absolute;
   top: 19px;
   left: 0;
   display: inline-block;
-  width: 423px;
+  width: 600px;
   height: 41px;
 }
-.food-street-toronto3 {
+.location {
   top: 59px;
   font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--color-dimgray);
-  width: 258px;
+  width: 600px;
   height: 25px;
 }
 .top-titles {
@@ -360,14 +393,14 @@
   height: 81px;
   overflow: hidden;
 }
-.don-alfonso-19802 {
+.resturaunt-name2{
   position: absolute;
   top: 20px;
-  left: 170px;
+  left: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 356px;
+  width: 700px;
   height: 41px;
 }
 .frame-parent,
@@ -387,27 +420,52 @@
   font-size: var(--font-size-17xl);
   color: var(--color-black);
 }
-.bxbxs-user-circle-icon2,
+.userdashbtn1 {
+  position: absolute;
+  height: 50%;
+  width: 2.5%;
+  top: 30.29%;
+  right: 2.22%;
+  bottom: 31.43%;
+  left: 92.11%;
+}
+.homepagebtn1 {
+  position: absolute;
+  height: 34.29%;
+  width: 1.67%;
+  top: 34.29%;
+  right: 2.22%;
+  bottom: 31.43%;
+  left: 96.11%;
+}
+
 .search-icon1 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 44px;
-  height: 44px;
-  overflow: hidden;
-}
-.search-icon1 {
-  height: 63.86%;
-  width: 30.22%;
-  top: 18.18%;
-  right: -1.18%;
-  bottom: 17.95%;
-  left: 70.97%;
+  height: 117.08%;
+  width: 117.08%;
+  top: -12.5%;
+  right: -4.58%;
+  bottom: -4.58%;
+  left: -12.5%;
   max-width: 100%;
+  overflow: hidden;
   max-height: 100%;
   cursor: pointer;
 }
-.initial-options2,
+.bxbxs-user-circle-icon2{
+  position: absolute;
+  height: 117.08%;
+  width: 117.08%;
+  top: -12.5%;
+  right: -4.58%;
+  bottom: -4.58%;
+  left: -12.5%;
+  max-width: 150%;
+  overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
+}
+
 .reservify-icon5 {
   position: absolute;
   top: 13px;
@@ -436,6 +494,7 @@
   width: 317px;
   height: 52px;
 }
+
 .main-header4,
 .reservepage {
   background-color: var(--color-white);
@@ -445,7 +504,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1440px;
+  width: 100%;
   height: 70px;
 }
 .reservepage {

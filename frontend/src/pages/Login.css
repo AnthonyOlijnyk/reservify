@@ -116,7 +116,7 @@
   height: 183px;
   flex-shrink: 0;
 }
-.error,
+.errorLogin,
 .frameT {
   position: absolute;
   top: 500px;
@@ -125,7 +125,7 @@
   height: 19px;
   overflow: visible;
 }
-.error {
+.errorLogin {
   top: -4px;
   left: 8px;
   font-weight: 600;
@@ -216,7 +216,7 @@
   width: 785px;
   height: 1197px;
 }
-.restaurant-2-icon {
+.restaurant-3-icon {
   position: absolute;
   top: 277px;
   left: 0;

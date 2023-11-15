@@ -1,15 +1,16 @@
-
-import { useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useCallback, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./SearchPage.css";
 
 const SearchPage = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const onReserveBtnContainerClick = useCallback((restaurant_name) => {
-    navigate(`/reservepage/${restaurant_name}`);
+  const onReserveBtnContainerClick = useCallback((restaurant) => {
+    console.log(restaurant);
+    navigate(`/reservepage/${restaurant.name}`, { state: { restaurant } });
   }, [navigate]);
 
   const onRoundSearchContainerClick = useCallback(() => {
@@ -29,6 +30,19 @@ const SearchPage = () => {
     navigate("/homepage");
   }, [navigate]);
 
+  useEffect(() => {
+    if (location.state && location.state.query) {
+      setQuery(location.state.query);
+  
+      fetch(`http://localhost:8000/RestaurantApp/search/?q=${encodeURIComponent(location.state.query)}&field=name`)
+        .then((response) => response.json())
+        .then((data) => {
+          setResults(data);
+        })
+        .catch((error) => console.error('Error fetching search results:', error));
+    }
+  }, [location.state]);
+  
   return (
     <div className="searchpage">
       <div className="mainframe1" />
@@ -37,8 +51,8 @@ const SearchPage = () => {
           {results.map((restaurant, index) => (
             <div className="restaurant" key={index}>
             <div className="property-col" />
-            <img className="property-col-icon" alt="" src={restaurant.image}/>
-            <div className="reserve-btn" onClick={() => onReserveBtnContainerClick(restaurant.name)}>
+            <img className="property-col-icon" alt="" src={restaurant.imageNum}/>
+            <div className="reserve-btn" onClick={() => onReserveBtnContainerClick(restaurant)}>
               <div className="reserve-btn-child" />
               <b className="reserve">Reserve</b>
             </div>
