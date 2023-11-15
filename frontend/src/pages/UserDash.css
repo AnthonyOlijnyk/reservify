@@ -204,10 +204,18 @@ html{
 }
 .error{
   position: absolute;
-  top: 60px;
-  left: 200px;
+  top: 357px;
+  left: 292px;
   width: 367px;
   height: 67px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  font-family: var(--font-inter);
+  color: var(--color-black);
 }
 .changeusernamebtn {
   position: absolute;

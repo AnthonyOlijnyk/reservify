@@ -8,13 +8,11 @@ const UserDash = (props) => {
   const [newUsername, setNewUsername] = useState('');
   const [confirmUsername, setConfirmUsername] = useState('');
 
-  const [errorUsernameMessage, setErrorUsernameMessage] = useState('');
-
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const [errorPasswordMessage, setErrorPasswordMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const onSearchIconClick = useCallback(() => {
     navigate("/homepage");
@@ -39,15 +37,22 @@ const UserDash = (props) => {
 
   const onChangeUserButtonClick = useCallback(async () => {
     try {
-      if (oldUsername === newUsername) {
-        setErrorUsernameMessage("Old and new usernames must be different.");
+      if (!oldUsername) {
+        setErrorMessage("Please enter your old username.");
+        return;
+      }
+      if (!newUsername){
+        setErrorMessage("Please enter your new username.");
         return;
       }
       if (newUsername !== confirmUsername) {
-        setErrorUsernameMessage("New and confirm usernames must match.");
+        setErrorMessage("New and confirm usernames must match.");
         return;
       }
-
+      if (oldUsername === newUsername || oldUsername === confirmUsername || oldUsername === newUsername === confirmUsername) {
+        setErrorMessage("Old and new usernames must be different.");
+        return;
+      }
       const jsonData = {
         username: oldUsername,
         new_username: newUsername,
@@ -70,35 +75,42 @@ const UserDash = (props) => {
           setOldUsername(oldUsername);
           setNewUsername(newUsername);
           setConfirmUsername(confirmUsername);
+          setErrorMessage(`Username Successfully Saved`); 
         } else {
-          setErrorUsernameMessage(`Error: ${data.error}`);
+          setErrorMessage(`Error: ${data.error}`);
           console.log('User change error:', data);
         }
       } else {
+        setErrorMessage(`Username does not exist`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [oldUsername, newUsername, confirmUsername, setOldUsername, setNewUsername, setConfirmUsername, setErrorUsernameMessage]);
+  }, [oldUsername, newUsername, confirmUsername, setOldUsername, setNewUsername, setConfirmUsername, setErrorMessage]);
 
   const onChangePassButtonClick = useCallback(async () => {
     try {
+      //Could remove the following if statement if needed
       if (!oldUsername) {
-        setErrorPasswordMessage("Please enter your old username.");
+        setErrorMessage("Please enter your old username.");
         return;
       }
-      
-      if (oldPassword === newPassword) {
-        setErrorPasswordMessage("Old and new passwords must be different.");
+      if (!oldPassword){
+        setErrorMessage("Please enter your old password.");
         return;
       }
       
       if (newPassword !== confirmPassword) {
-        setErrorPasswordMessage("New and confirm passwords must match.");
+        setErrorMessage("New and confirm passwords must match.");
         return;
       }
-      
+
+      if (oldPassword === newPassword || oldPassword === confirmPassword || oldPassword === newPassword === confirmPassword) {
+        setErrorMessage("Old and new passwords must be different.");
+        return;
+      }
+
       const jsonData = {
         oldPassword,
         new_password: newPassword,
@@ -114,24 +126,26 @@ const UserDash = (props) => {
         },
         body: JSON.stringify(jsonData),
       });
-  
+
       if (response.ok) {
         if (newPassword === confirmPassword) {
           setOldPassword(oldPassword);
           setNewPassword(newPassword);
           setConfirmPassword(confirmPassword);
+          setErrorMessage(`Password Successfully Saved`); 
         } else {
           const errorData = await response.json();
-          setErrorPasswordMessage(`Error: ${errorData.error}`);
+          setErrorMessage(`Error: ${errorData.error}`);
           console.log('Login error:', errorData);
         }
       } else {
+        setErrorMessage(`Old password or old username is incorrect`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [oldUsername, oldPassword, newPassword, confirmPassword, setOldPassword, setNewPassword, setConfirmPassword, setErrorPasswordMessage]);
+  }, [oldUsername, oldPassword, newPassword, confirmPassword, setOldPassword, setNewPassword, setConfirmPassword, setErrorMessage]);
   
   return (
     <div className="user-dash">
@@ -204,7 +218,6 @@ const UserDash = (props) => {
               <div className="changeuserbtn">
                 <button className="changeusernamebtn" onClick={onChangeUserButtonClick}>
                   <div className="change-user">Change Username</div>
-                  <div className="error">{errorPasswordMessage}</div>
                 </button>
               </div>
               <div className="oldpasswordfield">
@@ -249,9 +262,9 @@ const UserDash = (props) => {
               <div className="changepassbtn">
                 <button className="changepasswordbtn" onClick={onChangePassButtonClick}>
                   <div className="change-password">Change Password</div>
-                  <div className="error">{errorUsernameMessage}</div>
                 </button>
               </div>
+              <div className="error">{errorMessage}</div>
               <img className="divider1-icon" alt="" src="/divider1.svg" />
             </div>
             <div className="settings1">Settings</div>

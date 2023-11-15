@@ -66,7 +66,7 @@ const Login = (props)=> {
       </div>
       <div className="login-frame">
         <div className="frameT">
-          <div className="error">{errorMessage}
+          <div className="errorLogin">{errorMessage}
           </div>
         </div>
         <div className="frame">
