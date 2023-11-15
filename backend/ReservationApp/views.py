@@ -1,4 +1,8 @@
 from rest_framework.views import APIView
+
+from rest_framework.response import Response
+from rest_framework import status
+
 from django.http import JsonResponse
 
 from core.utils.authorization import check_user_authorized, get_user_id
@@ -55,6 +59,26 @@ class MakeReservationView(APIView):
 
         return make_success_response()
 
+
+class ReservationUpdateStateView(APIView):
+    def put(self, request):
+        try:
+            reservation_id = request.data['reservation_id']
+            new_state = request.data['new_state']
+        except KeyError as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            reservation = Reservation.objects.get(id=reservation_id)
+        except Reservation.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        # Update the reservation state
+        reservation.reservation_state = new_state
+        reservation.save()
+
+        return Response(status=status.HTTP_200_OK)    
+
 class FetchReservationsView(APIView):
     def get(self, request):
         authorization_error = check_user_authorized(request)
@@ -68,3 +92,4 @@ class FetchReservationsView(APIView):
         serializer = ReservationSerializer(reservations, many=True)
         
         return JsonResponse(serializer.data, safe=False)
+
