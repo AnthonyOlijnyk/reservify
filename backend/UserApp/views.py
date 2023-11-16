@@ -136,38 +136,31 @@ class UserUpdateUsernameView(APIView):
             user = User.objects.get(id=user_id)
         except User.DoesNotExist:
                 return Response({
-                'success': False,
-                'message': 'User not found.'
+                'error': 'User not found.'
                 }, status=status.HTTP_404_NOT_FOUND)
 
         # Ensure new and old username in body
         if new_username is None or old_username is None:
                 return Response({
-                'success': False,
-                'message': 'New and old username must be in the request body'
+                'error': 'New and old username must be in the request body'
                 }, status=status.HTTP_400_BAD_REQUEST)
 
         # Check if the user making the request matches the old_username provided
         if user.username != old_username:
                 return Response({
-                'success': False,
-                'message': 'You cannot change the username of another user'
+                'error': 'You cannot change the username of another user'
                 }, status=status.HTTP_403_FORBIDDEN)
     
         # Check if the new username is different from the current one
         if new_username == user.username:
                 return Response({
-                'success': False,
-                'message': 'New username should be different from current username'
+                'error': 'New username should be different from current username'
                 }, status=status.HTTP_400_BAD_REQUEST)
         
         user.username = new_username
         user.save()
 
-        return Response({
-                'success': True,
-                'message': 'Username changed successfully'
-                }, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
  
 class UserUpdatePasswordView(APIView):
     def put(self, request):
@@ -180,44 +173,36 @@ class UserUpdatePasswordView(APIView):
             user = User.objects.get(id=user_id)
         except User.DoesNotExist:
                 return Response({
-                'success': False,
-                'message': 'User not found'
+                'error': 'User not found'
                 }, status=status.HTTP_404_NOT_FOUND)
         
         # Ensure new and old password in request body
         if not new_password or not old_password:
                 return Response({
-                'success': False,
-                'message': 'Both old and new passwords are required in the request body'
+                'error': 'Both old and new passwords are required in the request body'
                 }, status=status.HTTP_400_BAD_REQUEST)
         
         # Check if the current password is correct
         if not check_password(old_password, user.password):
                 return Response({
-                'success': False,
-                'message': 'Current password is incorrect'
+                'error': 'Current password is incorrect'
                 }, status=status.HTTP_400_BAD_REQUEST)
         
         # Authenticate user with email and old password
         authenticated_user = authenticate(email=user.email, password=old_password)
         if not authenticated_user:
             return Response({
-                'success': False,
-                'message': 'User is unauthorized'
+                'error': 'User is unauthorized'
                 }, status=status.HTTP_401_UNAUTHORIZED)
         
         # Ensure new password is different from old password
         if new_password == old_password:
                 return Response({
-                'success': False,
-                'message': 'New password should be different from current password'
+                'error': 'New password should be different from current password'
                 }, status=status.HTTP_400_BAD_REQUEST)
         
         # Update password
         user.set_password(new_password)
         user.save()
         
-        return Response({
-                'success': True,
-                'message': 'Password changed successfully'
-                }, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
