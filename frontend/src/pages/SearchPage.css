@@ -38,8 +38,8 @@
 }
 .property-col-icon {
   top: -10px;
-  left: -10px;
-  width: 594px;
+  left: 0px;
+  width: 574px;
   height: 406.5px;
   object-fit: cover;
 }
