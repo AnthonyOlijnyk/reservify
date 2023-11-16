@@ -8,6 +8,8 @@ from .models import User
 from .serializers import UserSerializer
 from .forms import SignupForm
 
+from django.contrib.auth import authenticate
+
 from .utils.signup import send_email_confirmation
 from core.utils.authorization import check_user_authorized, get_user_id
 
@@ -150,36 +152,33 @@ class UserUpdateUsernameView(APIView):
 
 
 class UserUpdatePasswordView(APIView):
-    def put(self, request, username):
+    def put(self, request):
+        email = request.data.get('email', None)
+        old_password = request.data.get('old_password', None)
+        new_password = request.data.get('new_password', None)
+
+        if not email or not old_password or not new_password:
+            return Response(
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Find user by email
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(email=email)
         except User.DoesNotExist:
             return Response(
-                {'error': 'User not found'},
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # Get the new password from the request data
-        new_password = request.data.get('new_password', None)
-
-        if not new_password:
+        # Authenticate user with old password
+        authenticated_user = authenticate(email=email, password=old_password)
+        if not authenticated_user:
             return Response(
-                {'error': 'New password is required in the request body'},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_401_UNAUTHORIZED
             )
 
         # Update password
         user.set_password(new_password)
         user.save()
 
-        serializer = UserSerializer(user)
-
-        response_data = {
-            "id": user.id,
-            "username": user.username,
-            "name": user.name,
-            "email": user.email,
-            "phone_number": user.phone_number,
-            "new_password": new_password  # Include the new password in payload
-        }
-        return Response(response_data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
