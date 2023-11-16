@@ -205,7 +205,14 @@ class UserUpdatePasswordView(APIView):
                 'success': False,
                 'message': 'User is unauthorized'
                 }, status=status.HTTP_401_UNAUTHORIZED)
-
+        
+        # Ensure new password is different from old password
+        if new_password == old_password:
+                return Response({
+                'success': False,
+                'message': 'New password should be different from current password'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
         # Update password
         user.set_password(new_password)
         user.save()
