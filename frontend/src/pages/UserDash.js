@@ -273,52 +273,34 @@ const UserDash = (props) => {
             <div className="reservation">
               <div className="divider2" />
               <div className="upcomingline" />
-              <b className="past">Past</b>
               <b className="upcoming">Upcoming</b>
               <div className="reservations1">Reservations</div>
             </div>
+            <div className="reservation">
+              <div className="divider1" />
+              <div className="upcomingline2" />
+              <b className="past">Past</b>
+            </div>
             <div className="restaurant2">
               <div className="cancelres2">
-                <div className="changepasswordbtn" />
-                <div className="cancel-reservation">Cancel Reservation</div>
+                <div className="cancelresbtn" />
+                <button className="cancel-reservation">Cancel Reservation</button>
               </div>
               <div className="restaurant21">
                 <b className="restaurant-2">Restaurant 2</b>
-                <div className="date-10282023">
-                  <span className="date">{`Date: `}</span>
+                <div className="date_data-10282023">
+                  <span className="date_data">{`Date: `}</span>
                   <span className="span">10/28/2023</span>
                 </div>
                 <div className="time-300-pm-container">
-                  <span className="date">{`Time: `}</span>
+                  <span className="date_data">{`Time: `}</span>
                   <span className="span">3:00 PM</span>
                 </div>
                 <div className="number-of-people-container">
-                  <span className="date">Number of People</span>
+                  <span className="date_data">Number of People</span>
                   <span className="span">: 2</span>
                 </div>
-                <div className="imgrest2" />
-              </div>
-            </div>
-            <div className="restaurant1">
-              <div className="cancelres1">
-                <div className="changepasswordbtn" onClick={onRectangleClick} />
-                <div className="cancel-reservation1">Cancel Reservation</div>
-              </div>
-              <div className="restaurant11">
-                <b className="restaurant-2">Restaurant 1</b>
-                <div className="date-10202023">
-                  <span className="date">{`Date: `}</span>
-                  <span className="span2">10/20/2023</span>
-                </div>
-                <div className="time-300-pm-container">
-                  <span className="date">{`Time: `}</span>
-                  <span className="span">1:00 PM</span>
-                </div>
-                <div className="number-of-people-container1">
-                  <span className="date">Number of People</span>
-                  <span className="span">{`: 4 `}</span>
-                </div>
-                <div className="imgrest2" />
+                <div/>
               </div>
             </div>
           </div>

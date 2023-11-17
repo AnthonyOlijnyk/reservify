@@ -83,6 +83,20 @@ html{
   width: 193px;
   height: 38px;
 }
+.cancelresbtn {
+  position: absolute;
+  top: -75px;
+  left: 0;
+  width: 193px;
+  height: 38px;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-firebrick-100);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-white);
+  font-size: var(--font-size-base-4);
+  font-family: var(--font-montserrat);
+}
 .change-password {
   top: 0;
   left: 0;
@@ -373,6 +387,15 @@ html{
   width: 1205px;
   height: 1px;
 }
+.divider1 {
+  position: absolute;
+  top: 408.5px;
+  left: -0.5px;
+  border-top: 1px solid var(--color-whitesmoke-100);
+  box-sizing: border-box;
+  width: 1205px;
+  height: 1px;
+}
 .upcomingline {
   position: absolute;
   top: 126px;
@@ -381,18 +404,33 @@ html{
   width: 107px;
   height: 3px;
 }
+.upcomingline2 {
+  position: absolute;
+  top: 406px;
+  left: 2px;
+  background-color: var(--color-firebrick-100);
+  width: 68px;
+  height: 3px;
+}
 .past,
 .upcoming {
   position: absolute;
-  top: 88px;
+  top: 96px;
   left: 144px;
   display: inline-block;
   width: 66px;
   height: 30px;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-firebrick-100);
 }
 .upcoming {
-  left: 2px;
+  left: 5px;
   width: 126px;
+}
+.past{
+  top: 378px;
+  left: 14px;
 }
 .reservation,
 .reservations1 {
@@ -419,7 +457,7 @@ html{
   cursor: pointer;
   position: absolute;
   border-radius: var(--br-31xl);
-  top: 0;
+  top: -75px;
   left: 0.5px;
   font-weight: 600;
   display: flex;
@@ -427,6 +465,11 @@ html{
   justify-content: center;
   width: 191px;
   height: 38px;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-montserrat);
+  background-color: transparent;
+  position: relative;
 }
 .cancelres2,
 .restaurant-2 {
@@ -445,38 +488,38 @@ html{
   width: 248px;
   height: 23px;
 }
-.date {
+.date_data {
   font-weight: 600;
 }
 .span {
   font-weight: 500;
   color: var(--color-firebrick-100);
 }
-.date-10282023,
+.date_data-10282023,
 .number-of-people-container,
 .time-300-pm-container {
   position: absolute;
   top: 37px;
   left: 130px;
   display: inline-block;
-  width: 159px;
+  width: 193px;
   height: 19px;
 }
-.number-of-people-container,
 .time-300-pm-container {
   left: 304px;
+  position: absolute;
+  top: 37px;
+  display: inline-block;
   width: 193px;
+  height: 19px;
 }
 .number-of-people-container {
   left: 520px;
-  width: 149px;
-}
-.imgrest2 {
-  top: 0;
-  left: 0;
-  border-radius: var(--br-7xs);
-  background-color: var(--color-gainsboro-100);
-  width: 107px;
+  position: absolute;
+  top: 37px;
+  display: inline-block;
+  width: 193px;
+  height: 19px;
 }
 .imgrest2,
 .restaurant2,
@@ -485,7 +528,7 @@ html{
   height: 94px;
 }
 .restaurant21 {
-  top: 0;
+  top: -75px;
   left: 0;
   width: 669px;
   text-align: left;
@@ -496,19 +539,6 @@ html{
   top: 278px;
   left: 76px;
   width: 1056px;
-}
-.cancel-reservation1 {
-  cursor: pointer;
-  position: absolute;
-  border-radius: var(--br-31xl);
-  top: 0;
-  left: 0.5px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 193px;
-  height: 38px;
 }
 .cancelres1 {
   position: absolute;
@@ -521,14 +551,14 @@ html{
   font-weight: 500;
   color: var(--color-firebrick-300);
 }
-.date-10202023,
+.date_data-10202023,
 .number-of-people-container1 {
   position: absolute;
   top: 37px;
   display: inline-block;
   height: 19px;
 }
-.date-10202023 {
+.date_data-10202023 {
   left: 131px;
   width: 159px;
   color: var(--color-darkslategray-200);
@@ -542,7 +572,6 @@ html{
   position: absolute;
   height: 94px;
 }
-
 
 .restaurant11 {
   top: 0;
