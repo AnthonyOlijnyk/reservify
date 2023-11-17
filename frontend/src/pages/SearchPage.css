@@ -292,8 +292,8 @@
 .bxbxs-user-circle-icon1,
 .search-icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -8px;
+  left: -52px;
   width: 44px;
   height: 44px;
   overflow: hidden;
@@ -306,7 +306,7 @@
   right: -1.08%;
   bottom: 12.5%;
   left: 70.97%;
-  max-width: 100%;
+  max-width: 89%;
   max-height: 100%;
 }
 .initial-options1,
