@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./UserDash.css";
 
@@ -13,6 +13,8 @@ const UserDash = (props) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [userReservations, setUserReservations] = useState([]);
+
 
   const onSearchIconClick = useCallback(() => {
     navigate("/homepage");
@@ -34,6 +36,43 @@ const UserDash = (props) => {
   const onRectangleClick = useCallback(() => {
     navigate("/homepage");
   }, [navigate]);
+
+  const fetchUserReservations = useCallback(() => {
+    // Fetch user reservations every 30 seconds
+    fetch(`http://localhost:8000/api/fetch-reservations`) //this has to be wrong to some extent
+      .then((response) => response.json())
+      .then((data) => {
+        setUserReservations(data);
+      })
+      .catch((error) => console.error('Error fetching user reservations:', error));
+  }, []);  
+
+  useEffect(() => {
+    // Fetch user reservations on component mount
+    fetchUserReservations();
+  
+    // Set interval to fetch user reservations every 30 seconds
+    const intervalId = setInterval(fetchUserReservations, 30000);
+  
+    // Clear the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [fetchUserReservations]);
+  
+  const onCancelReservationClick = (reservation) => {
+    // Make a request to the backend to cancel the specific reservation
+    fetch(`http://localhost:8000/api/reservations/update_state/`, {
+      method: 'PUT', // Assuming DELETE method for canceling reservation
+    })
+      .then((response) => {
+        if (response.ok) {
+          // If the cancel reservation request is successful, update the user reservations
+          fetchUserReservations();
+        } else {
+          console.error('Error canceling reservation:', response.statusText);
+        }
+      })
+      .catch((error) => console.error('Error canceling reservation:', error));
+  };
 
   const onChangeUserButtonClick = useCallback(async () => {
     try {
@@ -281,28 +320,30 @@ const UserDash = (props) => {
               <div className="upcomingline2" />
               <b className="past">Past</b>
             </div>
-            <div className="restaurant2">
-              <div className="cancelres2">
-                <div className="cancelresbtn" />
-                <button className="cancel-reservation">Cancel Reservation</button>
+            {userReservations.map((reservation, index) => (
+              <div className="restaurant2" key={index}>
+                <div className="cancelres2">
+                  <div className="cancelresbtn" />
+                  <button className="cancel-reservation" onClick={() => onCancelReservationClick(reservation)}>Cancel Reservation</button>
+                </div>
+                <div className="restaurant21">
+                  <b className="restaurant-2">{reservation.restaurant_id}</b>
+                  <div className="date_data-10282023">
+                    <span className="date_data">{`Date and time: `}</span>
+                    <span className="span">{reservation.start_time}</span>
+                  </div>
+                  {/*<div className="time-300-pm-container">
+                    <span className="date_data">{`Time: `}</span>
+                    <span className="span">{reservation.time}</span>
+                  </div>*/}
+                  <div className="number-of-people-container">
+                    <span className="date_data">{`Number of People: `}</span>
+                    <span className="span">{reservation.number_of_people}</span>
+                  </div>
+                  <div/>
+                </div>
               </div>
-              <div className="restaurant21">
-                <b className="restaurant-2">Restaurant 2</b>
-                <div className="date_data-10282023">
-                  <span className="date_data">{`Date: `}</span>
-                  <span className="span">10/28/2023</span>
-                </div>
-                <div className="time-300-pm-container">
-                  <span className="date_data">{`Time: `}</span>
-                  <span className="span">3:00 PM</span>
-                </div>
-                <div className="number-of-people-container">
-                  <span className="date_data">Number of People</span>
-                  <span className="span">: 2</span>
-                </div>
-                <div/>
-              </div>
-            </div>
+            ))}
           </div>
           <button className="logout-btn" onClick={onLogoutBtnClick}>
             <div className="logout-btn-child" onClick={onRectangleClick} />
