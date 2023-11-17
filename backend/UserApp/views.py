@@ -124,62 +124,82 @@ class RootView(APIView):
         return TemplateResponse(request, self.template_name, context={})
 
 class UserUpdateUsernameView(APIView):
-    def put(self, request, username):
-        try:
-            user = User.objects.get(username=username)
-        except User.DoesNotExist:
-            return Response(
-                {'error': 'User not found'},
-                status=status.HTTP_404_NOT_FOUND
-            )
-
+    def put(self, request):
+        user_id = get_user_id(request)
         new_username = request.data.get('new_username', None)
+        old_username = request.data.get('old_username', None)
+        
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+                return Response({
+                'error': 'User not found.'
+                }, status=status.HTTP_404_NOT_FOUND)
 
-        if new_username is None:
-            return Response(
-                {'error': 'New username is required in the request body'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        # Ensure new and old username in body
+        if new_username is None or old_username is None:
+                return Response({
+                'error': 'New and old username must be in the request body'
+                }, status=status.HTTP_400_BAD_REQUEST)
 
+        # Check if the user making the request matches the old_username provided
+        if user.username != old_username:
+                return Response({
+                'error': 'You cannot change the username of another user'
+                }, status=status.HTTP_403_FORBIDDEN)
+    
+        # Check if the new username is different from the current one
+        if new_username == user.username:
+                return Response({
+                'error': 'New username should be different from current username'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
         user.username = new_username
         user.save()
 
-        serializer = UserSerializer(user)  # Replace with your actual serializer
-        return Response(serializer.data, status=status.HTTP_200_OK)    
-    
-
-
+        return Response(status=status.HTTP_200_OK)
+ 
 class UserUpdatePasswordView(APIView):
-    def put(self, request, username):
-        try:
-            user = User.objects.get(username=username)
-        except User.DoesNotExist:
-            return Response(
-                {'error': 'User not found'},
-                status=status.HTTP_404_NOT_FOUND
-            )
-
-        # Get the new password from the request data
+    def put(self, request):
+        user_id = get_user_id(request)
+        old_password = request.data.get('old_password', None)
         new_password = request.data.get('new_password', None)
 
-        if not new_password:
-            return Response(
-                {'error': 'New password is required in the request body'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
+        # Find user
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+                return Response({
+                'error': 'User not found'
+                }, status=status.HTTP_404_NOT_FOUND)
+        
+        # Ensure new and old password in request body
+        if not new_password or not old_password:
+                return Response({
+                'error': 'Both old and new passwords are required in the request body'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Check if the current password is correct
+        if not check_password(old_password, user.password):
+                return Response({
+                'error': 'Current password is incorrect'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Authenticate user with email and old password
+        authenticated_user = authenticate(email=user.email, password=old_password)
+        if not authenticated_user:
+            return Response({
+                'error': 'User is unauthorized'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+        
+        # Ensure new password is different from old password
+        if new_password == old_password:
+                return Response({
+                'error': 'New password should be different from current password'
+                }, status=status.HTTP_400_BAD_REQUEST)
+        
         # Update password
         user.set_password(new_password)
         user.save()
-
-        serializer = UserSerializer(user)
-
-        response_data = {
-            "id": user.id,
-            "username": user.username,
-            "name": user.name,
-            "email": user.email,
-            "phone_number": user.phone_number,
-            "new_password": new_password  # Include the new password in payload
-        }
-        return Response(response_data, status=status.HTTP_200_OK)
+        
+        return Response(status=status.HTTP_200_OK)
