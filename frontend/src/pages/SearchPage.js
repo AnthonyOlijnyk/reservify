@@ -81,29 +81,29 @@ const SearchPage = () => {
         />
       </div>
       <div className="main-header3">
-        <div className="header">
-          <div className="akar-iconsglobe" />
+        <div className="homepagebtn4">
+          <img
+            className="search-icon"
+            alt=""
+            src="/search-icon.svg"
+            onClick={onSearchIconClick}
+          />
         </div>
-      </div>
-      <div className="initial-options1">
-        <img
-          className="bxbxs-user-circle-icon1"
-          alt=""
-          src="/bxbxsusercircle.svg"
-          onClick={onBxbxsUserCircleIconClick}
-        />
-        <img
-          className="search-icon"
-          alt=""
-          src="/search-icon.svg"
-          onClick={onSearchIconClick}
-        />
+        <div className="userdashbtn4">
+          <img
+            className="bxbxs-user-circle-icon1"
+            alt=""
+            src="/bxbxsusercircle.svg"
+            onClick={onBxbxsUserCircleIconClick}
+          />
+        </div>
       </div>
       <div className="titlelogo4">
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />
       </div>
       {/*<img className="footer-icon" alt="" src="/footer1.svg" />*/}
+    
     </div>
   );
 };
