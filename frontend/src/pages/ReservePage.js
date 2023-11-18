@@ -7,6 +7,16 @@ import RatingForm from "../components/RatingForm";
 import "./ReservePage.css";
 import { useUser } from './UserContext'; 
 import Cookies from "universal-cookie";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+const customIcon = new L.Icon({
+  iconUrl: process.env.PUBLIC_URL + '/custom-marker-icon.png',
+  iconSize: [25, 41], // size of the icon
+  iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
+  popupAnchor: [1, -34], // point from which the popup should open relative to the iconAnchor
+});
 
 const ReservePage = (resturaunt) => {
   const [timeDateTimePickerValue, setTimeDateTimePickerValue] = useState(null);
@@ -20,6 +30,8 @@ const ReservePage = (resturaunt) => {
   const location = useLocation();
   const restaurantData = location.state.restaurant;
 
+  const restaurantLongitude = restaurantData.longitude;
+  const restaurantLatitude = restaurantData.latitude;
   const restaurantLocation = restaurantData.location;
   const restaurantAbout = restaurantData.about;
   const restaurantCuisine = restaurantData.cuisine;
@@ -151,7 +163,23 @@ const ReservePage = (resturaunt) => {
                 </div>
               </div>
               <div className="map-image-parent">
-                <img className="map-image-icon" alt="" src="/map-image@2x.png" />
+                <div className="mapview">
+                  {restaurantLongitude && restaurantLatitude && (
+                    <MapContainer
+                      center={[restaurantLatitude, restaurantLongitude]}
+                      zoom={15}
+                      style={{ width: '100%', height: '100%' }}
+                    >
+                      <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                      />
+                    <Marker position={[restaurantLatitude, restaurantLongitude]} icon={customIcon}>
+                      <Popup>{restaurantLocation}</Popup>
+                    </Marker>
+                    </MapContainer>
+                  )}
+                </div>
                 <div className="about-paragraph">{restaurantAbout}</div>
                 <b className="about">ABOUT</b>
                 <b className="info">INFO</b>
