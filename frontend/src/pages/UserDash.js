@@ -76,18 +76,12 @@ const UserDash = (props) => {
   const sortedPastReservations = pastReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
 
   const onCancelReservationClick = (reservationId) => {
-    const newState = 'Cancelled';
-  
     fetch(`http://localhost:8000/ReservationApp/api/reservations/update_state/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${cookies.get('jwt')}`
-      },
-      body: JSON.stringify({
-        reservation_id: reservationId,
-        reservation_state: newState
-      })
+      }
     })
     .then((response) => {
       if (response.ok) {
@@ -342,13 +336,13 @@ const UserDash = (props) => {
                 <div className="restaurant2" key={index}>
                   <div className="cancelres2">
                     <div className="cancelresbtn" />
-                    <button className="cancel-reservation" onClick={() => onCancelReservationClick(reservation)}>Cancel Reservation</button>
+                    <button className="cancel-reservation" onClick={() => onCancelReservationClick(reservation.id)}>Cancel Reservation</button>
                   </div>
                   <div key={reservation.id} className="restaurant21">
                     <b className="restaurant-2">{reservation.restaurant.name}</b>
                     <div className="date_data-10282023">
                       <span className="date_data">{`Date and time: `}</span>
-                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
                     </div>
                     <div className="number-of-people-container">
                       <span className="date_data">{`Number of People: `}</span>
@@ -366,15 +360,11 @@ const UserDash = (props) => {
               <div className="past-container">
               {sortedPastReservations.map((reservation, index) => (
                 <div className="restaurant2" key={index}>
-                  <div className="cancelres2">
-                    <div className="cancelresbtn" />
-                    <button className="cancel-reservation" onClick={() => onCancelReservationClick(reservation)}>Cancel Reservation</button>
-                  </div>
                   <div key={reservation.id} className="restaurant21">
                     <b className="restaurant-2">{reservation.restaurant.name}</b>
                     <div className="date_data-10282023">
                       <span className="date_data">{`Date and time: `}</span>
-                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
                     </div>
                     <div className="number-of-people-container">
                       <span className="date_data">{`Number of People: `}</span>
