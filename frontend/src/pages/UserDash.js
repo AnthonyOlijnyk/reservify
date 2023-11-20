@@ -65,8 +65,15 @@ const UserDash = (props) => {
   useEffect(() => {
     fetchUserReservations()
   });
-  
-  const sortedReservations = userReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
+
+  const currentDate = new Date();
+
+  // Separate reservations into upcoming and past
+  const upcomingReservations = userReservations.filter(reservation => new Date(reservation.start_time) > currentDate);
+  const sortedUpcomingReservations = upcomingReservations.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+
+  const pastReservations = userReservations.filter(reservation => new Date(reservation.start_time) <= currentDate);
+  const sortedPastReservations = pastReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
 
   const onCancelReservationClick = (reservationId) => {
     const newState = 'Cancelled';
@@ -330,15 +337,8 @@ const UserDash = (props) => {
               <div className="upcomingline" />
               <b className="upcoming">Upcoming</b>
               <div className="reservations1">Reservations</div>
-            </div>
-            <div className="reservation2">
-              <div className="divider1" />
-              <div className="upcomingline2" />
-              <b className="past">Past</b>
-            </div>
-            </div>
-            <div className="container">
-              {sortedReservations.map((reservation, index) => (
+              <div className="up-container">
+              {sortedUpcomingReservations.map((reservation, index) => (
                 <div className="restaurant2" key={index}>
                   <div className="cancelres2">
                     <div className="cancelresbtn" />
@@ -357,6 +357,34 @@ const UserDash = (props) => {
                   </div>
                 </div>
               ))}
+            </div>
+            </div>
+            <div className="reservation2">
+              <div className="divider1" />
+              <div className="upcomingline2" />
+              <b className="past">Past</b>
+              <div className="past-container">
+              {sortedPastReservations.map((reservation, index) => (
+                <div className="restaurant2" key={index}>
+                  <div className="cancelres2">
+                    <div className="cancelresbtn" />
+                    <button className="cancel-reservation" onClick={() => onCancelReservationClick(reservation)}>Cancel Reservation</button>
+                  </div>
+                  <div key={reservation.id} className="restaurant21">
+                    <b className="restaurant-2">{reservation.restaurant.name}</b>
+                    <div className="date_data-10282023">
+                      <span className="date_data">{`Date and time: `}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                    </div>
+                    <div className="number-of-people-container">
+                      <span className="date_data">{`Number of People: `}</span>
+                      <span className="span">{reservation.number_of_people}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            </div>
             </div>
           <button className="logout-btn" onClick={onLogoutBtnClick}>
             <div className="logout-btn-child" onClick={onRectangleClick} />
