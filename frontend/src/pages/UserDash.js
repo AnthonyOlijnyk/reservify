@@ -66,6 +66,8 @@ const UserDash = (props) => {
     fetchUserReservations()
   });
   
+  const sortedReservations = userReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
+
   const onCancelReservationClick = (reservationId) => {
     const newState = 'Cancelled';
   
@@ -336,7 +338,7 @@ const UserDash = (props) => {
             </div>
             </div>
             <div className="container">
-              {userReservations.map((reservation, index) => (
+              {sortedReservations.map((reservation, index) => (
                 <div className="restaurant2" key={index}>
                   <div className="cancelres2">
                     <div className="cancelresbtn" />
@@ -346,7 +348,7 @@ const UserDash = (props) => {
                     <b className="restaurant-2">{reservation.restaurant.name}</b>
                     <div className="date_data-10282023">
                       <span className="date_data">{`Date and time: `}</span>
-                      <span className="span">{reservation.start_time}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
                     </div>
                     <div className="number-of-people-container">
                       <span className="date_data">{`Number of People: `}</span>
