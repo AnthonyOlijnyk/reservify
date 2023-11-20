@@ -261,6 +261,7 @@
   justify-content: center;
   width: 324px;
   height: 60px;
+  cursor: pointer;
 }
 .checkresbtn {
   position: relative;

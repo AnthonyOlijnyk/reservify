@@ -30,20 +30,14 @@
   font-family: var(--font-montserrat);
   object-fit: cover;
 }
-.map-image-icon {
+.mapview {
   position: absolute;
-  top: 1877px;
-  left: 1px;
-  width: 100%;
-  height: 328px;
-}
-.map-image-icon {
   top: 331px;
   left: 0;
   width: 802px;
   height: 420px;
-  object-fit: cover;
 }
+
 .about,
 .about-paragraph,
 .info {
