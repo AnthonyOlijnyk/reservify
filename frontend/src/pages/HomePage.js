@@ -136,7 +136,6 @@ const handleEnter = useCallback(
           </div>
         </div>
       </div>
-      <img className="homepage-child" alt="" src="/line-18.svg" />
       <div className="top-rated">
         <img
           className="top-rated-restaurants"
@@ -203,7 +202,6 @@ const handleEnter = useCallback(
         ))}
         
         <img className="map-btn-icon" alt="" src="/map-btn2.svg" />
-        <img className="japanese-item" alt="" src="/line-18.svg" />
         <b className="japanese-cuisine">Japanese Cuisine</b>
       </div>
       <img className="footer-icon" alt="" src="/footer.svg" />
