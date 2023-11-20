@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -63,24 +64,31 @@ const UserDash = (props) => {
 
   useEffect(() => {
     fetchUserReservations()
-  }, []);
+  });
   
-  const onCancelReservationClick = (reservation) => {
+  const onCancelReservationClick = (reservationId) => {
+    const newState = 'Cancelled';
+  
     fetch(`http://localhost:8000/ReservationApp/api/reservations/update_state/`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.get('jwt')}`
       },
-    })
-      .then((response) => {
-        if (response.ok) {
-          // If the cancel reservation request is successful, update the user reservations
-          fetchUserReservations();
-        } else {
-          console.error('Error canceling reservation:', response.statusText);
-        }
+      body: JSON.stringify({
+        reservation_id: reservationId,
+        reservation_state: newState
       })
-      .catch((error) => console.error('Error canceling reservation:', error));
+    })
+    .then((response) => {
+      if (response.ok) {
+        // If the cancel reservation request is successful, update the user reservations
+        fetchUserReservations();
+      } else {
+        console.error('Error canceling reservation:', response.statusText);
+      }
+    })
+    .catch((error) => console.error('Error canceling reservation:', error));
   };
 
   const onChangeUserButtonClick = useCallback(async () => {
@@ -136,15 +144,10 @@ const UserDash = (props) => {
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [oldUsername, newUsername, confirmUsername, setOldUsername, setNewUsername, setConfirmUsername, setErrorMessage]);
+  }, [oldUsername, newUsername, confirmUsername, cookies, setOldUsername, setNewUsername, setConfirmUsername, setErrorMessage]);
 
   const onChangePassButtonClick = useCallback(async () => {
     try {
-      //Could remove the following if statement if needed
-      if (!oldUsername) {
-        setErrorMessage("Please enter your old username.");
-        return;
-      }
       if (!oldPassword){
         setErrorMessage("Please enter your old password.");
         return;
@@ -172,6 +175,7 @@ const UserDash = (props) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.get('jwt')}`
         },
         body: JSON.stringify(jsonData),
       });
@@ -194,7 +198,7 @@ const UserDash = (props) => {
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [oldUsername, oldPassword, newPassword, confirmPassword, setOldPassword, setNewPassword, setConfirmPassword, setErrorMessage]);
+  }, [oldPassword, newPassword, confirmPassword, cookies, setOldPassword, setNewPassword, setConfirmPassword, setErrorMessage]);
   
   return (
     <div className="user-dash">
@@ -325,7 +329,7 @@ const UserDash = (props) => {
               <b className="upcoming">Upcoming</b>
               <div className="reservations1">Reservations</div>
             </div>
-            <div className="reservation">
+            <div className="reservation2">
               <div className="divider1" />
               <div className="upcomingline2" />
               <b className="past">Past</b>
