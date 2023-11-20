@@ -81,7 +81,6 @@ const RestTemplate = ({
       />
       <img className="latest-property-3-inner" alt="" src="/rectangle-8.svg" />
       <img className="reserve-icon4" alt="" src="/reserve.svg" onClick={() => onReserveBtnClick(restaurant)}></img>
-      <img className="heart-icon4" alt="" src="/heart.svg" />
       <div className="main-street-toronto">{address}</div>
     </div>
   );
