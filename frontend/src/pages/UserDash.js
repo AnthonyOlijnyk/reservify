@@ -1,5 +1,7 @@
-import { useCallback, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 import "./UserDash.css";
 
 const UserDash = (props) => {
@@ -13,6 +15,9 @@ const UserDash = (props) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [userReservations, setUserReservations] = useState([]);
+
+  const cookies = new Cookies();
 
   const onSearchIconClick = useCallback(() => {
     navigate("/homepage");
@@ -34,6 +39,68 @@ const UserDash = (props) => {
   const onRectangleClick = useCallback(() => {
     navigate("/homepage");
   }, [navigate]);
+ 
+  const fetchUserReservations = useCallback(() => {
+    fetch("http://localhost:8000/ReservationApp/api/fetch-reservations", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.get('jwt')}`
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setUserReservations(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user reservations:', error);
+      });
+  }, [cookies, setUserReservations]);  
+
+  useEffect(() => {
+    fetchUserReservations()
+  });
+
+  const currentDate = new Date();
+
+  // Separate reservations into upcoming and past
+  const upcomingReservations = userReservations.filter(reservation => new Date(reservation.start_time) > currentDate && reservation.reservation_state !== 'Canceled');
+  const sortedUpcomingReservations = upcomingReservations.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+
+  const pastReservations = userReservations.filter(reservation => new Date(reservation.start_time) <= currentDate);
+  const sortedPastReservations = pastReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
+
+  const cancelledReservations = userReservations.filter(reservation => reservation.reservation_state === 'Canceled' );
+  const sortedCancelReservations = cancelledReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
+
+  const onCancelReservationClick = (reservationId) => {
+    const jsonData = {
+      reservation_id: reservationId,
+      new_state: 'Canceled',
+    };
+    fetch(`http://localhost:8000/ReservationApp/api/reservations/update_state/`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.get('jwt')}`
+      },
+        body: JSON.stringify(jsonData),
+    })
+    .then((response) => {
+      if (response.ok) {
+        // If the cancel reservation request is successful, update the user reservations
+        fetchUserReservations();
+      } else {
+        console.error('Error canceling reservation:', response.statusText);
+      }
+    })
+    .catch((error) => console.error('Error canceling reservation:', error));
+  };
 
   const onChangeUserButtonClick = useCallback(async () => {
     try {
@@ -61,10 +128,11 @@ const UserDash = (props) => {
 
       console.log(jsonData);
 
-      const response = await fetch("http://localhost:8000/api/users/"+ oldUsername +"/update/", {
+      const response = await fetch("http://localhost:8000/api/user/update/username/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.get('jwt')}`
         },
         body: JSON.stringify(jsonData),
       });
@@ -87,15 +155,10 @@ const UserDash = (props) => {
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [oldUsername, newUsername, confirmUsername, setOldUsername, setNewUsername, setConfirmUsername, setErrorMessage]);
+  }, [oldUsername, newUsername, confirmUsername, cookies, setOldUsername, setNewUsername, setConfirmUsername, setErrorMessage]);
 
   const onChangePassButtonClick = useCallback(async () => {
     try {
-      //Could remove the following if statement if needed
-      if (!oldUsername) {
-        setErrorMessage("Please enter your old username.");
-        return;
-      }
       if (!oldPassword){
         setErrorMessage("Please enter your old password.");
         return;
@@ -119,10 +182,11 @@ const UserDash = (props) => {
   
       console.log(jsonData);
   
-      const response = await fetch("http://localhost:8000/api/users/"+ oldUsername +"/update/password/", {
+      const response = await fetch("http://localhost:8000/api/user/update/password/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.get('jwt')}`
         },
         body: JSON.stringify(jsonData),
       });
@@ -145,7 +209,7 @@ const UserDash = (props) => {
     } catch (error) {
       console.error('Error:', error);
     }
-  }, [oldUsername, oldPassword, newPassword, confirmPassword, setOldPassword, setNewPassword, setConfirmPassword, setErrorMessage]);
+  }, [oldPassword, newPassword, confirmPassword, cookies, setOldPassword, setNewPassword, setConfirmPassword, setErrorMessage]);
   
   return (
     <div className="user-dash">
@@ -273,53 +337,73 @@ const UserDash = (props) => {
             <div className="reservation">
               <div className="divider2" />
               <div className="upcomingline" />
-              <b className="past">Past</b>
               <b className="upcoming">Upcoming</b>
               <div className="reservations1">Reservations</div>
+              <div className="up-container">
+              {sortedUpcomingReservations.map((reservation, index) => (
+                <div className="restaurant2" key={index}>
+                  <div className="cancelres2">
+                    <div className="cancelresbtn" />
+                    <button className="cancel-reservation" onClick={() => onCancelReservationClick(reservation.id)}>Cancel Reservation</button>
+                  </div>
+                  <div key={reservation.id} className="restaurant21">
+                    <b className="restaurant-2">{reservation.restaurant.name}</b>
+                    <div className="date_data-10282023">
+                      <span className="date_data">{`Date and time: `}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                    </div>
+                    <div className="number-of-people-container">
+                      <span className="date_data">{`Number of People: `}</span>
+                      <span className="span">{reservation.number_of_people}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="restaurant2">
-              <div className="cancelres2">
-                <div className="changepasswordbtn" />
-                <div className="cancel-reservation">Cancel Reservation</div>
-              </div>
-              <div className="restaurant21">
-                <b className="restaurant-2">Restaurant 2</b>
-                <div className="date-10282023">
-                  <span className="date">{`Date: `}</span>
-                  <span className="span">10/28/2023</span>
-                </div>
-                <div className="time-300-pm-container">
-                  <span className="date">{`Time: `}</span>
-                  <span className="span">3:00 PM</span>
-                </div>
-                <div className="number-of-people-container">
-                  <span className="date">Number of People</span>
-                  <span className="span">: 2</span>
-                </div>
-                <div className="imgrest2" />
-              </div>
             </div>
-            <div className="restaurant1">
-              <div className="cancelres1">
-                <div className="changepasswordbtn" onClick={onRectangleClick} />
-                <div className="cancel-reservation1">Cancel Reservation</div>
-              </div>
-              <div className="restaurant11">
-                <b className="restaurant-2">Restaurant 1</b>
-                <div className="date-10202023">
-                  <span className="date">{`Date: `}</span>
-                  <span className="span2">10/20/2023</span>
+            <div className="reservation2">
+              <div className="divider1" />
+              <div className="upcomingline2" />
+              <b className="past">Past</b>
+              <div className="past-container">
+              {sortedPastReservations.map((reservation, index) => (
+                <div className="restaurant2" key={index}>
+                  <div key={reservation.id} className="restaurant21">
+                    <b className="restaurant-2">{reservation.restaurant.name}</b>
+                    <div className="date_data-10282023">
+                      <span className="date_data">{`Date and time: `}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                    </div>
+                    <div className="number-of-people-container">
+                      <span className="date_data">{`Number of People: `}</span>
+                      <span className="span">{reservation.number_of_people}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="time-300-pm-container">
-                  <span className="date">{`Time: `}</span>
-                  <span className="span">1:00 PM</span>
+              ))}
+            </div>
+            </div>
+            </div>
+          <div className="reservation3">
+              <div className="divider3" />
+              <div className="upcomingline3" />
+              <b className="cancelled">Cancelled</b>
+              <div className="cancel-container">
+              {sortedCancelReservations.map((reservation, index) => (
+                <div className="restaurant2" key={index}>
+                  <div key={reservation.id} className="restaurant21">
+                    <b className="restaurant-2">{reservation.restaurant.name}</b>
+                    <div className="date_data-10282023">
+                      <span className="date_data">{`Date and time: `}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                    </div>
+                    <div className="number-of-people-container">
+                      <span className="date_data">{`Number of People: `}</span>
+                      <span className="span">{reservation.number_of_people}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="number-of-people-container1">
-                  <span className="date">Number of People</span>
-                  <span className="span">{`: 4 `}</span>
-                </div>
-                <div className="imgrest2" />
-              </div>
+              ))}
             </div>
           </div>
           <button className="logout-btn" onClick={onLogoutBtnClick}>
