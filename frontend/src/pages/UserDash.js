@@ -69,19 +69,27 @@ const UserDash = (props) => {
   const currentDate = new Date();
 
   // Separate reservations into upcoming and past
-  const upcomingReservations = userReservations.filter(reservation => new Date(reservation.start_time) > currentDate);
+  const upcomingReservations = userReservations.filter(reservation => new Date(reservation.start_time) > currentDate && reservation.reservation_state !== 'Canceled');
   const sortedUpcomingReservations = upcomingReservations.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
 
   const pastReservations = userReservations.filter(reservation => new Date(reservation.start_time) <= currentDate);
   const sortedPastReservations = pastReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
 
+  const cancelledReservations = userReservations.filter(reservation => reservation.reservation_state === 'Canceled' );
+  const sortedCancelReservations = cancelledReservations.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));
+
   const onCancelReservationClick = (reservationId) => {
+    const jsonData = {
+      reservation_id: reservationId,
+      new_state: 'Canceled',
+    };
     fetch(`http://localhost:8000/ReservationApp/api/reservations/update_state/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${cookies.get('jwt')}`
-      }
+      },
+        body: JSON.stringify(jsonData),
     })
     .then((response) => {
       if (response.ok) {
@@ -376,6 +384,28 @@ const UserDash = (props) => {
             </div>
             </div>
             </div>
+          <div className="reservation3">
+              <div className="divider3" />
+              <div className="upcomingline3" />
+              <b className="cancelled">Cancelled</b>
+              <div className="cancel-container">
+              {sortedCancelReservations.map((reservation, index) => (
+                <div className="restaurant2" key={index}>
+                  <div key={reservation.id} className="restaurant21">
+                    <b className="restaurant-2">{reservation.restaurant.name}</b>
+                    <div className="date_data-10282023">
+                      <span className="date_data">{`Date and time: `}</span>
+                      <span className="span">{new Date(reservation.start_time).toLocaleString('en-US', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}</span>
+                    </div>
+                    <div className="number-of-people-container">
+                      <span className="date_data">{`Number of People: `}</span>
+                      <span className="span">{reservation.number_of_people}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           <button className="logout-btn" onClick={onLogoutBtnClick}>
             <div className="logout-btn-child" onClick={onRectangleClick} />
             <b className="logout">LOGOUT</b>
