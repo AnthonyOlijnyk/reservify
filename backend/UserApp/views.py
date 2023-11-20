@@ -8,6 +8,9 @@ from .models import User
 from .serializers import UserSerializer
 from .forms import SignupForm
 
+from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import check_password
+
 from .utils.signup import send_email_confirmation
 from core.utils.authorization import check_user_authorized, get_user_id
 

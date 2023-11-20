@@ -246,35 +246,35 @@
 		}
 	  },
 	  {
-		"name": "api/users/<str:username>/update/password/",
+		"name": "api/users/update/password/",
 		"request": {
-		  "method": "PUT",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "application/json"
-			}
-		  ],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\n    \"new_password\": \"new_password_value\"\n}"
-		  },
-		  "url": {
-			"raw": "http://localhost:8000/api/users/username/update-password/",
-			"protocol": "http",
-			"host": [
-			  "localhost"
+			"method": "PUT",
+			"header": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
 			],
-			"port": "8000",
-			"path": [
-			  "api",
-			  "users",
-			  "username",
-			  "update-password"
-			]
-		  }
+			"body": {
+				"mode": "raw",
+				"raw": "{\n    \"new_password\": \"new_password_value\"\n}"
+			},
+			"url": {
+				"raw": "http://localhost:8000/api/users/update/password/",
+				"protocol": "http",
+				"host": [
+					"localhost"
+				],
+				"port": "8000",
+				"path": [
+					"api",
+					"users",
+					"username",
+					"update-password"
+				]
+			}
 		}
-	  },
+	},
 		{
 			"name": "api/fetch-reservations/",
 			"protocolProfileBehavior": {
@@ -302,7 +302,7 @@
 					"path": [
 						"ReservationApp",
 						"api",
-						"fetch-reservation",
+						"fetch-reservation"
 					]
 				}
 			},
