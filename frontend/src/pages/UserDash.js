@@ -128,7 +128,7 @@ const UserDash = (props) => {
 
       console.log(jsonData);
 
-      const response = await fetch("http://localhost:8000/api/user/update/username/", {
+      const response = await fetch("http://localhost:8000/api/users/update/username/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ const UserDash = (props) => {
           console.log('User change error:', data);
         }
       } else {
-        setErrorMessage(`Username does not exist`);
+        setErrorMessage(`Username Not Saved`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
@@ -182,7 +182,7 @@ const UserDash = (props) => {
   
       console.log(jsonData);
   
-      const response = await fetch("http://localhost:8000/api/user/update/password/", {
+      const response = await fetch("http://localhost:8000/api/users/update/password/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +203,7 @@ const UserDash = (props) => {
           console.log('Login error:', errorData);
         }
       } else {
-        setErrorMessage(`Old password or old username is incorrect`);
+        setErrorMessage(`Password Not Saved.`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
