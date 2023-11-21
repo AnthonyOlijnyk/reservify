@@ -133,7 +133,7 @@ class UserUpdateUsernameView(APIView):
         old_username = request.data.get('old_username', None)
         
         try:
-            user = User.objects.get(id=user_id)
+            user = User.objects.get(username=old_username)
         except User.DoesNotExist:
                 return Response({
                 'error': 'User not found.'
@@ -147,9 +147,9 @@ class UserUpdateUsernameView(APIView):
 
         # Check if the user making the request matches the userid provided
         if str(user.id) != str(user_id):
-                return Response({
-                'error': 'You cannot change the username of another user'
-                }, status=status.HTTP_403_FORBIDDEN)
+                 return Response({
+                 'error': 'You cannot change the username of another user'
+                 }, status=status.HTTP_403_FORBIDDEN)
     
         # Check if the new username is different from the current one
         if new_username == old_username:

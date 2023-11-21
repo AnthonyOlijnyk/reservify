@@ -65,7 +65,6 @@ const UserDash = (props) => {
   useEffect(() => {
     fetchUserReservations()
   });
-
   const currentDate = new Date();
 
   // Separate reservations into upcoming and past
