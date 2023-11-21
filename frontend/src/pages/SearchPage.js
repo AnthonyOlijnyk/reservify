@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./SearchPage.css";
+import Stars from "../components/Stars";
 
 const SearchPage = () => {
   const [results, setResults] = useState([]);
@@ -58,7 +59,7 @@ const SearchPage = () => {
             </div>
             <b className="restaurant-name">{restaurant.name}</b>
             <div className="restaurant-location">{restaurant.location}</div>
-            <img className="rating-icon" alt="" src="/rating.svg" />
+            <Stars aveRating={restaurant.ave_rating}/>
           </div>
         ))}
         </div>
