@@ -121,9 +121,8 @@ const UserDash = (props) => {
         return;
       }
       const jsonData = {
-        username: oldUsername,
+        old_username: oldUsername,
         new_username: newUsername,
-        confirmUsername,
       };
 
       console.log(jsonData);
@@ -138,18 +137,17 @@ const UserDash = (props) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        if (data.username) {
+        if (newUsername === confirmUsername) {
           setOldUsername(oldUsername);
           setNewUsername(newUsername);
-          setConfirmUsername(confirmUsername);
           setErrorMessage(`Username Successfully Saved`); 
         } else {
-          setErrorMessage(`Error: ${data.error}`);
-          console.log('User change error:', data);
-        }
+          const errorData = await response.json();
+          setErrorMessage(`Error: ${errorData.error}`);
+          console.log('Login error:', errorData);
+        } 
       } else {
-        setErrorMessage(`Username Not Saved`);
+        setErrorMessage(`Please enter your correct old username`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
@@ -163,21 +161,22 @@ const UserDash = (props) => {
         setErrorMessage("Please enter your old password.");
         return;
       }
-      
+      if (!newPassword){
+        setErrorMessage("Please enter your new password.");
+        return;
+      }
       if (newPassword !== confirmPassword) {
         setErrorMessage("New and confirm passwords must match.");
         return;
       }
-
       if (oldPassword === newPassword || oldPassword === confirmPassword || oldPassword === newPassword === confirmPassword) {
         setErrorMessage("Old and new passwords must be different.");
         return;
       }
 
       const jsonData = {
-        oldPassword,
+        old_password: oldPassword,
         new_password: newPassword,
-        confirmPassword,
       };
   
       console.log(jsonData);
@@ -195,7 +194,6 @@ const UserDash = (props) => {
         if (newPassword === confirmPassword) {
           setOldPassword(oldPassword);
           setNewPassword(newPassword);
-          setConfirmPassword(confirmPassword);
           setErrorMessage(`Password Successfully Saved`); 
         } else {
           const errorData = await response.json();
@@ -203,7 +201,7 @@ const UserDash = (props) => {
           console.log('Login error:', errorData);
         }
       } else {
-        setErrorMessage(`Password Not Saved.`);
+        setErrorMessage(`Please enter your correct old password`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
