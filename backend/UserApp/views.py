@@ -145,14 +145,14 @@ class UserUpdateUsernameView(APIView):
                 'error': 'New and old username must be in the request body'
                 }, status=status.HTTP_400_BAD_REQUEST)
 
-        # Check if the user making the request matches the old_username provided
-        if user.username != old_username:
+        # Check if the user making the request matches the userid provided
+        if str(user.id) != str(user_id):
                 return Response({
                 'error': 'You cannot change the username of another user'
                 }, status=status.HTTP_403_FORBIDDEN)
     
         # Check if the new username is different from the current one
-        if new_username == user.username:
+        if new_username == old_username:
                 return Response({
                 'error': 'New username should be different from current username'
                 }, status=status.HTTP_400_BAD_REQUEST)
@@ -177,7 +177,7 @@ class UserUpdatePasswordView(APIView):
                 }, status=status.HTTP_404_NOT_FOUND)
         
         # Ensure new and old password in request body
-        if not new_password or not old_password:
+        if new_password is None or old_password is None:
                 return Response({
                 'error': 'Both old and new passwords are required in the request body'
                 }, status=status.HTTP_400_BAD_REQUEST)
