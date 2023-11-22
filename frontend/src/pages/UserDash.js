@@ -150,7 +150,7 @@ const UserDash = (props) => {
           console.log('Login error:', errorData);
         } 
       } else {
-        setErrorMessage(`Please enter your correct old username`);
+        setErrorMessage(`Old username is incorrect or not unique`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
