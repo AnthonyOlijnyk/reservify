@@ -141,8 +141,9 @@ const UserDash = (props) => {
 
       if (response.ok) {
         if (newUsername === confirmUsername) {
-          setOldUsername(oldUsername);
-          setNewUsername(newUsername);
+          setOldUsername("");
+          setNewUsername("");
+          setConfirmUsername("");
           setErrorMessage(`Username Successfully Saved`); 
         } else {
           const errorData = await response.json();
@@ -195,8 +196,9 @@ const UserDash = (props) => {
 
       if (response.ok) {
         if (newPassword === confirmPassword) {
-          setOldPassword(oldPassword);
-          setNewPassword(newPassword);
+          setOldPassword("");
+          setNewPassword("");
+          setConfirmPassword("");
           setErrorMessage(`Password Successfully Saved`); 
         } else {
           const errorData = await response.json();
