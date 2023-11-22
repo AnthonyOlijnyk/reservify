@@ -63,8 +63,13 @@ const UserDash = (props) => {
   }, [cookies, setUserReservations]);  
 
   useEffect(() => {
-    fetchUserReservations()
-  });
+    fetchUserReservations();
+    const intervalId = setInterval(() => {
+      fetchUserReservations();
+    }, 300000); //Setting time out, can be changed if needed
+    return () => clearInterval(intervalId);
+  }, []);
+  
   const currentDate = new Date();
 
   // Separate reservations into upcoming and past
@@ -92,7 +97,6 @@ const UserDash = (props) => {
     })
     .then((response) => {
       if (response.ok) {
-        // If the cancel reservation request is successful, update the user reservations
         fetchUserReservations();
       } else {
         console.error('Error canceling reservation:', response.statusText);
