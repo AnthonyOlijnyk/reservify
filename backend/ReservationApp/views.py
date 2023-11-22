@@ -13,11 +13,17 @@ from .utils.make_reservation import (
     is_future_time,
     get_models,
     is_seating_available,
+    is_user_free,
     create_reservation,
     send_confirmation_email
 )
 
-from .constants import TIME_IN_PAST_ERROR, OVER_CAPACITY_ERROR
+from .constants import (
+    TIME_IN_PAST_ERROR, 
+    OVER_CAPACITY_ERROR, 
+    USER_ALREADY_BOOKED_ERROR
+)
+
 from .models import Reservation
 from .forms import MakeReservationForm
 from .serializers import ReservationSerializer
@@ -49,6 +55,9 @@ class MakeReservationView(APIView):
             return make_error_response(TIME_IN_PAST_ERROR)
 
         user, restaurant = get_models(user_id, restaurant_name)
+
+        if not is_user_free(start_time, user_id):
+            return make_error_response(USER_ALREADY_BOOKED_ERROR)
 
         if not is_seating_available(start_time, number_of_people, restaurant):
             return make_error_response(OVER_CAPACITY_ERROR)
