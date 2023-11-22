@@ -63,9 +63,13 @@ const UserDash = (props) => {
   }, [cookies, setUserReservations]);  
 
   useEffect(() => {
-    fetchUserReservations()
-  });
-
+    fetchUserReservations();
+    const intervalId = setInterval(() => {
+      fetchUserReservations();
+    }, 300000); //Setting time out, can be changed if needed
+    return () => clearInterval(intervalId);
+  }, []);
+  
   const currentDate = new Date();
 
   // Separate reservations into upcoming and past
@@ -93,7 +97,6 @@ const UserDash = (props) => {
     })
     .then((response) => {
       if (response.ok) {
-        // If the cancel reservation request is successful, update the user reservations
         fetchUserReservations();
       } else {
         console.error('Error canceling reservation:', response.statusText);
@@ -121,14 +124,13 @@ const UserDash = (props) => {
         return;
       }
       const jsonData = {
-        username: oldUsername,
+        old_username: oldUsername,
         new_username: newUsername,
-        confirmUsername,
       };
 
       console.log(jsonData);
 
-      const response = await fetch("http://localhost:8000/api/user/update/username/", {
+      const response = await fetch("http://localhost:8000/api/users/update/username/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -138,18 +140,17 @@ const UserDash = (props) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        if (data.username) {
+        if (newUsername === confirmUsername) {
           setOldUsername(oldUsername);
           setNewUsername(newUsername);
-          setConfirmUsername(confirmUsername);
           setErrorMessage(`Username Successfully Saved`); 
         } else {
-          setErrorMessage(`Error: ${data.error}`);
-          console.log('User change error:', data);
-        }
+          const errorData = await response.json();
+          setErrorMessage(`Error: ${errorData.error}`);
+          console.log('Login error:', errorData);
+        } 
       } else {
-        setErrorMessage(`Username does not exist`);
+        setErrorMessage(`Old username is incorrect or not unique`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
@@ -163,26 +164,27 @@ const UserDash = (props) => {
         setErrorMessage("Please enter your old password.");
         return;
       }
-      
+      if (!newPassword){
+        setErrorMessage("Please enter your new password.");
+        return;
+      }
       if (newPassword !== confirmPassword) {
         setErrorMessage("New and confirm passwords must match.");
         return;
       }
-
       if (oldPassword === newPassword || oldPassword === confirmPassword || oldPassword === newPassword === confirmPassword) {
         setErrorMessage("Old and new passwords must be different.");
         return;
       }
 
       const jsonData = {
-        oldPassword,
+        old_password: oldPassword,
         new_password: newPassword,
-        confirmPassword,
       };
   
       console.log(jsonData);
   
-      const response = await fetch("http://localhost:8000/api/user/update/password/", {
+      const response = await fetch("http://localhost:8000/api/users/update/password/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -195,7 +197,6 @@ const UserDash = (props) => {
         if (newPassword === confirmPassword) {
           setOldPassword(oldPassword);
           setNewPassword(newPassword);
-          setConfirmPassword(confirmPassword);
           setErrorMessage(`Password Successfully Saved`); 
         } else {
           const errorData = await response.json();
@@ -203,7 +204,7 @@ const UserDash = (props) => {
           console.log('Login error:', errorData);
         }
       } else {
-        setErrorMessage(`Old password or old username is incorrect`);
+        setErrorMessage(`Please enter your correct old password`);
         console.error('Response status:', response.status);
       }
     } catch (error) {
