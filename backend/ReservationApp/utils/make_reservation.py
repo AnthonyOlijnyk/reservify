@@ -45,7 +45,8 @@ def is_user_booked_that_day(start_of_day, end_of_day, user_id):
         ],
         reservation_state__in=[
             'Upcoming',
-            'Ongoing'
+            'Ongoing',
+            'Finished'
         ]
     ).count()
 
