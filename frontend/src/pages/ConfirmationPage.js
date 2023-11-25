@@ -17,11 +17,11 @@ const ConfirmationPage = () => {
   }, [navigate]);
 
   const onSearchIconClick = useCallback(() => {
-    navigate("/searchpage");
+    navigate("/homepage");
   }, [navigate]);
 
   const onBackToHomePageClick = useCallback(() => {
-    navigate("/homepagepage");
+    navigate("/homepage");
   }, [navigate]);
 
   return (
