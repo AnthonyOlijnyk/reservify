@@ -36,6 +36,20 @@ def get_reservations(start_of_day, end_of_day, restaurant):
         ]
     )
 
+def is_user_booked_that_day(start_of_day, end_of_day, user_id):
+    return Reservation.objects.filter(
+        user_id=user_id, 
+        start_time__range=[
+            start_of_day, 
+            end_of_day
+        ],
+        reservation_state__in=[
+            'Upcoming',
+            'Ongoing',
+            'Finished'
+        ]
+    ).count()
+
 def get_available_seats(reservations):
     open_seats = MAX_CAPACITY
     
@@ -94,3 +108,9 @@ def send_confirmation_email(start_time, email, restaurant):
         [email],
         fail_silently=False
     )
+
+def is_user_free(start_time, user_id):
+    start_of_day, end_of_day = get_date_boundaries(start_time)
+
+    return not is_user_booked_that_day(start_of_day, end_of_day, user_id)
+
