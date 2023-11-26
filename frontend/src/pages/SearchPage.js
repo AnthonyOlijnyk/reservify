@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./SearchPage.css";
+import Stars from "../components/Stars";
 
 const SearchPage = () => {
   const [results, setResults] = useState([]);
@@ -40,9 +41,17 @@ const SearchPage = () => {
           setResults(data);
         })
         .catch((error) => console.error('Error fetching search results:', error));
+    } else {
+      fetch('http://localhost:8000/RestaurantApp/search/?q=4.9&field=average_review_rating')
+        .then((response) => response.json())
+        .then((data) => {
+          setResults(data);
+        })
+        .catch((error) => console.error('Error fetching top-rated restaurants:', error));
     }
   }, [location.state]);
   
+
   return (
     <div className="searchpage">
       <div className="mainframe1" />
@@ -58,7 +67,7 @@ const SearchPage = () => {
             </div>
             <b className="restaurant-name">{restaurant.name}</b>
             <div className="restaurant-location">{restaurant.location}</div>
-            <img className="rating-icon" alt="" src="/rating.svg" />
+            <Stars aveRating={restaurant.ave_rating}/>
           </div>
         ))}
         </div>
@@ -81,29 +90,29 @@ const SearchPage = () => {
         />
       </div>
       <div className="main-header3">
-        <div className="header">
-          <div className="akar-iconsglobe" />
+        <div className="homepagebtn4">
+          <img
+            className="search-icon"
+            alt=""
+            src="/search-icon.svg"
+            onClick={onSearchIconClick}
+          />
         </div>
-      </div>
-      <div className="initial-options1">
-        <img
-          className="bxbxs-user-circle-icon1"
-          alt=""
-          src="/bxbxsusercircle.svg"
-          onClick={onBxbxsUserCircleIconClick}
-        />
-        <img
-          className="search-icon"
-          alt=""
-          src="/search-icon.svg"
-          onClick={onSearchIconClick}
-        />
+        <div className="userdashbtn4">
+          <img
+            className="bxbxs-user-circle-icon1"
+            alt=""
+            src="/bxbxsusercircle.svg"
+            onClick={onBxbxsUserCircleIconClick}
+          />
+        </div>
       </div>
       <div className="titlelogo4">
         <img className="reservify-icon4" alt="" src="/reservify1.svg" />
         <img className="restaurant-1-icon4" alt="" src="/restaurant-1@2x.png" />
       </div>
       {/*<img className="footer-icon" alt="" src="/footer1.svg" />*/}
+    
     </div>
   );
 };
