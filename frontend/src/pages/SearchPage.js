@@ -41,9 +41,17 @@ const SearchPage = () => {
           setResults(data);
         })
         .catch((error) => console.error('Error fetching search results:', error));
+    } else {
+      fetch('http://localhost:8000/RestaurantApp/search/?q=4.9&field=average_review_rating')
+        .then((response) => response.json())
+        .then((data) => {
+          setResults(data);
+        })
+        .catch((error) => console.error('Error fetching top-rated restaurants:', error));
     }
   }, [location.state]);
   
+
   return (
     <div className="searchpage">
       <div className="mainframe1" />
