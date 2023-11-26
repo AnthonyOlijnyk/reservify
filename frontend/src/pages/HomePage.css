@@ -11,7 +11,7 @@
   top: 0;
   left: -2px;
   background: linear-gradient(180deg, #f8e9db, rgba(255, 255, 255, 0));
-  width: 1440px;
+  width: 100%;
   height: 2845px;
 }
 .round-search-child,
@@ -134,19 +134,25 @@
 }
 .bxbxs-user-circle-icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 44px;
-  height: 44px;
+  height: 117.08%;
+  width: 117.08%;
+  top: -12.5%;
+  right: -4.58%;
+  bottom: -4.58%;
+  left: -12.5%;
+  max-width: 150%;
   overflow: hidden;
+  max-height: 100%;
+  cursor: pointer;
 }
 .initial-options {
   position: absolute;
-  top: 13px;
-  left: 1366px;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
+  height: 50%;
+  width: 2.5%;
+  top: 30.29%;
+  right: 2.22%;
+  bottom: 31.43%;
+  left: 92.11%;
 }
 .main-header2,
 .top {
@@ -155,23 +161,23 @@
 .main-header2 {
   position: absolute;
   width: 100%;
-  top: -4px;
+  top: 0;
   right: 0;
-  left: 0;
+  left: -2px;
   height: 70px;
   overflow: hidden;
 }
 .top {
   position: relative;
-  width: 1440px;
+  width: 100%;
   height: 651px;
 }
 .homepage-child {
   position: relative;
-  width: 1220px;
+  width: 100%;
   height: 23px;
 }
-.top-rated-child,
+.top-rated-line,
 .top-rated-restaurants {
   position: absolute;
   top: 15.3px;
@@ -179,80 +185,13 @@
   width: 225.8px;
   height: 75px;
 }
-.top-rated-child {
+.top-rated-line {
   top: 132px;
   left: 16px;
   width: 140px;
   height: 6px;
 }
-.latest-property-1-child {
-  position: absolute;
-  top: -10px;
-  left: -9.5px;
-  width: 299px;
-  height: 360px;
-}
-.lenny,
-.pier-street-toronto {
-  position: absolute;
-  left: 22px;
-  display: inline-block;
-}
-.lenny {
-  top: 186px;
-  font-size: var(--font-size-lg);
-  color: var(--color-crimson);
-  width: 164px;
-  height: 17px;
-}
-.pier-street-toronto {
-  top: 262px;
-  width: 197px;
-  height: 14px;
-}
-.latest-property-1-item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: var(--br-5xs) var(--br-5xs) 0 0;
-  width: 279px;
-  height: 172px;
-  object-fit: cover;
-}
-.seafood {
-  position: absolute;
-  top: 240px;
-  left: 22px;
-  display: inline-block;
-  width: 64px;
-  height: 14px;
-}
-.rectangle-8-stroke {
-  position: absolute;
-  top: 294px;
-  left: 21.5px;
-  width: 107px;
-  height: 35px;
-}
-.heart-icon,
-.reserve-icon {
-  position: absolute;
-  top: 304.4px;
-  left: 40.2px;
-  width: 69px;
-  height: 11.8px;
-}
-.heart-icon {
-  height: 7.44%;
-  width: 10.23%;
-  top: 5.88%;
-  right: 7.66%;
-  bottom: 86.68%;
-  left: 82.11%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
+
 .five-stars-icon,
 .latest-property-1 {
   position: absolute;
@@ -280,81 +219,22 @@
   width: 55px;
   height: 14px;
 }
-.latest-property-2,
-.vector-icon1 {
-  position: absolute;
-  top: 202px;
-  left: 324.5px;
-  width: 279.5px;
-  height: 340px;
-}
-.vector-icon1 {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.halfstar-child {
-  position: absolute;
-  top: 0;
-  left: 7px;
-  background-color: rgba(255, 255, 255, 0.8);
-  width: 7px;
-  height: 14px;
-}
-.halfstar {
-  position: absolute;
-  height: 2.43%;
-  width: 1.13%;
-  top: 73.44%;
-  right: 14.49%;
-  bottom: 24.13%;
-  left: 84.38%;
-}
-.map-btn-icon {
-  position: absolute;
-  top: 108px;
-  left: 1078px;
-  width: 142.6px;
-  height: 26px;
-}
-.fournhalfstars-icon {
-  position: absolute;
-  height: 2.45%;
-  width: 7.67%;
-  top: 73.44%;
-  right: 89.39%;
-  bottom: 24.11%;
-  left: 2.95%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.top-rated {
+
+.top-rated,
+.japanese {
   position: relative;
   background-color: var(--color-white);
   width: 1239px;
   height: 576px;
 }
-.italian-child {
+.cuisine-title-line {
   position: absolute;
   top: 84px;
   left: 16px;
   width: 140px;
   height: 6px;
 }
-.latest-property-21 {
-  position: absolute;
-  top: 202px;
-  left: 324px;
-  width: 279px;
-  height: 340px;
-}
+
 .italian-cuisine,
 .map-btn-icon1 {
   position: absolute;
@@ -379,38 +259,7 @@
   font-size: var(--font-size-17xl);
   color: var(--color-dimgray);
 }
-.shoushin1 {
-  margin: 0;
-}
-.japanese1 {
-  position: absolute;
-  top: 240px;
-  left: 22px;
-  display: inline-block;
-  width: 68px;
-  height: 14px;
-}
-.fournhalfstars-icon1 {
-  position: absolute;
-  height: 4.15%;
-  width: 33.99%;
-  top: 65%;
-  right: 58.14%;
-  bottom: 30.85%;
-  left: 7.87%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.japanese2 {
-  position: absolute;
-  top: 240px;
-  left: 22px;
-  display: inline-block;
-  width: 81px;
-  height: 14px;
-}
-.japanese-item,
+
 .latest-property-8 {
   position: absolute;
   top: 202px;
@@ -418,12 +267,7 @@
   width: 279.5px;
   height: 340px;
 }
-.japanese-item {
-  top: 565px;
-  left: 9.5px;
-  width: 1220px;
-  height: 23px;
-}
+
 .japanese-cuisine {
   position: absolute;
   top: 12px;
@@ -435,17 +279,30 @@
   width: 339px;
   height: 103px;
 }
-.footer-icon,
+
 .homepage {
   position: relative;
-  width: 1440px;
+  width: 100%;
   height: 321px;
+}
+.footer0 {
+  position: relative;
+  background-color: #ffefe0;
+  width: 100%;
+  height: 321px;
+  bottom: 0px;
+  text-align: match-parent;
+  font-size: var(--font-size-mini);
+  color: var(--color-dimgray);
+  font-family: var(--font-montserrat);
+  object-fit: cover;
 }
 .homepage {
   border-radius: var(--br-xl);
   background-color: var(--color-white);
   width: 100%;
-  height: 2837px;
+  overflow-x: hidden;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

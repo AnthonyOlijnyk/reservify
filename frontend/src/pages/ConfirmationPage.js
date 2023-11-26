@@ -6,7 +6,8 @@ const ConfirmationPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const restaurantName = location.state.restaurant_name;
-  console.log("rest name:", {restaurantName});
+  const restaurantImage = location.state.restaurantImageNum;
+  console.log("rest name:", {restaurantName,restaurantImage});
   
   const onCheckReservations = useCallback(() => {
     navigate("/user-dash");
@@ -85,9 +86,8 @@ const ConfirmationPage = () => {
                 <img
                   className="property-col-icon1"
                   alt=""
-                  src="/property-col1@2x.png"
+                  src={restaurantImage}
                 />
-                <div className="property-image11" />
               </div>
               <div className="frame19">
                 <div className="frame20">

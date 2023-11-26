@@ -9,8 +9,19 @@ const HomePage = () => {
   const [topRatedRestaurants, setTopRatedRestaurants] = useState([]);
   const [italianRestaurants, setItalianRestaurants] = useState([]);
   const [japaneseRestaurants, setJapaneseRestaurants] = useState([]);
+  const [inputInFocus, setinputInFocus] = useState(false);
 
-  
+
+const placeholderText = inputInFocus ? "Search Top Rated Restaurants" : "Search Restaurants, Cuisines";
+
+const handleSearchInputFocus = () => {
+  setinputInFocus(true);
+};
+
+const handleSearchInputBlur = () => {
+  setinputInFocus(false);
+};
+
 const searchAction = useCallback(async () => {
   if (searchInput.trim() !== '') {
     const response = await fetch(
@@ -21,6 +32,9 @@ const searchAction = useCallback(async () => {
     const data = await response.json();
 
     navigate("/searchpage", { state: { query: searchInput, results: data } });
+  } else {
+    //Navigate to search results of top-rated restaurants when search input is empty
+    navigate("/searchpage");
   }
 }, [navigate, searchInput]);
 
@@ -45,6 +59,7 @@ const handleEnter = useCallback(
   const onInitialOptionsContainerClick = useCallback(() => {
     navigate("/user-dash");
   }, [navigate]);
+
 
   const fetchTopRatedRestaurants = useCallback(async () => {
     try {
@@ -99,10 +114,12 @@ const handleEnter = useCallback(
           </div>
           <input
             className="search-restaurants-cuisines"
-            placeholder="Search Restaurants, Cuisines"
+            placeholder={placeholderText}
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
+            onFocus={handleSearchInputFocus}
+            onBlur={handleSearchInputBlur}
             onKeyDown={(e) => handleEnter(e)}
           />
         </div>
@@ -136,14 +153,13 @@ const handleEnter = useCallback(
           </div>
         </div>
       </div>
-      <img className="homepage-child" alt="" src="/line-18.svg" />
       <div className="top-rated">
         <img
           className="top-rated-restaurants"
           alt=""
           src="/top-rated-restaurants.svg"
         />
-        <img className="top-rated-child" alt="" src="/rectangle-68.svg" />
+        <img className="top-rated-line" alt="" src="/rectangle-68.svg" />
         
         
         {topRatedRestaurants.map((restaurant, index) => (
@@ -151,7 +167,7 @@ const handleEnter = useCallback(
             key={index}
             restaurant={restaurant}
             restaurantName={restaurant.name}
-            dimensionCode="/five-stars.svg" 
+            averageRating={restaurant.ave_rating}
             imageDimensionCode={restaurant.imageNum} 
             culturalOrigin={restaurant.cuisine}
             address={restaurant.location}
@@ -159,18 +175,19 @@ const handleEnter = useCallback(
             propHeight="4.12%"
             propBottom="30.88%"
             propWidth="44px"
+           
           />
         ))}
           
       </div>
       <div className="italian">
-        <img className="italian-child" alt="" src="/rectangle-68.svg" />
+        <img className="cuisine-title-line" alt="" src="/rectangle-68.svg" />
         {italianRestaurants.map((restaurant, index) => (
           <RestTemplate
             key={index}
             restaurant={restaurant}
             restaurantName={restaurant.name}
-            dimensionCode="/five-stars.svg"
+            averageRating={restaurant.ave_rating}
             imageDimensionCode={restaurant.imageNum} 
             culturalOrigin="Italian"
             address={restaurant.location}
@@ -178,20 +195,20 @@ const handleEnter = useCallback(
             propHeight="4.12%"
             propBottom="30.88%"
             propWidth="44px"
+          
+
           />
         ))}
-        
-        <img className="map-btn-icon1" alt="" src="/map-btn1.svg" />
         <b className="italian-cuisine">Italian Cuisine</b>
       </div>
-      <div className="top-rated">
-        <img className="italian-child" alt="" src="/rectangle-681.svg" />
+      <div className="japanese">
+        <img className="cuisine-title-line" alt="" src="/rectangle-681.svg" />
         {japaneseRestaurants.map((restaurant, index) => (
           <RestTemplate
             key={index}
             restaurant={restaurant}
             restaurantName={restaurant.name}
-            dimensionCode="/five-stars.svg"
+            averageRating={restaurant.ave_rating}
             imageDimensionCode={restaurant.imageNum} 
             culturalOrigin="Japanese"
             address={restaurant.location}
@@ -199,14 +216,21 @@ const handleEnter = useCallback(
             propHeight="4.12%"
             propBottom="30.88%"
             propWidth="75px"
+          
+
           />
         ))}
-        
-        <img className="map-btn-icon" alt="" src="/map-btn2.svg" />
-        <img className="japanese-item" alt="" src="/line-18.svg" />
         <b className="japanese-cuisine">Japanese Cuisine</b>
       </div>
-      <img className="footer-icon" alt="" src="/footer.svg" />
+      <div className="footer0">
+        <img className="copyrights-icon" alt="" src="/copyrights.svg" />
+        <div className="footer-info">
+          <img className="contact-info-icon" alt="" src="/contactinfo.svg" />
+          <div className="faqs">FAQs</div>
+          <a href="https://www.google.com"> <div className="about-us" >About Us</div> </a>
+          <b className="reservify">RESERVIFY</b>
+        </div>
+      </div>
     </div>
   );
 };

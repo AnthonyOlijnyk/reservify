@@ -2,17 +2,16 @@ import { useMemo } from "react";
 import { useCallback } from "react";
 import { useNavigate} from "react-router-dom";
 import "./RestTemplate.css";
+import HomePageStars from "../components/HomePageStars"; 
 
 const RestTemplate = ({
   restaurant,
   restaurantName,
-  dimensionCode,
+  averageRating,
   imageDimensionCode,
   culturalOrigin,
   address,
   propLeft,
-  propHeight,
-  propBottom,
   propWidth,
 }) => {
 
@@ -38,13 +37,6 @@ const RestTemplate = ({
     };
   }, [propLeft]);
 
-  const fiveStarsIconStyle = useMemo(() => {
-    return {
-      height: propHeight,
-      bottom: propBottom,
-    };
-  }, [propHeight, propBottom]);
-
   const japaneseStyle = useMemo(() => {
     return {
       width: propWidth,
@@ -64,12 +56,7 @@ const RestTemplate = ({
       <b className="fomofuku" style={restaurantNameStyle}>
         {restaurantName}
       </b>
-      <img
-        className="five-stars-icon2"
-        alt=""
-        src={dimensionCode}
-        style={fiveStarsIconStyle}
-      />
+      <HomePageStars aveRating={averageRating} />
       <img className="latest-property-3-item" alt="" src={imageDimensionCode} />
       <div className="japanese3" style={japaneseStyle}>
         {culturalOrigin}
@@ -81,7 +68,6 @@ const RestTemplate = ({
       />
       <img className="latest-property-3-inner" alt="" src="/rectangle-8.svg" />
       <img className="reserve-icon4" alt="" src="/reserve.svg" onClick={() => onReserveBtnClick(restaurant)}></img>
-      <img className="heart-icon4" alt="" src="/heart.svg" />
       <div className="main-street-toronto">{address}</div>
     </div>
   );
