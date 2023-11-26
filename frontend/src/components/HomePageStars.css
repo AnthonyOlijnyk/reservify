@@ -1,0 +1,57 @@
+.homepage-star-rating .star4,
+.homepage-star-rating .star5,
+.homepage-star-rating .star6,
+.homepage-star-rating .star7,
+.homepage-star-rating .star8 {
+  position: absolute;
+  height: 25.51%;
+  width: 8.45%;
+  top: 61.18%;
+  right: 28.57%;
+  bottom: 15.31%;
+  left: 62.97%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.homepage-star-rating .star4,
+.homepage-star-rating .star6,
+.homepage-star-rating .star7,
+.homepage-star-rating .star8 {
+  right: 14.87%;
+  left: 76.68%;
+}
+
+.homepage-star-rating .star6,
+.homepage-star-rating .star7,
+.homepage-star-rating .star8 {
+  top: 61.22%;
+  right: 42.86%;
+  bottom: 13.27%;
+  left: 48.69%;
+}
+
+.homepage-star-rating .star7,
+.homepage-star-rating .star8 {
+  right: 57.14%;
+  left: 34.4%;
+}
+
+.homepage-star-rating .star8 {
+  right: 71.43%;
+  left: 20.12%;
+}
+
+.homepage-star-rating {
+  position: absolute;
+  height: 49%;
+  width: 64.47%;
+  top: 27%;
+  right: 5.32%;
+  bottom: 22.68%;
+  left: -4.8%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
