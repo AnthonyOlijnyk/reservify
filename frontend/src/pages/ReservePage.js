@@ -100,7 +100,7 @@ const ReservePage = (resturaunt) => {
   },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name ,restaurantImageNum, setErrorMessages]);
 
   const onSearchIconClick = useCallback(() => {
-    navigate("/searchpage");
+    navigate("/homepage");
   }, [navigate]);
 
   const onUserDash = useCallback(() => {
