@@ -222,7 +222,15 @@ const handleEnter = useCallback(
         ))}
         <b className="japanese-cuisine">Japanese Cuisine</b>
       </div>
-      <img className="footer-icon" alt="" src="/footer.svg" />
+      <div className="footer0">
+        <img className="copyrights-icon" alt="" src="/copyrights.svg" />
+        <div className="footer-info">
+          <img className="contact-info-icon" alt="" src="/contactinfo.svg" />
+          <div className="faqs">FAQs</div>
+          <a href="https://www.google.com"> <div className="about-us" >About Us</div> </a>
+          <b className="reservify">RESERVIFY</b>
+        </div>
+      </div>
     </div>
   );
 };

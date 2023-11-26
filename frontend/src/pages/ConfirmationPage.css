@@ -219,8 +219,11 @@
   position: absolute;
   top: 0px;
   left: 110px;
-  display: inline-block;
-  overflow: visible
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 290px;
+  height: 47px;
 }
 .frame19,
 .frame22 {

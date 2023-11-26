@@ -85,7 +85,8 @@ const ReservePage = (resturaunt) => {
       .then(data => 
         {
           if (data.success){
-            navigate(`/reservation-confirmation`,{state: {restaurant_name}});
+            console.log(restaurantImageNum)
+            navigate(`/reservation-confirmation`,{state: {restaurant_name, restaurantImageNum}});
         }
         else
         {
@@ -96,7 +97,7 @@ const ReservePage = (resturaunt) => {
           setErrorMessages(errors);
         }})
       .catch(error => {console.error('Error:', error);});
-  },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name, setErrorMessages]);
+  },[navigate, dateDateTimePickerValue, timeDateTimePickerValue, numpeople, email, restaurant_name ,restaurantImageNum, setErrorMessages]);
 
   const onSearchIconClick = useCallback(() => {
     navigate("/searchpage");
