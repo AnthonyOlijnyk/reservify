@@ -9,18 +9,7 @@ const HomePage = () => {
   const [topRatedRestaurants, setTopRatedRestaurants] = useState([]);
   const [italianRestaurants, setItalianRestaurants] = useState([]);
   const [japaneseRestaurants, setJapaneseRestaurants] = useState([]);
-  const [inputInFocus, setinputInFocus] = useState(false);
 
-
-const placeholderText = inputInFocus ? "Search Top Rated Restaurants" : "Search Restaurants, Cuisines";
-
-const handleSearchInputFocus = () => {
-  setinputInFocus(true);
-};
-
-const handleSearchInputBlur = () => {
-  setinputInFocus(false);
-};
 
 const searchAction = useCallback(async () => {
   if (searchInput.trim() !== '') {
@@ -33,7 +22,6 @@ const searchAction = useCallback(async () => {
 
     navigate("/searchpage", { state: { query: searchInput, results: data } });
   } else {
-    //Navigate to search results of top-rated restaurants when search input is empty
     navigate("/searchpage");
   }
 }, [navigate, searchInput]);
@@ -114,12 +102,10 @@ const handleEnter = useCallback(
           </div>
           <input
             className="search-restaurants-cuisines"
-            placeholder={placeholderText}
+            placeholder="Search Restaurants, Cuisines"
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            onFocus={handleSearchInputFocus}
-            onBlur={handleSearchInputBlur}
             onKeyDown={(e) => handleEnter(e)}
           />
         </div>
